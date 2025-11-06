@@ -44,7 +44,7 @@ const ServiceDetailPage: React.FC = () => {
                         {service.content}
                     </div>
                      <div className="mt-10 text-center">
-                        <Link to="/appointment" className="bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg">
+                        <Link to="/appointment" className="bg-[#c5a47e] text-white font-bold py-3 px-4 rounded-md hover:bg-opacity-90 transition-colors text-lg">
                             Book a Consultation
                         </Link>
                     </div>
