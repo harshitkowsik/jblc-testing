@@ -68,6 +68,7 @@ const JobApplicationPage: React.FC = () => {
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
+    const [submitError, setSubmitError] = useState<string | null>(null);
 
     const commonInputClasses = "w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c5a47e] transition-shadow";
     const errorClasses = "border-red-500 focus:ring-red-500";
@@ -90,7 +91,7 @@ const JobApplicationPage: React.FC = () => {
         'Internship Certificate (If Any)'
     ];
 
-    const validate = (): boolean => {
+    const validate = (): FormErrors => {
         const newErrors: FormErrors = {};
 
         const stringRequiredFields: (keyof JobApplicationFormData)[] = [
@@ -134,11 +135,13 @@ const JobApplicationPage: React.FC = () => {
         }
 
         setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
+        return newErrors;
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value, type, checked } = e.target as HTMLInputElement;
+        // Clear general error on change if you are using one
+        // setSubmitError(null); 
         if (type === 'checkbox') {
             if (name === 'consent') {
                 setFormData(prev => ({ ...prev, [name]: checked }));
@@ -196,20 +199,20 @@ const JobApplicationPage: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (validate()) {
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length === 0) {
             // No errors, proceed with mailto link
             const mailtoLink = encodeMailtoLink(formData);
             window.open(mailtoLink);
             setTimeout(handleReset, 500);
         } else {
             // Scroll to first error input field
-            const errorFields = Object.keys(errors);
+            const errorFields = Object.keys(validationErrors);
             if (errorFields.length > 0) {
                 const firstErrorField = errorFields[0];
                 const element = document.querySelector(`[name="${firstErrorField}"]`);
                 if (element) {
                     element.scrollIntoView({ behavior: "smooth", block: "center" });
-                    (element as HTMLElement).focus();
                 }
             }
         }
@@ -256,6 +259,12 @@ const JobApplicationPage: React.FC = () => {
             <div className="container mx-auto px-4 py-20">
                 <form onSubmit={handleSubmit} className="max-w-6xl mx-auto bg-white p-10 rounded-lg shadow-2xl space-y-10">
                     <h2 className="text-4xl font-bold text-[#2e3e4d] text-center mb-8">Job Application Form</h2>
+
+                    {submitError && (
+                        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md" role="alert">
+                            <p>{submitError}</p>
+                        </div>
+                    )}
 
                     {/* Personal Details Section */}
                     <div>
