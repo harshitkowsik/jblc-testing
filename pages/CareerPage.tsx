@@ -23,9 +23,9 @@ const Opening = ({ title, location, experience, responsibilities, requirements }
                     <span><i className="fas fa-map-marker-alt mr-2"></i>{location}</span> | <span className="ml-2"><i className="fas fa-briefcase mr-2"></i>{experience}</span>
                 </div>
             </div>
-             <a href="mailto:corp@jblc.in?subject=Application for [Position Name] – [Your Name]" className="bg-[#c5a47e] text-white font-bold py-2 px-6 rounded-md hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap">
+             {/* <a href="mailto:corp@jblc.in?subject=Application for [Position Name] – [Your Name]" className="bg-[#c5a47e] text-white font-bold py-2 px-6 rounded-md hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap">
                 Apply Now
-            </a>
+            </a> */}
         </div>
         <div className="grid md:grid-cols-2 gap-6 mt-6 border-t pt-6">
             <div>
