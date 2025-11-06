@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import SEO from '../components/SEO';
 
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
-    <section 
-        className="bg-cover bg-center h-60 flex items-center justify-center text-white relative" 
+    <section
+        className="bg-cover bg-center h-60 flex items-center justify-center text-white relative"
         style={{ backgroundImage: "url('headerbg.png')" }}
     >
         <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-70"></div>
@@ -142,7 +142,7 @@ const JobApplicationPage: React.FC = () => {
         if (type === 'checkbox') {
             if (name === 'consent') {
                 setFormData(prev => ({ ...prev, [name]: checked }));
-            } else { 
+            } else {
                 setFormData(prev => ({
                     ...prev,
                     docsToUpload: checked
@@ -156,40 +156,63 @@ const JobApplicationPage: React.FC = () => {
     };
 
     const encodeMailtoLink = (data: JobApplicationFormData) => {
-        const recipient = 'jsh@gmail.com'; // Replace with your email
+        const recipient = 'jblcindia@gmail.com'; 
         const subject = encodeURIComponent('Job Application from ' + data.candidateFirstName + ' ' + data.candidateLastName);
-      
-        const bodyLines = [
-          `Candidate Name: ${data.candidateFirstName} ${data.candidateMiddleName} ${data.candidateLastName}`,
-          `Mother's Name: ${data.motherName}`,
-          `Father's/Husband's Name: ${data.fatherHusbandName}`,
-          `Date of Birth: ${data.dob}`,
-          `Email: ${data.email}`,
-          `Gender: ${data.gender}`,
-          `Mobile: ${data.mobile}`,
-          `State Applying For: ${data.stateApplyingFor}`,
-          `District Applying For: ${data.districtApplyingFor}`,
-          `PIN Code: ${data.pincode}`,
-          `Correspondence Address: ${data.corrHouseStreet}, ${data.corrCityTownVillage}, ${data.corrState} - ${data.corrPincode}`,
-          `Education: ${data.eduBoardUniversity}, ${data.eduCourseType}, Passing Year: ${data.eduPassingYear}, Percentage: ${data.eduPercentage}%`,
-          `Documents To Upload: ${data.docsToUpload.join(', ')}`,
-          `Consent Given: ${data.consent ? 'Yes' : 'No'}`
-        ];
-      
-        const body = encodeURIComponent(bodyLines.join('\n'));
-      
+
+        // Personal Information block
+        const personalInfo = [
+            `Candidate Name: ${data.candidateFirstName} ${data.candidateMiddleName} ${data.candidateLastName}`,
+            `Mother's Name: ${data.motherName}`,
+            `Father's/Husband's Name: ${data.fatherHusbandName}`,
+            `Date of Birth: ${data.dob}`,
+            `Email: ${data.email}`,
+            `Gender: ${data.gender}`,
+            `Mobile: ${data.mobile}`,
+        ].join('\n');
+
+        // Other Details block
+        const otherDetails = [
+            `State Applying For: ${data.stateApplyingFor}`,
+            `District Applying For: ${data.districtApplyingFor}`,
+            `PIN Code: ${data.pincode}`,
+            `Correspondence Address: ${data.corrHouseStreet}, ${data.corrCityTownVillage}, ${data.corrState} - ${data.corrPincode}`,
+            `Education: ${data.eduBoardUniversity}, ${data.eduCourseType}, Passing Year: ${data.eduPassingYear}, Percentage: ${data.eduPercentage}%`,
+            `Documents To Upload: ${data.docsToUpload.join(', ')}`,
+            `Consent Given: ${data.consent ? 'Yes' : 'No'}`,
+        ].join('\n');
+
+        // Final line requesting attachments
+        const attachmentNotice = 'Kindly attached the above ticked documents as required. This is mandatory.';
+
+        // Combine all parts with blank lines separating them
+        const body = encodeURIComponent(
+            personalInfo + '\n\n' + otherDetails + '\n\n' + attachmentNotice
+        );
+
         return `mailto:${recipient}?subject=${subject}&body=${body}`;
     };
+
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validate()) {
+            // No errors, proceed with mailto link
             const mailtoLink = encodeMailtoLink(formData);
             window.location.href = mailtoLink;
         } else {
-            alert('Please correct the errors in the form.');
+            // Scroll to first error input field
+            const errorFields = Object.keys(errors);
+            if (errorFields.length > 0) {
+                const firstErrorField = errorFields[0];
+                const element = document.querySelector(`[name="${firstErrorField}"]`);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "center" });
+                    (element as HTMLElement).focus();
+                }
+            }
         }
     };
+
 
     const handleReset = () => {
         setFormData({
@@ -221,7 +244,7 @@ const JobApplicationPage: React.FC = () => {
 
     return (
         <div>
-            <SEO 
+            <SEO
                 title="Job Application Form | JBLC INDIA"
                 description="Apply for career opportunities at JBLC INDIA. Fill out our job application form for various legal positions."
                 canonicalPath="/apply"
@@ -262,7 +285,6 @@ const JobApplicationPage: React.FC = () => {
                             <div>
                                 <label htmlFor="dob" className="block text-gray-700 font-semibold mb-2">Date Of Birth*</label>
                                 <input type="date" id="dob" name="dob" value={formData.dob} onChange={handleChange} className={`${commonInputClasses} ${errors.dob ? errorClasses : ''}`} aria-required="true" />
-                                <span className="text-xs text-gray-500">Date Format: YYYY-MM-DD</span> 
                                 {errors.dob && <p className="text-red-600 text-sm mt-1" role="alert">{errors.dob}</p>}
                             </div>
                             <div>
@@ -327,7 +349,7 @@ const JobApplicationPage: React.FC = () => {
                                 <input type="text" id="corrCityTownVillage" name="corrCityTownVillage" value={formData.corrCityTownVillage} onChange={handleChange} className={`${commonInputClasses} ${errors.corrCityTownVillage ? errorClasses : ''}`} aria-required="true" />
                                 {errors.corrCityTownVillage && <p className="text-red-600 text-sm mt-1" role="alert">{errors.corrCityTownVillage}</p>}
                             </div>
-                             <div>
+                            <div>
                                 <label htmlFor="corrPincode" className="block text-gray-700 font-semibold mb-2">Correspondence Pincode*</label>
                                 <input type="text" id="corrPincode" name="corrPincode" value={formData.corrPincode} onChange={handleChange} maxLength={6} className={`${commonInputClasses} ${errors.corrPincode ? errorClasses : ''}`} aria-required="true" />
                                 {errors.corrPincode && <p className="text-red-600 text-sm mt-1" role="alert">{errors.corrPincode}</p>}
@@ -403,6 +425,7 @@ const JobApplicationPage: React.FC = () => {
                                     </label>
                                 ))}
                             </div>
+                            <p className="text-red-600 text-sm mt-2">Note: Upload the selected documents in the next step.</p>
                             {errors.docsToUpload && <p className="text-red-600 text-sm mt-1" role="alert">{errors.docsToUpload}</p>}
                         </div>
                     </div>
@@ -434,9 +457,9 @@ const JobApplicationPage: React.FC = () => {
                         {errors.consent && <p className="text-red-600 text-sm mt-1 -mt-4 mb-4" role="alert">{errors.consent}</p>}
                     </div>
 
-                    <div className="flex justify-end space-x-4 border-t pt-8">
-                        <button type="button" onClick={handleReset} className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors">Reset</button>
-                        <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">Submit Application</button>
+                    <div className="flex flex-col md:flex-row md:justify-end space-y-4 md:space-y-0 md:space-x-4 border-t pt-8">
+                        <button type="button" onClick={handleReset} className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors w-full md:w-auto">Reset</button>
+                        <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors w-full md:w-auto">Submit Application</button>
                     </div>
 
                 </form>
