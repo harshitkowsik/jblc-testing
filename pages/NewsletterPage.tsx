@@ -92,64 +92,14 @@ const NewsletterPage: React.FC = () => {
                     <p className="text-gray-700 leading-relaxed mb-8">
                         Get the latest legal news, expert insights, and firm updates delivered straight to your inbox.
                         Don't miss out on important developments in the legal world.
-                    </p>
-
-                    {isSubmitted ? (
-                        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
-                            <strong className="font-bold">Thank you!</strong>
-                            <span className="block sm:inline ml-2">Your subscription has been successfully received.</span>
-                        </div>
-                    ) : (
-                        <form onSubmit={handleSubmit} className="space-y-6 text-left">
-                            <div>
-                                <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Your Name*</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    className={`${commonInputClasses} ${errors.name ? errorClasses : ''}`}
-                                    aria-required="true"
-                                />
-                                {errors.name && <p className="text-red-600 text-sm mt-1" role="alert">{errors.name}</p>}
-                            </div>
-                            <div>
-                                <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email Address*</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className={`${commonInputClasses} ${errors.email ? errorClasses : ''}`}
-                                    aria-required="true"
-                                />
-                                {errors.email && <p className="text-red-600 text-sm mt-1" role="alert">{errors.email}</p>}
-                            </div>
-                            <div className="flex items-start">
-                                <input
-                                    type="checkbox"
-                                    id="consent"
-                                    name="consent"
-                                    checked={formData.consent}
-                                    onChange={handleChange}
-                                    className={`form-checkbox h-5 w-5 text-[#c5a47e] rounded ${errors.consent ? errorClasses : ''}`}
-                                    aria-required="true"
-                                />
-                                <label htmlFor="consent" className="ml-3 text-gray-700">
-                                    I agree to receive marketing and promotional emails from JBLC INDIA.*
-                                </label>
-                            </div>
-                            {errors.consent && <p className="text-red-600 text-sm mt-1 -mt-4 mb-4" role="alert">{errors.consent}</p>}
-
-                            <div className="text-center mt-8">
-                                <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">
-                                    Subscribe Now
-                                </button>
-                            </div>
-                        </form>
-                    )}
+                    </p><div className="mb-8 flex justify-center">
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLScNATehtpXRdaB0gLD79bgRYhF8N43CEoR8yL0xTB0dMUQv-g/viewform?embedded=true"
+                        className="w-full h-[800px] md:w-[640px] md:h-[650px]" 
+                        frameBorder="0" marginHeight={0} marginWidth={0}>
+                            Loading…
+                    </iframe>
+                    </div>
                 </div>
             </div>
         </div>
