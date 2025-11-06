@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
+import { teamMembers } from '../data/teamData';
 
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
     <section 
@@ -44,7 +45,7 @@ const AppointmentPage: React.FC = () => {
     { name: 'Family Matter', price: 24999 },
   ];
 
-  const workers = ['Adv Kusum Mishra', 'Adv Ravindra Rai', 'Adv Dr Ashutosh Mishra'];
+  const workers = teamMembers.map(member => member.name);
 
   useEffect(() => {
     const selectedService = services.find(s => s.name === formData.service);

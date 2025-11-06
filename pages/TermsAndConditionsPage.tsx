@@ -27,44 +27,156 @@ const Section = ({ title, children }: { title: string, children: React.ReactNode
 const TermsAndConditionsPage: React.FC = () => {
     return (
         <div>
-            <SEO 
-              title="Terms & Conditions | JBLC INDIA"
-              description="Read the official terms and conditions for using the JBLC INDIA website and its services."
+            <SEO
+                title="Terms & Conditions | JBLC INDIA"
+                description="Read the official terms and conditions for using the JBLC INDIA website and its services."
             />
             <PageHeader title="Terms & Conditions" subtitle="Please read our terms carefully" />
             <div className="container mx-auto px-4 py-20">
                 <div className="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-2xl">
-                    <p className="text-sm text-gray-500 mb-6">Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
 
-                    <Section title="1. Introduction">
-                        <p>Welcome to JBLC INDIA. These terms and conditions outline the rules and regulations for the use of JBLC INDIA's Website, located at this domain. By accessing this website we assume you accept these terms and conditions. Do not continue to use JBLC INDIA if you do not agree to take all of the terms and conditions stated on this page.</p>
+                    <Section title="JBLC INDIA – Legal, Privacy & HR Policies">
+                        <p>Effective Date: 01.01.2020</p>
+                        <p>Website: <a href="https://jblc.in" target="_blank" rel="noopener noreferrer">https://jblc.in</a></p>
+                        <p>JBLC INDIA (“we”, “our”, “us”) is committed to privacy, confidentiality, ethical standards, and compliance with Indian and international laws. By accessing or using our Website, you agree to the following terms and policies.</p>
                     </Section>
 
-                    <Section title="2. Intellectual Property Rights">
-                        <p>Other than the content you own, under these Terms, JBLC INDIA and/or its licensors own all the intellectual property rights and materials contained in this Website. You are granted a limited license only for purposes of viewing the material contained on this Website.</p>
-                    </Section>
-
-                    <Section title="3. Restrictions">
-                        <p>You are specifically restricted from all of the following:</p>
+                    <Section title="1. Acceptance of Terms">
                         <ul className="list-disc list-inside ml-4">
-                            <li>publishing any Website material in any other media;</li>
-                            <li>selling, sublicensing and/or otherwise commercializing any Website material;</li>
-                            <li>publicly performing and/or showing any Website material;</li>
-                            <li>using this Website in any way that is or may be damaging to this Website;</li>
-                            <li>using this Website contrary to applicable laws and regulations, or in any way may cause harm to the Website, or to any person or business entity;</li>
+                            <li>By visiting or using this Website, you agree to comply with all applicable laws and regulations.</li>
+                            <li>You accept all terms in this Legal, Privacy & HR Policy document.</li>
+                            <li>Unauthorized use of Website content, proprietary information, or violation of these terms may result in legal action.</li>
                         </ul>
                     </Section>
 
-                     <Section title="4. No advice">
-                        <p>This Website contains general information about legal matters. The information is not advice, and should not be treated as such. The legal information on this Website is provided without any representations or warranties, express or implied. Using this website or communicating with JBLC INDIA through this site does not form an attorney/client relationship.</p>
+                    <Section title="2. Privacy Policy">
+                        <Section title="2.1 Information We Collect">
+                            <ul className="list-disc list-inside ml-4">
+                                <li><strong>Personal Data:</strong> Name, email, phone, postal address, professional details submitted via forms.</li>
+                                <li><strong>Professional Data:</strong> CVs, resumes, proposals, collaboration details.</li>
+                                <li><strong>Technical Data:</strong> IP address, browser, operating system, pages visited, cookies, analytics.</li>
+                            </ul>
+                        </Section>
+
+                        <Section title="2.2 Use of Information">
+                            <ul className="list-disc list-inside ml-4">
+                                <li>Respond to inquiries and provide consultation services.</li>
+                                <li>Process job applications, internships, or collaborations.</li>
+                                <li>Send newsletters or updates (with consent).</li>
+                                <li>Enhance Website functionality and security.</li>
+                                <li>Comply with legal obligations or investigations.</li>
+                            </ul>
+                        </Section>
+
+                        <Section title="2.3 Sharing of Information">
+                            <ul className="list-disc list-inside ml-4">
+                                <li>With service providers assisting with Website operations or analytics.</li>
+                                <li>As legally required by law, court orders, or government authorities.</li>
+                                <li>In case of mergers, acquisitions, or sale of assets.</li>
+                            </ul>
+                        </Section>
+
+                        <Section title="2.4 Data Retention">
+                            <p>Data is retained only as long as necessary for services, legal compliance, or dispute resolution.</p>
+                        </Section>
+
+                        <Section title="2.5 User Rights">
+                            <p>Users may request access, correction, deletion, or restriction of personal data as permitted by law.</p>
+                        </Section>
+
+                        <Section title="2.6 Children’s Privacy">
+                            <p>This Website is not intended for users under 18 years of age.</p>
+                        </Section>
                     </Section>
 
-                    <Section title="5. Limitation of liability">
-                        <p>In no event shall JBLC INDIA, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract. JBLC INDIA, including its officers, directors and employees shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website.</p>
+                    <Section title="3. Cookies & Tracking">
+                        <ul className="list-disc list-inside ml-4">
+                            <li>Cookies used for analytics, performance improvement, and personalized content.</li>
+                            <li>Users may disable cookies, but some features may not function properly.</li>
+                            <li>Third-party analytics may also track usage.</li>
+                        </ul>
                     </Section>
 
-                     <Section title="6. Variation of Terms">
-                        <p>JBLC INDIA is permitted to revise these terms at any time as it sees fit, and by using this Website you are expected to review these terms on a regular basis.</p>
+                    <Section title="4. Terms & Conditions">
+                        <Section title="4.1 Intellectual Property">
+                            <p>All content, logos, images, software, and text belong to JBLC INDIA or its licensors. Unauthorized reproduction, distribution, or commercial use is prohibited.</p>
+                        </Section>
+
+                        <Section title="4.2 Legal Disclaimer">
+                            <p>Content is informational and does not constitute legal advice. Using the Website does not establish a lawyer-client relationship.</p>
+                        </Section>
+
+                        <Section title="4.3 User Submissions">
+                            <p>All submitted content (CVs, proposals, messages) becomes JBLC INDIA property. Users warrant submissions do not infringe third-party rights or violate laws.</p>
+                        </Section>
+
+                        <Section title="4.4 Limitation of Liability">
+                            <p>JBLC INDIA is not liable for direct or indirect damages from Website use or technical interruptions.</p>
+                        </Section>
+
+                        <Section title="4.5 Indemnification">
+                            <p>Users indemnify JBLC INDIA against claims arising from misuse or violation of terms.</p>
+                        </Section>
+
+                        <Section title="4.6 Governing Law & Jurisdiction">
+                            <p>Terms are governed by the laws of India. Exclusive jurisdiction: Courts of [City, State], India.</p>
+                        </Section>
+
+                        <Section title="4.7 Modifications & Termination">
+                            <p>JBLC INDIA may revise Terms anytime; continued use indicates acceptance. Access may be suspended or terminated for violations.</p>
+                        </Section>
+                    </Section>
+
+                    <Section title="5. Standard HR Policies">
+                        <Section title="5.1 Recruitment & Selection">
+                            <p>Merit-based, non-discriminatory hiring. Accurate information mandatory; false info leads to disqualification.</p>
+                        </Section>
+
+                        <Section title="5.2 Confidentiality & Non-Disclosure (NDA)">
+                            <p>Employees, interns, and collaborators must maintain strict confidentiality of client data, legal documents, firm strategies, business plans, and internal communications. NDA applies during and after engagement. Unauthorized disclosure may result in civil or criminal action.</p>
+                        </Section>
+
+                        <Section title="5.3 Code of Conduct">
+                            <p>Maintain professionalism, integrity, and ethical behavior. Harassment, bullying, or unlawful conduct is strictly prohibited.</p>
+                        </Section>
+
+                        <Section title="5.4 CCTV, Audio & Video Monitoring">
+                            <p>JBLC INDIA maintains audio and video surveillance (CCTV) in all office premises for safety and security. Recordings are stored securely and used only for legitimate purposes, including investigations or legal proceedings. Tampering, misuse, or unauthorized disclosure is prohibited.</p>
+                        </Section>
+
+                        <Section title="5.5 Non-Compete & Anti-Competition">
+                            <p>Employees shall not engage in any business competing with JBLC INDIA during employment and for [specify period] after termination. Prohibited from soliciting clients, employees, or using proprietary information to compete. Compliant with the Competition Act, 2002.</p>
+                        </Section>
+
+                        <Section title="5.6 Intellectual Property Rights (IPR)">
+                            <p>All work products, documents, presentations, designs, and software created during engagement belong exclusively to JBLC INDIA. Unauthorized external use or distribution may result in legal action.</p>
+                        </Section>
+
+                        <Section title="5.7 Data Security & IT Policy">
+                            <p>Adherence to IT security protocols is mandatory. Firm devices, emails, and accounts are for professional use only. Sharing credentials or unauthorized access is prohibited.</p>
+                        </Section>
+
+                        <Section title="5.8 Leave, Attendance & Working Hours">
+                            <p>Leave policies follow statutory compliance under Indian labor laws. Unauthorized absences are subject to disciplinary action.</p>
+                        </Section>
+
+                        <Section title="5.9 Termination Policy">
+                            <p>Termination may occur for cause, misconduct, breach of NDA/IPR/Anti-competition, or violation of law.</p>
+                        </Section>
+                    </Section>
+
+                    <Section title="6. Data Protection Compliance">
+                        <p>JBLC INDIA complies with the Information Technology Act, 2000 (India) and GDPR principles for international visitors. Users may request access, correction, or deletion of personal data.</p>
+                    </Section>
+
+                    <Section title="7. External Links">
+                        <p>JBLC INDIA is not responsible for third-party website content or privacy practices. Users must review third-party policies independently.</p>
+                    </Section>
+
+                    <Section title="8. Contact Us">
+                        <p>Email: <a href="mailto:info@jblc.in">info@jblc.in</a></p>
+                        <p>Phone: 0522 2061000</p>
+                        <p>Address: JBLC INDIA, 511, 05th Floor, Skyline Plaza 1, Sushant Golf City, Lucknow – 226030</p>
                     </Section>
 
                 </div>

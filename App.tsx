@@ -16,7 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import FinanceDetailPage from './pages/FinanceDetailPage';
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import HrPolicyPage from './pages/HrPolicyPage';
 import JobApplicationPage from './pages/JobApplicationPage';
 
 const App: React.FC = () => {
@@ -39,7 +39,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/appointment" element={<AppointmentPage />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/hr-policy" element={<HrPolicyPage />} />
             <Route path="/apply" element={<JobApplicationPage />} />
           </Routes>
         </main>

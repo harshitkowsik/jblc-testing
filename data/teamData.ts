@@ -2,7 +2,7 @@ import { TeamMember } from '../types.ts';
 
 export const teamMembers: TeamMember[] = [
     {
-        name: "Dr. Ashutosh Mishra",
+        name: "Adv Ashutosh Mishra",
         image: "Adv-Ashutosh-Mishra.png",
         designation: "Founder & Chief Counsel",
         bio: "The visionary founder of JBLC, Dr. Mishra is a Supreme Court lawyer and a leading authority in administrative and constitutional law.",
