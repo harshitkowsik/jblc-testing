@@ -20,7 +20,7 @@ export const teamMembers: TeamMember[] = [
         linkedinUrl: "https://linkedin.com"
     },
     {
-        name: "Adv. Ravindra Rai",
+        name: "Adv Ravindra Rai",
         image: "Adv-Ravindra-Rai.jpg",
         designation: "Managing Partner",
         bio: "An expert in civil and criminal litigation, Ravindra is renowned for his courtroom presence and strategic approach to legal challenges.",
