@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-8">
           
           <div className="lg:col-span-1">
-            <img src="jblc-logo.jpg" alt="JBLC INDIA Logo" className="h-16 w-auto mb-4 bg-white p-2 rounded-md" />
+            <img src="jblc-logo.png" alt="JBLC INDIA Logo" className="h-16 w-auto mb-4 bg-white p-2 rounded-md" />
             <p className="text-sm text-gray-400 mb-4">
               An ISO 9001:2015 Certified, Top 10 Ranked Law Firm with over 15+ years of experience in delivering legal excellence.
             </p>
