@@ -157,7 +157,7 @@ const JobApplicationPage: React.FC = () => {
 
     const encodeMailtoLink = (data: JobApplicationFormData) => {
         const recipient = 'jblcindia@gmail.com'; 
-        const subject = encodeURIComponent('Job Application from ' + data.candidateFirstName + ' ' + data.candidateLastName);
+        const subject = encodeURIComponent('JBLC India - Job Application from ' + data.candidateFirstName + ' ' + data.candidateLastName);
 
         // Personal Information block
         const personalInfo = [
@@ -425,8 +425,8 @@ const JobApplicationPage: React.FC = () => {
                                     </label>
                                 ))}
                             </div>
-                            <p className="text-red-600 text-sm mt-2">Note: Upload the selected documents in the next step.</p>
                             {errors.docsToUpload && <p className="text-red-600 text-sm mt-1" role="alert">{errors.docsToUpload}</p>}
+                            <p className="text-red-600 text-sm mt-2">Note: Upload the selected documents in the next step.</p>
                         </div>
                     </div>
 
