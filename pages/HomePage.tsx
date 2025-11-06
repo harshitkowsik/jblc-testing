@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { services as coreServices } from '../data/serviceData';
 import { financeServices as allFinanceServices } from '../data/financeServiceData';
+import { teamMembers } from '../data/teamData.ts';
 
 
 const ServiceCard = ({ icon, title, description, link }: { icon: string; title: string; description: string; link: string; }) => (
@@ -23,7 +24,7 @@ const FinanceCard = ({ title, link }: { title: string; link: string; }) => (
     </div>
 );
 
-const TeamMemberCard = ({ image, name, designation }: { image: string; name: string; designation: string; }) => (
+const TeamMemberCard = ({ image, name, designation, facebookUrl, twitterUrl, linkedinUrl }: { image: string; name: string; designation: string; facebookUrl: string; twitterUrl: string; linkedinUrl: string; }) => (
     <div className="bg-white rounded-lg shadow-xl text-center overflow-hidden group">
         <div className="relative aspect-square">
             <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
@@ -33,9 +34,9 @@ const TeamMemberCard = ({ image, name, designation }: { image: string; name: str
                 <p className="text-[#c5a47e] font-semibold">{designation}</p>
             </div>
              <div className="absolute top-4 right-4 flex flex-col space-y-2 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-facebook-f"></i></a>
-                <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-twitter"></i></a>
-                <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-linkedin-in"></i></a>
+                <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-facebook-f"></i></a>
+                <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-twitter"></i></a>
+                <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </div>
@@ -67,7 +68,7 @@ const HomePage: React.FC = () => {
                 <div className="text-center z-10 p-4">
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">Legacy of Trust, Future of Justice</h1>
                     <p className="text-lg md:text-xl mt-4 max-w-3xl mx-auto drop-shadow-md">An ISO 9001:2015 Certified, Top 10 Ranked Law Firm with over 15+ years of experience in M&A and Corporate Law.</p>
-                    <div className="mt-8 space-x-4">
+                    <div className="mt-8 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-center items-center">
                         <Link to="/about" className="bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg">
                             Discover More
                         </Link>
@@ -97,7 +98,7 @@ const HomePage: React.FC = () => {
                          <p className="text-gray-600 mt-2">Comprehensive legal services tailored to your needs.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {servicesPreview.map((service) => <ServiceCard key={service.title} {...service} link={`/services/${service.slug}`} />)}
+                        {servicesPreview.map((service, index) => <ServiceCard key={index} {...service} link={`/services/${service.slug}`} />)}
                     </div>
                      <div className="text-center mt-12">
                         <Link to="/services" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">
@@ -114,7 +115,7 @@ const HomePage: React.FC = () => {
                         <p className="text-gray-600 mt-2">Expert legal guidance for your financial needs.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {financeServicesPreview.map((service) => <FinanceCard key={service.title} title={service.title} link={`/finance/${service.slug}`} />)}
+                        {financeServicesPreview.map((service, index) => <FinanceCard key={index} title={service.title} link={`/finance/${service.slug}`} />)}
                     </div>
                     <div className="text-center mt-12">
                         <Link to="/finance" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">
@@ -124,12 +125,12 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
             
-            <section className="py-20 bg-cover bg-fixed relative" style={{ backgroundImage: "url('headerbg.png')" }}>
+            <section className="py-20 bg-cover bg-fixed relative" style={{ backgroundImage: "url('https://jblc.in/wp-content/themes/expert-lawyer/assets/images/headerbg.png')" }}>
                  <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-80"></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-                        {stats.map((stat) => (
-                            <div key={stat.label}>
+                        {stats.map((stat, index) => (
+                            <div key={index}>
                                 <div className="text-5xl text-[#c5a47e] mb-3"><i className={stat.icon}></i></div>
                                 <p className="text-5xl font-bold">{stat.value}</p>
                                 <p className="text-lg mt-1">{stat.label}</p>
@@ -146,9 +147,9 @@ const HomePage: React.FC = () => {
                          <p className="text-gray-600 mt-2">Dedicated professionals committed to your success.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <TeamMemberCard image="Adv-Ashutosh-Mishra.png" name="Dr. Ashutosh Mishra" designation="MBA, LL.M, PhD, Senior Vice President" />
-                        <TeamMemberCard image="Adv-Manish-Sharma.jpg" name="Adv Manish Sharma" designation="Chief People Officer" />
-                        <TeamMemberCard image="Adv-Ravindra-Rai.jpg" name="Adv. Ravindra Rai" designation="Sr Law Officer" />
+                        {teamMembers.map((member, index) => (
+                            <TeamMemberCard key={index} {...member} />
+                        ))}
                     </div>
                 </div>
             </section>

@@ -57,7 +57,11 @@ const AppointmentPage: React.FC = () => {
     if (!formData.service) newErrors.service = 'Service is required.';
     if (!formData.worker) newErrors.worker = 'An advocate must be selected.';
     if (!formData.date) newErrors.date = 'Date is required.';
-    if (!formData.time) newErrors.time = 'Time is required.';
+    if (!formData.time) {
+      newErrors.time = 'Time is required.';
+    } else if (parseInt(formData.time.split(':')[1], 10) % 30 !== 0) {
+      newErrors.time = 'Appointments can only be booked at 30-minute intervals (e.g., 09:00, 09:30).';
+    }
 
     if (formData.date && formData.time) {
         const selectedDateTime = new Date(`${formData.date}T${formData.time}`);
@@ -138,12 +142,12 @@ const AppointmentPage: React.FC = () => {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="date" className="block text-gray-700 font-semibold mb-2">Date *</label>
-                        <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} className={commonInputClasses} />
+                        <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} className={`${commonInputClasses} dark:[color-scheme:light]`} />
                         {errors.date && <p className="text-red-600 text-sm mt-1">{errors.date}</p>}
                       </div>
                        <div>
                         <label htmlFor="time" className="block text-gray-700 font-semibold mb-2">Time *</label>
-                        <input type="time" id="time" name="time" value={formData.time} onChange={handleChange} className={commonInputClasses} min="09:00" max="18:00" />
+                        <input type="time" id="time" name="time" value={formData.time} onChange={handleChange} className={`${commonInputClasses} dark:[color-scheme:light]`} min="09:00" max="18:00" step="1800" />
                          {errors.time && <p className="text-red-600 text-sm mt-1">{errors.time}</p>}
                       </div>
                     </div>
@@ -185,9 +189,9 @@ const AppointmentPage: React.FC = () => {
                 </div>
             </div>
 
-            <div className="col-span-1 md:col-span-2 mt-10 flex justify-end space-x-4">
-                <button type="button" className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors">Cancel</button>
-                <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">Confirm Appointment</button>
+            <div className="col-span-1 md:col-span-2 mt-10 flex flex-col space-y-4 md:flex-row md:justify-end md:space-y-0 md:space-x-4">
+                <button type="button" className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors w-full md:w-auto">Cancel</button>
+                <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors w-full md:w-auto">Confirm Appointment</button>
             </div>
         </form>
       </div>
