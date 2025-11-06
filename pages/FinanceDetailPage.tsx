@@ -45,7 +45,7 @@ const FinanceDetailPage: React.FC = () => {
                     </div>
                      <div className="mt-10 text-center">
                         <Link to="/appointment" className="bg-[#c5a47e] text-white font-bold py-3 px-3 rounded-md hover:bg-opacity-90 transition-colors text-lg">
-                            Request a Consultation
+                            Book a Consultation
                         </Link>
                     </div>
                 </div>
