@@ -91,7 +91,7 @@ const AboutPage: React.FC = () => {
                         </p>
                     </div>
                     <div>
-                        <img src="https://images.unsplash.com/photo-1589216532372-1c2a36790039?w=800" alt="Law Firm Interior" className="rounded-lg shadow-2xl"/>
+                        <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA4L2thdGV2NjQ0N19waG90b19vZl93b29kZW5fZ2F2ZWxfaW5fdGhlX2NvdXJ0X2dhdmVsX3BsYWNlX29uX3RoZV83MmVhZDZjNS1lNGIxLTRlZDctYWIzNC03NThiMDVmZmY3YjRfMS5qcGc.jpg" alt="Law Firm Interior" className="rounded-lg shadow-2xl"/>
                     </div>
                 </section>
 
@@ -115,7 +115,7 @@ const AboutPage: React.FC = () => {
                     </div>
                     <div className="grid md:grid-cols-5 gap-8 items-center">
                         <div className="md:col-span-2">
-                             <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=500" alt="Dr. Ashutosh Mishra" className="rounded-full shadow-lg mx-auto w-48 h-48 object-cover border-4 border-[#c5a47e]"/>
+                             <img src="Adv-Ashutosh-Mishra.png" alt="Dr. Ashutosh Mishra" className="rounded-full shadow-lg mx-auto w-48 h-48 object-cover border-4 border-[#c5a47e]"/>
                         </div>
                         <div className="md:col-span-3">
                              <h3 className="text-2xl font-semibold text-[#2e3e4d] mb-2">Dr. Ashutosh Mishra, Managing Partner</h3>
