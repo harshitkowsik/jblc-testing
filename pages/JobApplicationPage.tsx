@@ -549,9 +549,9 @@ const JobApplicationPage: React.FC = () => {
                         {errors.consent && <p className="text-red-600 text-sm mt-1 -mt-4 mb-4" role="alert">{errors.consent}</p>}
                     </div>
 
-                    <div className="flex justify-end space-x-4 border-t pt-8">
-                        <button type="button" onClick={handleReset} className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors">Reset</button>
-                        <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">Submit Application</button>
+                    <div className="flex flex-col space-y-4 md:flex-row md:justify-end md:space-y-0 md:space-x-4 border-t pt-8">
+                        <button type="button" onClick={handleReset} className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors w-full md:w-auto">Reset</button>
+                        <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors w-full md:w-auto">Submit Application</button>
                     </div>
                 </form>
             </div>
