@@ -199,7 +199,8 @@ const JobApplicationPage: React.FC = () => {
         if (validate()) {
             // No errors, proceed with mailto link
             const mailtoLink = encodeMailtoLink(formData);
-            window.location.href = mailtoLink;
+            window.open(mailtoLink);
+            setTimeout(handleReset, 500);
         } else {
             // Scroll to first error input field
             const errorFields = Object.keys(errors);
