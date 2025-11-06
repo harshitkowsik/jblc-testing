@@ -53,6 +53,42 @@
   />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .underline-hover::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #c5a47e;
+      /* Muted Gold */
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    .underline-hover:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  </style>
+
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
   {
