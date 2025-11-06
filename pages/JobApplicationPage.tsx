@@ -177,8 +177,9 @@ const JobApplicationPage: React.FC = () => {
             `PIN Code: ${data.pincode}`,
             `Correspondence Address: ${data.corrHouseStreet}, ${data.corrCityTownVillage}, ${data.corrState} - ${data.corrPincode}`,
             `Education: ${data.eduBoardUniversity}, ${data.eduCourseType}, Passing Year: ${data.eduPassingYear}, Percentage: ${data.eduPercentage}%`,
-            `Documents To Upload: ${data.docsToUpload.join(', ')}`,
             `Consent Given: ${data.consent ? 'Yes' : 'No'}`,
+            `Documents To Upload: ${data.docsToUpload.join(', ')}`,
+                
         ].join('\n');
 
         // Final line requesting attachments
