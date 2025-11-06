@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import SEO from '../components/SEO';
 
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
@@ -16,10 +15,8 @@ const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) =>
 );
 
 interface JobApplicationFormData {
-    postApplyingFor: string;
     stateApplyingFor: string;
     districtApplyingFor: string;
-    tehsilApplyingFor: string;
     pincode: string;
     candidateFirstName: string;
     candidateMiddleName: string;
@@ -39,8 +36,6 @@ interface JobApplicationFormData {
     eduPassingYear: string;
     eduPercentage: string;
     docsToUpload: string[];
-    attestedDocs: File[];
-    passportPhotograph: File | null;
     consent: boolean;
 }
 
@@ -48,10 +43,8 @@ type FormErrors = Partial<Record<keyof JobApplicationFormData, string>>;
 
 const JobApplicationPage: React.FC = () => {
     const [formData, setFormData] = useState<JobApplicationFormData>({
-        postApplyingFor: '',
         stateApplyingFor: '',
         districtApplyingFor: '',
-        tehsilApplyingFor: '',
         pincode: '',
         candidateFirstName: '',
         candidateMiddleName: '',
@@ -71,8 +64,6 @@ const JobApplicationPage: React.FC = () => {
         eduPassingYear: '',
         eduPercentage: '',
         docsToUpload: [],
-        attestedDocs: [],
-        passportPhotograph: null,
         consent: false,
     });
 
@@ -81,12 +72,6 @@ const JobApplicationPage: React.FC = () => {
     const commonInputClasses = "w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c5a47e] transition-shadow";
     const errorClasses = "border-red-500 focus:ring-red-500";
 
-    // Dummy data for dropdowns
-    const posts = [
-        'Law Interns', 'Legal Associates', 'Legal Officers', 'Empanelled Lawyers', 'Other'
-    ];
-
-    // Comprehensive list of Indian States and Union Territories
     const indianStates = [
         'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana',
         'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur',
@@ -94,21 +79,6 @@ const JobApplicationPage: React.FC = () => {
         'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal',
         'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Delhi',
         'Jammu and Kashmir', 'Ladakh', 'Lakshadweep', 'Puducherry'
-    ];
-
-    // Illustrative list of districts/major cities. In a real app, this would be dynamic based on selected state.
-    const districts = [
-        'Ahmedabad', 'Bengaluru', 'Bhopal', 'Chandigarh', 'Chennai', 'Delhi', 'Ghaziabad', 'Gurugram',
-        'Hyderabad', 'Indore', 'Jaipur', 'Kanpur', 'Kochi', 'Kolkata', 'Lucknow', 'Ludhiana', 'Mumbai',
-        'Nagpur', 'Noida', 'Patna', 'Pune', 'Surat', 'Thane', 'Vadodara', 'Visakhapatnam'
-    ];
-
-    // Illustrative list of tehsils/talukas/sub-districts. In a real app, this would be dynamic based on selected district.
-    const tehsils = [
-        'Andheri (Mumbai)', 'Bansgaon (Gorakhpur)', 'Barasat I (North 24 Parganas)', 'Bhopal Huzur (Bhopal)',
-        'Electronic City (Bengaluru)', 'Gomti Nagar (Lucknow)', 'Kanpur Nagar (Kanpur)', 'Laxmi Nagar (Delhi)',
-        'Maninagar (Ahmedabad)', 'Pimpri-Chinchwad (Pune)', 'Saket (Delhi)', 'Velachery (Chennai)',
-        'Vasai (Palghar)', 'Vellore (Vellore)'
     ];
 
     const currentYear = new Date().getFullYear();
@@ -123,9 +93,8 @@ const JobApplicationPage: React.FC = () => {
     const validate = (): boolean => {
         const newErrors: FormErrors = {};
 
-        // 1. Validate simple string required fields
         const stringRequiredFields: (keyof JobApplicationFormData)[] = [
-            'postApplyingFor', 'stateApplyingFor', 'districtApplyingFor', 'tehsilApplyingFor', 'pincode',
+            'stateApplyingFor', 'districtApplyingFor', 'pincode',
             'candidateFirstName', 'motherName', 'fatherHusbandName', 'dob', 'email', 'gender', 'mobile',
             'corrHouseStreet', 'corrCityTownVillage', 'corrPincode', 'corrState',
             'eduBoardUniversity', 'eduCourseType', 'eduPassingYear', 'eduPercentage',
@@ -138,25 +107,10 @@ const JobApplicationPage: React.FC = () => {
             }
         });
 
-        // 2. Validate array fields
         if (formData.docsToUpload.length === 0) {
             newErrors.docsToUpload = 'At least one document type must be selected.';
         }
-        if (formData.attestedDocs.length === 0) {
-            newErrors.attestedDocs = 'Attested copies of relevant documents are required.';
-        }
 
-        // 3. Validate File fields
-        if (!formData.passportPhotograph) {
-            newErrors.passportPhotograph = 'Passport photograph is required.';
-        }
-
-        // 4. Validate boolean consent field
-        if (!formData.consent) {
-            newErrors.consent = 'You must agree to the terms and conditions.';
-        }
-
-        // Specific validations
         if (formData.pincode && (!/^\d{6}$/.test(formData.pincode))) {
             newErrors.pincode = 'Pincode must be 6 digits.';
         }
@@ -166,7 +120,7 @@ const JobApplicationPage: React.FC = () => {
         if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Invalid email address.';
         }
-        if (formData.mobile && (!/^\d{10}$/.test(formData.mobile))) { // Assuming 10-digit Indian mobile
+        if (formData.mobile && (!/^\d{10}$/.test(formData.mobile))) {
             newErrors.mobile = 'Mobile number must be 10 digits.';
         }
         if (formData.dob) {
@@ -179,49 +133,16 @@ const JobApplicationPage: React.FC = () => {
             newErrors.eduPercentage = 'Percentage must be between 0-100.';
         }
 
-        // File size and type validation
-        const validateFile = (file: File | null, allowedTypes: string[], maxSizeMB: number, fieldName: keyof JobApplicationFormData): boolean => {
-            if (!file) return true; // Handled by required fields
-            if (file.size > maxSizeMB * 1024 * 1024) {
-                newErrors[fieldName] = `File size must not exceed ${maxSizeMB} MB.`;
-                return false;
-            }
-            const fileExtension = file.name.split('.').pop()?.toLowerCase(); // Get file extension
-            if (!fileExtension || !allowedTypes.includes(fileExtension)) {
-                newErrors[fieldName] = `Allowed file types: ${allowedTypes.join(', ')}.`;
-                return false;
-            }
-            return true;
-        };
-
-        if (!validateFile(formData.passportPhotograph, ['jpg', 'jpeg', 'png'], 1, 'passportPhotograph')) {
-            // Error already set inside validateFile
-        }
-
-        for (const file of formData.attestedDocs) {
-            const allowedDocTypes = ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx']; // Add docx
-            const fileExtension = file.name.split('.').pop()?.toLowerCase();
-            if (!fileExtension || !allowedDocTypes.includes(fileExtension)) {
-                 newErrors.attestedDocs = `Allowed types for attested documents: ${allowedDocTypes.join(', ')}.`;
-                 break;
-            }
-            if (file.size > 1 * 1024 * 1024) {
-                newErrors.attestedDocs = `Each attested document must not exceed 1 MB.`;
-                break;
-            }
-        }
-
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value, type, checked } = e.target as HTMLInputElement;
-
         if (type === 'checkbox') {
             if (name === 'consent') {
                 setFormData(prev => ({ ...prev, [name]: checked }));
-            } else { // DocsToUpload checkboxes
+            } else { 
                 setFormData(prev => ({
                     ...prev,
                     docsToUpload: checked
@@ -234,24 +155,37 @@ const JobApplicationPage: React.FC = () => {
         }
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, files } = e.target;
-        if (files) {
-            if (name === 'passportPhotograph') {
-                setFormData(prev => ({ ...prev, passportPhotograph: files[0] }));
-            } else if (name === 'attestedDocs') {
-                setFormData(prev => ({ ...prev, attestedDocs: Array.from(files) }));
-            }
-        }
+    const encodeMailtoLink = (data: JobApplicationFormData) => {
+        const recipient = 'jsh@gmail.com'; // Replace with your email
+        const subject = encodeURIComponent('Job Application from ' + data.candidateFirstName + ' ' + data.candidateLastName);
+      
+        const bodyLines = [
+          `Candidate Name: ${data.candidateFirstName} ${data.candidateMiddleName} ${data.candidateLastName}`,
+          `Mother's Name: ${data.motherName}`,
+          `Father's/Husband's Name: ${data.fatherHusbandName}`,
+          `Date of Birth: ${data.dob}`,
+          `Email: ${data.email}`,
+          `Gender: ${data.gender}`,
+          `Mobile: ${data.mobile}`,
+          `State Applying For: ${data.stateApplyingFor}`,
+          `District Applying For: ${data.districtApplyingFor}`,
+          `PIN Code: ${data.pincode}`,
+          `Correspondence Address: ${data.corrHouseStreet}, ${data.corrCityTownVillage}, ${data.corrState} - ${data.corrPincode}`,
+          `Education: ${data.eduBoardUniversity}, ${data.eduCourseType}, Passing Year: ${data.eduPassingYear}, Percentage: ${data.eduPercentage}%`,
+          `Documents To Upload: ${data.docsToUpload.join(', ')}`,
+          `Consent Given: ${data.consent ? 'Yes' : 'No'}`
+        ];
+      
+        const body = encodeURIComponent(bodyLines.join('\n'));
+      
+        return `mailto:${recipient}?subject=${subject}&body=${body}`;
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validate()) {
-            console.log('Form Data Submitted:', formData);
-            alert('Application submitted successfully! We will review your application and contact you.');
-            // Here you would typically send formData to a backend API
-            // For now, we just log it and show an alert.
+            const mailtoLink = encodeMailtoLink(formData);
+            window.location.href = mailtoLink;
         } else {
             alert('Please correct the errors in the form.');
         }
@@ -259,10 +193,8 @@ const JobApplicationPage: React.FC = () => {
 
     const handleReset = () => {
         setFormData({
-            postApplyingFor: '',
             stateApplyingFor: '',
             districtApplyingFor: '',
-            tehsilApplyingFor: '',
             pincode: '',
             candidateFirstName: '',
             candidateMiddleName: '',
@@ -282,8 +214,6 @@ const JobApplicationPage: React.FC = () => {
             eduPassingYear: '',
             eduPercentage: '',
             docsToUpload: [],
-            attestedDocs: [],
-            passportPhotograph: null,
             consent: false,
         });
         setErrors({});
@@ -302,56 +232,10 @@ const JobApplicationPage: React.FC = () => {
                 <form onSubmit={handleSubmit} className="max-w-6xl mx-auto bg-white p-10 rounded-lg shadow-2xl space-y-10">
                     <h2 className="text-4xl font-bold text-[#2e3e4d] text-center mb-8">Job Application Form</h2>
 
-                    {/* Section: Job Details */}
-                    <div>
-                        <h3 className="text-2xl font-bold text-[#c5a47e] mb-6 border-b-2 pb-2">Post Details</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div>
-                                <label htmlFor="postApplyingFor" className="block text-gray-700 font-semibold mb-2">Post Applying For*</label>
-                                <select id="postApplyingFor" name="postApplyingFor" value={formData.postApplyingFor} onChange={handleChange} className={`${commonInputClasses} ${errors.postApplyingFor ? errorClasses : ''}`} aria-required="true">
-                                    <option value="">Select Post</option>
-                                    {posts.map(post => <option key={post} value={post}>{post}</option>)}
-                                </select>
-                                {errors.postApplyingFor && <p className="text-red-600 text-sm mt-1" role="alert">{errors.postApplyingFor}</p>}
-                            </div>
-                            <div>
-                                <label htmlFor="stateApplyingFor" className="block text-gray-700 font-semibold mb-2">State Applying For*</label>
-                                <select id="stateApplyingFor" name="stateApplyingFor" value={formData.stateApplyingFor} onChange={handleChange} className={`${commonInputClasses} ${errors.stateApplyingFor ? errorClasses : ''}`} aria-required="true">
-                                    <option value="">Select State</option>
-                                    {indianStates.map(state => <option key={state} value={state}>{state}</option>)}
-                                </select>
-                                {errors.stateApplyingFor && <p className="text-red-600 text-sm mt-1" role="alert">{errors.stateApplyingFor}</p>}
-                            </div>
-                            <div>
-                                <label htmlFor="districtApplyingFor" className="block text-gray-700 font-semibold mb-2">District Applying For*</label>
-                                <select id="districtApplyingFor" name="districtApplyingFor" value={formData.districtApplyingFor} onChange={handleChange} className={`${commonInputClasses} ${errors.districtApplyingFor ? errorClasses : ''}`} aria-required="true">
-                                    <option value="">Select District</option>
-                                    {/* In a real application, these would be filtered dynamically based on the selected state. */}
-                                    {districts.map(district => <option key={district} value={district}>{district}</option>)}
-                                </select>
-                                {errors.districtApplyingFor && <p className="text-red-600 text-sm mt-1" role="alert">{errors.districtApplyingFor}</p>}
-                            </div>
-                            <div>
-                                <label htmlFor="tehsilApplyingFor" className="block text-gray-700 font-semibold mb-2">Tehsil Applying For*</label>
-                                <select id="tehsilApplyingFor" name="tehsilApplyingFor" value={formData.tehsilApplyingFor} onChange={handleChange} className={`${commonInputClasses} ${errors.tehsilApplyingFor ? errorClasses : ''}`} aria-required="true">
-                                    <option value="">Select Tehsil / Taluka</option>
-                                    {/* In a real application, these would be filtered dynamically based on the selected district. */}
-                                    {tehsils.map(tehsil => <option key={tehsil} value={tehsil}>{tehsil}</option>)}
-                                </select>
-                                {errors.tehsilApplyingFor && <p className="text-red-600 text-sm mt-1" role="alert">{errors.tehsilApplyingFor}</p>}
-                            </div>
-                            <div>
-                                <label htmlFor="pincode" className="block text-gray-700 font-semibold mb-2">PIN CODE*</label>
-                                <input type="text" id="pincode" name="pincode" value={formData.pincode} onChange={handleChange} className={`${commonInputClasses} ${errors.pincode ? errorClasses : ''}`} placeholder="Enter Pincode" maxLength={6} aria-required="true" />
-                                {errors.pincode && <p className="text-red-600 text-sm mt-1" role="alert">{errors.pincode}</p>}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Section: Personal Details */}
+                    {/* Personal Details Section */}
                     <div>
                         <h3 className="text-2xl font-bold text-[#c5a47e] mb-6 border-b-2 pb-2">Personal Details</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div>
                                 <label htmlFor="candidateFirstName" className="block text-gray-700 font-semibold mb-2">Candidate First Name*</label>
                                 <input type="text" id="candidateFirstName" name="candidateFirstName" value={formData.candidateFirstName} onChange={handleChange} className={`${commonInputClasses} ${errors.candidateFirstName ? errorClasses : ''}`} aria-required="true" />
@@ -406,13 +290,30 @@ const JobApplicationPage: React.FC = () => {
                             </div>
                             <div>
                                 <label htmlFor="mobile" className="block text-gray-700 font-semibold mb-2">Mobile*</label>
-                                <input type="tel" id="mobile" name="mobile" value={formData.mobile} onChange={handleChange} className={`${commonInputClasses} ${errors.mobile ? errorClasses : ''}`} maxLength={10} aria-required="true" />
+                                <input type="tel" id="mobile" name="mobile" value={formData.mobile} onChange={handleChange} maxLength={10} className={`${commonInputClasses} ${errors.mobile ? errorClasses : ''}`} aria-required="true" />
                                 {errors.mobile && <p className="text-red-600 text-sm mt-1" role="alert">{errors.mobile}</p>}
+                            </div>
+
+                            {/* State, District, Pincode */}
+                            <div>
+                                <label htmlFor="stateApplyingFor" className="block text-gray-700 font-semibold mb-2">State Applying For*</label>
+                                <input type="text" id="stateApplyingFor" name="stateApplyingFor" value={formData.stateApplyingFor} onChange={handleChange} placeholder="Enter State" className={`${commonInputClasses} ${errors.stateApplyingFor ? errorClasses : ''}`} aria-required="true" />
+                                {errors.stateApplyingFor && <p className="text-red-600 text-sm mt-1" role="alert">{errors.stateApplyingFor}</p>}
+                            </div>
+                            <div>
+                                <label htmlFor="districtApplyingFor" className="block text-gray-700 font-semibold mb-2">District Applying For*</label>
+                                <input type="text" id="districtApplyingFor" name="districtApplyingFor" value={formData.districtApplyingFor} onChange={handleChange} placeholder="Enter District" className={`${commonInputClasses} ${errors.districtApplyingFor ? errorClasses : ''}`} aria-required="true" />
+                                {errors.districtApplyingFor && <p className="text-red-600 text-sm mt-1" role="alert">{errors.districtApplyingFor}</p>}
+                            </div>
+                            <div>
+                                <label htmlFor="pincode" className="block text-gray-700 font-semibold mb-2">PIN CODE*</label>
+                                <input type="text" id="pincode" name="pincode" value={formData.pincode} onChange={handleChange} maxLength={6} placeholder="Enter Pincode" className={`${commonInputClasses} ${errors.pincode ? errorClasses : ''}`} aria-required="true" />
+                                {errors.pincode && <p className="text-red-600 text-sm mt-1" role="alert">{errors.pincode}</p>}
                             </div>
                         </div>
                     </div>
 
-                    {/* Section: Correspondence Address */}
+                    {/* Correspondence Address Section */}
                     <div>
                         <h3 className="text-2xl font-bold text-[#c5a47e] mb-6 border-b-2 pb-2">Correspondence Address</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -422,13 +323,13 @@ const JobApplicationPage: React.FC = () => {
                                 {errors.corrHouseStreet && <p className="text-red-600 text-sm mt-1" role="alert">{errors.corrHouseStreet}</p>}
                             </div>
                             <div>
-                                <label htmlFor="corrCityTownVillage" className="block text-gray-700 font-semibold mb-2">Correspondence City/Town/Village*</label>
+                                <label htmlFor="corrCityTownVillage" className="block text-gray-700 font-semibold mb-2">Corr. City/Town/Village*</label>
                                 <input type="text" id="corrCityTownVillage" name="corrCityTownVillage" value={formData.corrCityTownVillage} onChange={handleChange} className={`${commonInputClasses} ${errors.corrCityTownVillage ? errorClasses : ''}`} aria-required="true" />
                                 {errors.corrCityTownVillage && <p className="text-red-600 text-sm mt-1" role="alert">{errors.corrCityTownVillage}</p>}
                             </div>
                              <div>
                                 <label htmlFor="corrPincode" className="block text-gray-700 font-semibold mb-2">Correspondence Pincode*</label>
-                                <input type="text" id="corrPincode" name="corrPincode" value={formData.corrPincode} onChange={handleChange} className={`${commonInputClasses} ${errors.corrPincode ? errorClasses : ''}`} maxLength={6} aria-required="true" />
+                                <input type="text" id="corrPincode" name="corrPincode" value={formData.corrPincode} onChange={handleChange} maxLength={6} className={`${commonInputClasses} ${errors.corrPincode ? errorClasses : ''}`} aria-required="true" />
                                 {errors.corrPincode && <p className="text-red-600 text-sm mt-1" role="alert">{errors.corrPincode}</p>}
                             </div>
                             <div>
@@ -442,7 +343,7 @@ const JobApplicationPage: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Section: Education Qualification */}
+                    {/* Education Qualification Section */}
                     <div>
                         <h3 className="text-2xl font-bold text-[#c5a47e] mb-6 border-b-2 pb-2">Education Qualification</h3>
                         <p className="text-gray-600 mb-4">Enter your Education Qualification that meets the eligibility criteria prescribed for this category. निर्धारित शैक्षिक पात्रता को पूरा करने वाली अपनी शिक्षा योग्यता / डिग्री दर्ज करें।</p>
@@ -476,13 +377,13 @@ const JobApplicationPage: React.FC = () => {
                             </div>
                             <div>
                                 <label htmlFor="eduPercentage" className="block text-gray-700 font-semibold mb-2">Percentage (%)*</label>
-                                <input type="number" id="eduPercentage" name="eduPercentage" value={formData.eduPercentage} onChange={handleChange} className={`${commonInputClasses} ${errors.eduPercentage ? errorClasses : ''}`} min="0" max="100" aria-required="true" />
+                                <input type="number" id="eduPercentage" name="eduPercentage" value={formData.eduPercentage} onChange={handleChange} min="0" max="100" className={`${commonInputClasses} ${errors.eduPercentage ? errorClasses : ''}`} aria-required="true" />
                                 {errors.eduPercentage && <p className="text-red-600 text-sm mt-1" role="alert">{errors.eduPercentage}</p>}
                             </div>
                         </div>
                     </div>
 
-                    {/* Section: Documents Upload */}
+                    {/* Documents Upload Section */}
                     <div>
                         <h3 className="text-2xl font-bold text-[#c5a47e] mb-6 border-b-2 pb-2">Documents Upload</h3>
                         <div className="mb-6">
@@ -504,25 +405,9 @@ const JobApplicationPage: React.FC = () => {
                             </div>
                             {errors.docsToUpload && <p className="text-red-600 text-sm mt-1" role="alert">{errors.docsToUpload}</p>}
                         </div>
-
-                        <div className="mb-6">
-                            <label htmlFor="attestedDocs" className="block text-gray-700 font-semibold mb-2">Please upload Attested Copies of All Your Relevant Docs*</label>
-                            <p className="text-sm text-gray-500 mb-2">Image should be in jpg/jpeg/png/pdf/doc/docx format and size should not exceed 1 MB per file</p>
-                            <input type="file" id="attestedDocs" name="attestedDocs" onChange={handleFileChange} multiple className={`${commonInputClasses} file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#2e3e4d] file:text-white hover:file:bg-[#1a2530] ${errors.attestedDocs ? errorClasses : ''}`} accept=".jpg,.jpeg,.png,.pdf,.doc,.docx" aria-required="true" />
-                            {errors.attestedDocs && <p className="text-red-600 text-sm mt-1" role="alert">{errors.attestedDocs}</p>}
-                            {formData.attestedDocs.length > 0 && <p className="text-sm text-gray-600 mt-2">Selected: {formData.attestedDocs.map(f => f.name).join(', ')}</p>}
-                        </div>
-
-                        <div className="mb-6">
-                            <label htmlFor="passportPhotograph" className="block text-gray-700 font-semibold mb-2">Please upload a scanned copy of your passport size photograph*</label>
-                            <p className="text-sm text-gray-500 mb-2">Image should be in jpg/jpeg/png format and size should not exceed 1 MB</p>
-                            <input type="file" id="passportPhotograph" name="passportPhotograph" onChange={handleFileChange} className={`${commonInputClasses} file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#2e3e4d] file:text-white hover:file:bg-[#1a2530] ${errors.passportPhotograph ? errorClasses : ''}`} accept=".jpg,.jpeg,.png" aria-required="true" />
-                            {errors.passportPhotograph && <p className="text-red-600 text-sm mt-1" role="alert">{errors.passportPhotograph}</p>}
-                            {formData.passportPhotograph && <p className="text-sm text-gray-600 mt-2">Selected: {formData.passportPhotograph.name}</p>}
-                        </div>
                     </div>
 
-                    {/* Section: Disclaimer & Consent */}
+                    {/* Declaration and Consent Section */}
                     <div>
                         <h3 className="text-2xl font-bold text-[#c5a47e] mb-6 border-b-2 pb-2">Declaration</h3>
                         <p className="text-gray-700 mb-4">Please check all the information filled by you are correct before you submit. After submission you will not be permitted to make any changes.</p>
@@ -549,10 +434,11 @@ const JobApplicationPage: React.FC = () => {
                         {errors.consent && <p className="text-red-600 text-sm mt-1 -mt-4 mb-4" role="alert">{errors.consent}</p>}
                     </div>
 
-                    <div className="flex flex-col space-y-4 md:flex-row md:justify-end md:space-y-0 md:space-x-4 border-t pt-8">
-                        <button type="button" onClick={handleReset} className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors w-full md:w-auto">Reset</button>
-                        <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors w-full md:w-auto">Submit Application</button>
+                    <div className="flex justify-end space-x-4 border-t pt-8">
+                        <button type="button" onClick={handleReset} className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors">Reset</button>
+                        <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">Submit Application</button>
                     </div>
+
                 </form>
             </div>
         </div>
