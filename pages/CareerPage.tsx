@@ -4,7 +4,7 @@ import SEO from '../components/SEO';
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
     <section 
         className="bg-cover bg-center h-60 flex items-center justify-center text-white relative" 
-        style={{ backgroundImage: "url('https://jblc.in/wp-content/themes/expert-lawyer/assets/images/headerbg.png')" }}
+        style={{ backgroundImage: "url('headerbg.png')" }}
     >
         <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-70"></div>
         <div className="text-center z-10 p-4">
@@ -23,9 +23,9 @@ const Opening = ({ title, location, experience, responsibilities, requirements }
                     <span><i className="fas fa-map-marker-alt mr-2"></i>{location}</span> | <span className="ml-2"><i className="fas fa-briefcase mr-2"></i>{experience}</span>
                 </div>
             </div>
-             {/* <a href="mailto:corp@jblc.in?subject=Application for [Position Name] – [Your Name]" className="bg-[#c5a47e] text-white font-bold py-2 px-6 rounded-md hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap">
+             <a href="/#/apply" className="bg-[#c5a47e] text-white font-bold py-2 px-6 rounded-md hover:bg-opacity-90 transition-colors text-sm whitespace-nowrap">
                 Apply Now
-            </a> */}
+            </a>
         </div>
         <div className="grid md:grid-cols-2 gap-6 mt-6 border-t pt-6">
             <div>

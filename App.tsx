@@ -17,6 +17,7 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import FinanceDetailPage from './pages/FinanceDetailPage';
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import JobApplicationPage from './pages/JobApplicationPage';
 
 const App: React.FC = () => {
   return (
@@ -39,6 +40,7 @@ const App: React.FC = () => {
             <Route path="/appointment" element={<AppointmentPage />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/apply" element={<JobApplicationPage />} />
           </Routes>
         </main>
         <Footer />
