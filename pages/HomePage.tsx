@@ -33,7 +33,7 @@ const TeamMemberCard = ({ image, name, designation, facebookUrl, twitterUrl, lin
                 <h3 className="text-2xl font-bold">{name}</h3>
                 <p className="text-[#c5a47e] font-semibold">{designation}</p>
             </div>
-             <div className="absolute top-4 right-4 flex flex-col space-y-2 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-4 right-4 flex flex-col space-y-2 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-facebook-f"></i></a>
                 <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-twitter"></i></a>
                 <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-linkedin-in"></i></a>
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
     const servicesPreview = coreServices.slice(0, 6);
 
     const financeServicesPreview = allFinanceServices.slice(0, 4);
-    
+
     const stats = [
         { value: 9, label: "Domestic Offices", icon: "fas fa-building" },
         { value: 5, label: "Int'l Offices", icon: "fas fa-globe-americas" },
@@ -56,12 +56,12 @@ const HomePage: React.FC = () => {
 
     return (
         <div>
-            <SEO 
-              title="JBLC INDIA | Top ISO Certified Law Firm in India"
-              description="JBLC INDIA is a top-ranked, ISO certified law firm with 15+ years of experience in M&A, corporate, and civil law. Contact our Supreme Court experts today."
+            <SEO
+                title="JBLC INDIA | Top ISO Certified Law Firm in India"
+                description="JBLC INDIA is a top-ranked, ISO certified law firm with 15+ years of experience in M&A, corporate, and civil law. Contact our Supreme Court experts today."
             />
-            <section 
-                className="bg-cover bg-center min-h-[70vh] flex items-center justify-center text-white relative" 
+            <section
+                className="bg-cover bg-center min-h-[70vh] flex items-center justify-center text-white relative"
                 style={{ backgroundImage: "url('headerbg.png')" }}
             >
                 <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-60"></div>
@@ -72,13 +72,13 @@ const HomePage: React.FC = () => {
                         <Link to="/about" className="bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg">
                             Discover More
                         </Link>
-                         <Link to="/contact" className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-[#2e3e4d] transition-colors text-lg">
+                        <Link to="/contact" className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-[#2e3e4d] transition-colors text-lg">
                             Contact Us
                         </Link>
                     </div>
                 </div>
             </section>
-            
+
             <section className="py-20">
                 <div className="container mx-auto px-4">
                     <div className="text-center max-w-3xl mx-auto">
@@ -94,13 +94,13 @@ const HomePage: React.FC = () => {
             <section className="py-20 bg-gray-50">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
-                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Our Core Practice Areas</h2>
-                         <p className="text-gray-600 mt-2">Comprehensive legal services tailored to your needs.</p>
+                        <h2 className="text-4xl font-bold text-[#2e3e4d]">Our Core Practice Areas</h2>
+                        <p className="text-gray-600 mt-2">Comprehensive legal services tailored to your needs.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {servicesPreview.map((service, index) => <ServiceCard key={index} {...service} link={`/services/${service.slug}`} />)}
                     </div>
-                     <div className="text-center mt-12">
+                    <div className="text-center mt-12">
                         <Link to="/services" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">
                             View All Services
                         </Link>
@@ -124,9 +124,9 @@ const HomePage: React.FC = () => {
                     </div>
                 </div>
             </section>
-            
+
             <section className="py-20 bg-cover bg-fixed relative" style={{ backgroundImage: "url('https://jblc.in/wp-content/themes/expert-lawyer/assets/images/headerbg.png')" }}>
-                 <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-80"></div>
+                <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-80"></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
                         {stats.map((stat, index) => (
@@ -139,18 +139,29 @@ const HomePage: React.FC = () => {
                     </div>
                 </div>
             </section>
-            
+
             <section className="py-20">
                 <div className="container mx-auto px-4">
-                     <div className="text-center mb-12">
-                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Meet Our Expert Team</h2>
-                         <p className="text-gray-600 mt-2">Dedicated professionals committed to your success.</p>
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-[#2e3e4d]">Meet Our Expert Team</h2>
+                        <p className="text-gray-600 mt-2">Dedicated professionals committed to your success.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {teamMembers.map((member, index) => (
                             <TeamMemberCard key={index} {...member} />
                         ))}
                     </div>
+                </div>
+            </section>
+
+            <section className="pb-20 pt-10 bg-gray-50">
+                <div className="container mx-auto px-4 text-center">
+                    <h2 className="text-4xl font-bold text-[#2e3e4d]">Stay Updated</h2>
+                    <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Subscribe to our newsletter to get the latest legal insights, news, and updates directly to your inbox.</p><br></br>
+
+                    <Link to="/newsletter" className=" bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors w-full sm:w-auto whitespace-nowrap flex-shrink-0">
+                        Subscribe
+                    </Link>
                 </div>
             </section>
         </div>
