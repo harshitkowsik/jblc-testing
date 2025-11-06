@@ -1,0 +1,35 @@
+{
+  "name": "JBLC INDIA Law Firm",
+  "short_name": "JBLC INDIA",
+  "description": "A professional website for JBLC INDIA, an ISO 9001:2015 certified law firm. The site provides information about their services, team, career opportunities, and allows users to book appointments.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#2e3e4d",
+  "icons": [
+    {
+      "src": "/jblc-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/jblc-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/jblc-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/jblc-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ]
+}
