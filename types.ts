@@ -6,4 +6,5 @@ export interface TeamMember {
     facebookUrl: string;
     twitterUrl: string;
     linkedinUrl: string;
+    instagramUrl: string;
 }

@@ -16,19 +16,21 @@ const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) =>
     </section>
 );
 
-const TeamMemberCard = ({ image, name, designation, bio, facebookUrl, twitterUrl, linkedinUrl }: TeamMember) => (
+const TeamMemberCard = ({ image, name, designation, bio, facebookUrl, twitterUrl, linkedinUrl, instagramUrl }: TeamMember) => (
     <div className="bg-white rounded-lg shadow-2xl text-center overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
         <div className="aspect-square">
             <img src={image} alt={name} className="w-full h-full object-cover object-center" />
         </div>
         <div className="p-8">
             <h3 className="text-2xl font-bold text-[#2e3e4d]">{name}</h3>
-            <p className="text-[#c5a47e] font-semibold mb-3">{designation}</p>
+            <p className="text-[#c5a47e] font-semibold mb-3">
+                {designation}</p>
             <p className="text-gray-600 mb-4 text-sm">{bio}</p>
             <div className="flex justify-center space-x-4 text-xl text-gray-500 mt-5">
                 <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#c5a47e] transition-colors"><i className="fab fa-facebook-f"></i></a>
                 <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#c5a47e] transition-colors"><i className="fab fa-twitter"></i></a>
                 <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#c5a47e] transition-colors"><i className="fab fa-linkedin-in"></i></a>
+                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-[#c5a47e] transition-colors"><i className="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>

@@ -7,9 +7,6 @@ This repository contains the source code for the official website of JBLC INDIA,
 
 The website serves as the primary digital presence for JBLC INDIA. It provides comprehensive information about the firm's history, mission, practice areas, and team. It also includes functional components for user engagement, such as an appointment booking system and a job application portal.
 
- <!-- Placeholder: Replace with an actual screenshot of the homepage -->
-![JBLC INDIA Website Screenshot](https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA4L2thdGV2NjQ0N19waG90b19vZl93b29kZW5fZ2F2ZWxfaW5fdGhlX2NvdXJ0X2dhdmVsX3BsYWNlX29uX3RoZV83MmVhZDZjNS1lNGIxLTRlZDctYWIzNC03NThiMDVmZmY3YjRfMS5qcGc.jpg)
-
 ## Key Features
 
 *   **Responsive Design**: Fully responsive layout for seamless viewing on desktops, tablets, and mobile devices using Tailwind CSS.
@@ -53,65 +50,73 @@ The project follows a standard React application structure:
 │   └── index.tsx         # Application entry point
 ├── index.html            # Main HTML template
 ├── package.json          # Project dependencies and scripts
-├── README.md             # This file
-└── vite.config.ts        # Vite configuration (if customized)
+└── README.md             # This file
 ```
 
-## Getting Started
+## In-Depth Component & Page Overview
 
-To get a local copy up and running, follow these simple steps.
+### Core Pages (`src/pages/`)
 
-### Prerequisites
+*   **`HomePage.tsx`**: The landing page. It provides an overview of the firm by composing several sections and using data from `serviceData.ts` and `teamData.ts`.
+*   **`AboutPage.tsx`**: Presents the firm's history, vision, mission, and leadership. It features an interactive FAQ accordion.
+*   **`OurTeamPage.tsx`**: Displays a grid of all team members with their detailed profiles, pulling data from `teamData.ts`.
+*   **`ServicesPage.tsx` & `ServiceDetailPage.tsx`**: Lists all practice areas and provides detailed views for each one. Content is dynamically rendered from `serviceData.ts` using slugs for routing.
+*   **`FinancePage.tsx` & `FinanceDetailPage.tsx`**: Similar to services, but for financial assistance services, using `financeServiceData.ts`.
+*   **`CareerPage.tsx` & `JobDetailPage.tsx`**: Lists available job openings and provides detailed descriptions for each role.
+*   **`AppointmentPage.tsx`**: Contains the multi-step form for booking appointments.
+*   **`ContactPage.tsx`**: Provides contact information and a contact form.
 
-Make sure you have Node.js and npm installed on your machine.
-*   Node.js (v18.x or higher recommended)
-*   npm (v8.x or higher recommended)
+### Reusable Components (`src/components/`)
 
-You can download them from nodejs.org.
+*   **`Navbar.tsx`**: The main navigation bar, providing links to all major pages.
+*   **`Footer.tsx`**: The site-wide footer with contact details, social media links, and quick links.
+*   **`SEO.tsx`**: A crucial component for search engine optimization. It takes `title` and `description` props and uses `react-helmet` (or a similar library) to update the document head.
+*   **`PageHeader.tsx`**: A standardized header component used across multiple pages to display a title and subtitle over a background image.
+*   **`TeamMemberCard.tsx`**: A card to display a team member's photo, name, designation, and social media links. Used on both the `HomePage` and `OurTeamPage`.
+*   **`ServiceCard.tsx`**: A summary card for practice areas, used on the `HomePage`.
 
-### Installation
+### Data Management (`src/data/`)
 
-1.  **Clone the repository:**
-    ```sh
-    git clone https://github.com/your-username/jblc-website.git
-    cd jblc-website
-    ```
+The application is heavily data-driven to simplify content management.
 
-2.  **Install NPM packages:**
-    This will install all the dependencies required for the project.
-    ```sh
-    npm install
-    ```
+*   **`teamData.ts`**: An array of `TeamMember` objects. Each object contains personal details and social media links. The `image` property corresponds to a file in the `/public` directory.
+*   **`serviceData.ts`**: An array of service objects. Each object includes a `slug` for URL generation, an `icon` (Font Awesome class), `title`, `description`, and detailed `content`. The `content` is written using `React.createElement` to allow for rich text formatting within the data file itself.
+*   **`financeServiceData.ts`**: Similar structure to `serviceData.ts` but for financial services.
+*   **`jobData.ts`**: An array of job objects, each detailing a role, its responsibilities, and requirements.
 
-3.  **Run the development server:**
-    This command starts the Vite development server, typically on `http://localhost:5173`.
-    ```sh
-    npm run dev
-    ```
+### Styling
 
-The application will automatically reload if you change any of the source files.
+Styling is handled primarily with **Tailwind CSS**. Custom theme values (colors, fonts, etc.) are configured in `tailwind.config.js`.
 
-## Available Scripts
+*   **Primary Colors**:
+    *   `#2e3e4d` (Dark Blue/Gray)
+    *   `#c5a47e` (Gold/Tan)
+*   **Utility-First**: The codebase uses Tailwind's utility classes directly in the JSX, promoting rapid development and consistency.
 
-In the project directory, you can run:
+### Routing
 
-*   `npm run dev`
-    Runs the app in development mode.
+Client-side routing is managed by **React Router v6** in `App.tsx`.
 
-*   `npm run build`
-    Builds the app for production to the `dist` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
+*   **Static Routes**: `/`, `/about`, `/team`, `/contact`, etc.
+*   **Dynamic Routes**:
+    *   `/services/:slug`: Renders `ServiceDetailPage` based on the `slug` parameter.
+    *   `/finance/:slug`: Renders `FinanceDetailPage`.
+    *   `/career/:jobId`: Renders `JobDetailPage`.
 
-*   `npm run preview`
-    Serves the production build from the `dist` folder locally to preview it before deployment.
+The `App.tsx` file likely contains a layout component that includes the `Navbar` and `Footer`, with an `<Outlet />` to render the matched route component.
 
-## Contributing
+## How to Contribute
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+### Adding a New Team Member
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+1.  Add the new member's image to the `/public` directory.
+2.  Open `src/data/teamData.ts`.
+3.  Add a new object to the `teamMembers` array with the required information (name, image filename, designation, bio, social media URLs).
+4.  The website will automatically update to include the new member on the homepage and team page.
 
----
+### Adding a New Service
+
+1.  Open `src/data/serviceData.ts`.
+2.  Add a new service object to the `services` array.
+3.  Define a unique `slug`, a `title`, a short `description`, a Font Awesome `icon` class, and the detailed `content` using `React.createElement`.
+4.  The new service will appear on the services page and, if it's one of the first six, on the homepage.

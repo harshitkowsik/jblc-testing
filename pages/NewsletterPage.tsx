@@ -94,8 +94,8 @@ const NewsletterPage: React.FC = () => {
                         Don't miss out on important developments in the legal world.
                     </p><div className="mb-8 flex justify-center">
                     <iframe 
-                        src="https://docs.google.com/forms/d/e/1FAIpQLScNATehtpXRdaB0gLD79bgRYhF8N43CEoR8yL0xTB0dMUQv-g/viewform?embedded=true"
-                        className="w-full h-[800px] md:w-[640px] md:h-[650px]" 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSdN_XSOdNbKTU3ZI8jcA-OFcSHbP9HUaE-_pyXBvPu9ewvxwQ/viewform?embedded=true"
+                        className="w-full h-[800px] md:w-[700px] md:h-[650px]" 
                         frameBorder="0" marginHeight={0} marginWidth={0}>
                             Loading…
                     </iframe>

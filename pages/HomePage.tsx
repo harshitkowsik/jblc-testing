@@ -24,7 +24,7 @@ const FinanceCard = ({ title, link }: { title: string; link: string; }) => (
     </div>
 );
 
-const TeamMemberCard = ({ image, name, designation, facebookUrl, twitterUrl, linkedinUrl }: { image: string; name: string; designation: string; facebookUrl: string; twitterUrl: string; linkedinUrl: string; }) => (
+const TeamMemberCard = ({ image, name, designation, facebookUrl, twitterUrl, linkedinUrl, instagramUrl }: { image: string; name: string; designation: string; facebookUrl: string; twitterUrl: string; linkedinUrl: string; instagramUrl: string; }) => (
     <div className="bg-white rounded-lg shadow-xl text-center overflow-hidden group">
         <div className="relative aspect-square">
             <img src={image} alt={name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
@@ -37,6 +37,7 @@ const TeamMemberCard = ({ image, name, designation, facebookUrl, twitterUrl, lin
                 <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-facebook-f"></i></a>
                 <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-twitter"></i></a>
                 <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-linkedin-in"></i></a>
+                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-black/50 hover:bg-[#c5a47e]"><i className="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
