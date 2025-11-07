@@ -7,7 +7,7 @@ const services = [
     {
         slug: 'tax',
         icon: 'fas fa-landmark',
-        title: 'TAX',
+        title: 'TAXATION',
         description: 'Expert advisory and litigation services for all your tax-related matters.',
         content: h('div', { className: 'space-y-4' },
             h('p', null, 'We provide both tax advisory and litigation services to our clients. We advise our client on a wide range of tax related matters. Our firm provides services to several blue chip companies. We also assist on negotiations and disputes with the tax authorities or other authorities as opponent. We resolve disputes for businesses – from international groups of companies to owner-managed businesses and one-man firms – and for individuals as well.'),
