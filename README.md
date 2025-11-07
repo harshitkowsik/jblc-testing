@@ -1,11 +1,11 @@
 
 # JBLC INDIA Law Firm Website
 
-This repository contains the source code for the official website of JBLC INDIA, a leading ISO 9001:2015 certified law firm in India. The website is a modern, responsive single-page application (SPA) built with React, TypeScript, and Vite, designed to be professional, fast, and user-friendly.
+This repository contains the source code for the official website of JBLC INDIA, a leading ISO 9001:2015 certified law firm in India. The website is a modern, responsive Single-Page Application (SPA) built with React, TypeScript, and Vite, designed to be professional, fast, and user-friendly.
 
 ## About The Project
 
-The website serves as the primary digital presence for JBLC INDIA. It provides comprehensive information about the firm's history, mission, practice areas, and team. It also includes functional components for user engagement, such as an appointment booking system and a job application portal.
+The website serves as the primary digital presence for JBLC INDIA. It provides comprehensive information about the firm's history, mission, practice areas, and team. It also includes functional components for user engagement, such as an appointment booking system, a newsletter subscription, and a job application portal.
 
 ## Key Features
 
@@ -13,30 +13,22 @@ The website serves as the primary digital presence for JBLC INDIA. It provides c
 *   **Component-Based Architecture**: Built with reusable React components for consistency and maintainability.
 *   **Static Typing**: Developed with TypeScript for improved code quality and developer experience.
 *   **Client-Side Routing**: Smooth navigation between pages using `react-router-dom`.
-*   **Dynamic Pages**:
-    *   **Homepage**: Features a hero section, core practice areas, financial services, company stats, and a team showcase.
-    *   **About Us**: Details the firm's legacy, mission, vision, and leadership, including an FAQ section.
-    *   **Our Team**: Displays profiles of the legal team members.
-    *   **Career Page**: Lists current job openings with detailed descriptions and responsibilities.
-    *   **Services & Finance Pages**: Detailed pages for each legal and financial service offered, with dynamic routing.
-*   **Interactive Forms**:
-    *   **Appointment Booking**: A multi-step form for clients to book consultations, with service selection, date/time picking, and validation.
-    *   **Job Application**: A comprehensive, multi-section form for candidates to apply for open positions, including file uploads for resumes and documents.
-*   **SEO Optimized**: A dedicated `SEO` component to manage meta titles and descriptions for each page, improving search engine visibility.
+*   **Data-Driven Content**: Pages and components are dynamically rendered from static data files, making content updates easy and centralized.
+*   **SEO Optimized**: A dedicated `SEO` component manages meta titles and descriptions for each page, improving search engine visibility.
 *   **Fast Development & Build**: Utilizes Vite for a fast development server with Hot Module Replacement (HMR) and an optimized production build process.
 
 ## Tech Stack
 
 *   **Frontend Library**: React
 *   **Language**: TypeScript
-*   **Build Tool**: Vite
+*   **Build Tool / Dev Server**: Vite
 *   **Routing**: React Router v6
 *   **Styling**: Tailwind CSS
 *   **Icons**: Font Awesome
 
 ## Project Structure
 
-The project follows a standard React application structure:
+The project follows a modular structure, separating concerns into distinct directories.
 
 ```
 /

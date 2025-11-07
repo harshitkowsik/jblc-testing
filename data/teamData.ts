@@ -5,7 +5,7 @@ export const teamMembers: TeamMember[] = [
         name: "Adv Ashutosh Mishra",
         image: "Adv-Ashutosh-Mishra.png",
         designation: "MBA, LL.M, PhD, Senior Vice President",
-        bio: "The visionary founder of JBLC, Dr. Mishra is a Supreme Court lawyer and a leading authority in administrative and constitutional law.",
+        bio: "The founder of JBLC, Dr. Mishra is a Supreme Court lawyer and a leading authority in administrative and constitutional law.",
         facebookUrl: "https://www.facebook.com/advdramishra/",
         twitterUrl: "https://twitter.com/drmishra_in/",
         linkedinUrl: "https://www.linkedin.com/in/dramishra/",

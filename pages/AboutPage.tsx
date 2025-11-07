@@ -67,7 +67,87 @@ const AboutPage: React.FC = () => {
         {
             question: "How can I schedule an appointment?",
             answer: <p>You can schedule an appointment by using the "Make an Appointment" button on our website, calling our office directly, or sending us an email. Our team will assist you in setting up a consultation with the appropriate legal expert for your needs.</p>
-        }
+        },
+        {
+            question: "What should I bring to my first consultation?",
+            answer: <p>For a productive first consultation, please bring all documents related to your case, including any correspondence, contracts, court notices, and a written summary of the events. Also, prepare a list of any questions you may have for us.</p>
+        },
+        {
+            question: "How long will my case take to resolve?",
+            answer: <p>The duration of a legal case varies significantly depending on its complexity, the court's schedule, and the cooperation of the opposing party. While we strive for a swift resolution, we prioritize achieving the best possible outcome. We will provide a realistic timeline estimate after our initial assessment.</p>
+        },
+        {
+            question: "Do you handle cases outside of your main office locations?",
+            answer: <p>Yes. With a PAN-India presence and international alliances, JBLC INDIA is equipped to handle legal matters across various jurisdictions. Our network of empanelled lawyers allows us to provide seamless representation wherever our clients need us.</p>
+        },
+        {
+            question: "What is your policy on client confidentiality?",
+            answer: <p>We adhere to the strictest standards of attorney-client privilege. All information and communication shared with our firm are held in absolute confidence. Our commitment to confidentiality is a cornerstone of our professional ethics.</p>
+        },
+        {
+            question: "How will I be kept updated on the progress of my case?",
+            answer: <p>We believe in transparent and regular communication. You will be assigned a dedicated point of contact and will receive regular updates via email, phone calls, or scheduled meetings, depending on your preference and the case's requirements.</p>
+        },
+        {
+            question: "Can you represent me in the Supreme Court of India?",
+            answer: <p>Yes, our firm is led by Supreme Court advocates, including our Managing Partner, Dr. Ashutosh Mishra. We have extensive experience in representing clients before the Supreme Court of India and various High Courts across the country.</p>
+        },
+        {
+            question: "What are the potential outcomes of my case?",
+            answer: <p>While we cannot guarantee a specific outcome, we will provide you with a realistic and honest assessment of your case's strengths, weaknesses, and potential outcomes. Our advice is always aimed at protecting your best interests and achieving the most favorable result possible.</p>
+        },
+        {
+            question: "What does it mean that JBLC INDIA is an ISO 9001:2015 certified firm?",
+            answer: <p>Being ISO 9001:2015 certified means our firm adheres to internationally recognized standards for quality management. This certification reflects our commitment to systematic processes, consistent service quality, and continuous improvement to ensure client satisfaction.</p>
+        },
+        {
+            question: "Do you offer any pro bono services?",
+            answer: <p>As part of our Corporate Social Responsibility (CSR) commitment and our partnership with the Atal Foundation, we are dedicated to promoting access to justice. We selectively take on pro bono cases for individuals and organizations in need. Please contact us to inquire about our pro bono program.</p>
+        },
+        {
+            question: "What is the difference between a lawyer and an advocate in India?",
+            answer: <p>In the Indian legal system, an 'advocate' is a lawyer who is enrolled with a State Bar Council and has the right to practice in courts of law. While all advocates are lawyers, not all law graduates are advocates. Our team consists of experienced advocates qualified to represent clients at all judicial levels.</p>
+        },
+        {
+            question: "How are your legal fees structured for ongoing cases?",
+            answer: <p>Our fee structure is flexible and tailored to the nature of the case. We offer various models, including hourly rates, fixed fees for specific services, and retainers for ongoing counsel. We discuss and agree upon the most suitable arrangement during our initial engagement to ensure full transparency with no hidden costs.</p>
+        },
+        {
+            question: "Who will be my primary point of contact at the firm?",
+            answer: <p>Each client is assigned a dedicated case manager or a lead advocate who will be your primary point of contact. This ensures clear, consistent communication and a deep understanding of your case's progress. You will always know who to reach out to with your questions.</p>
+        },
+        {
+            question: "What is Alternative Dispute Resolution (ADR) and do you recommend it?",
+            answer: <p>Alternative Dispute Resolution (ADR) includes methods like mediation and arbitration to resolve disputes outside of court. We often recommend ADR as it can be faster, more cost-effective, and less confrontational than traditional litigation. We will assess your case to determine if ADR is a viable and beneficial option for you.</p>
+        },
+        {
+            question: "What happens if I lose my case? Can I file an appeal?",
+            answer: <p>If an unfavorable judgment is passed, we will provide a detailed analysis of the decision and advise you on the merits of filing an appeal. The appeals process has strict deadlines and legal grounds, and our team is experienced in navigating appellate courts to seek a review of the decision.</p>
+        },
+        {
+            question: "How does your firm stay updated with the latest legal developments?",
+            answer: <p>Continuous learning is a core value at JBLC INDIA. Our advocates regularly participate in legal seminars, workshops, and continuing legal education (CLE) programs. We also maintain subscriptions to leading legal journals and databases to stay abreast of the latest statutes, precedents, and legal trends.</p>
+        },
+        {
+            question: "Can you explain the attorney-client privilege?",
+            answer: <p>Attorney-client privilege is a legal principle that protects confidential communications between a client and their advocate from being disclosed. This means you can speak freely and honestly with us, knowing that your information is legally protected and will be kept in the strictest confidence.</p>
+        },
+        {
+            question: "What is the typical process for filing a lawsuit?",
+            answer: <p>The process generally involves drafting and filing a plaint or petition, serving notice to the opposing party (summons), filing of a written statement by the defendant, framing of issues by the court, presenting evidence, arguments, and finally, the judgment. We guide our clients through each step of this complex process.</p>
+        },
+        {
+            question: "How do you handle conflicts of interest?",
+            answer: <p>We have a rigorous conflict-of-interest check system. Before taking on any new matter, we conduct a thorough search of our database to ensure that representing a new client will not conflict with the interests of any current or former clients. Upholding our ethical duties is paramount.</p>
+        },
+        {
+            question: "What role does technology play in how you manage cases?",
+            answer: <p>We leverage modern legal technology for case management, legal research, document management, and secure client communication. This allows us to work more efficiently, collaborate effectively, and provide our clients with timely updates and access to their case information.</p>
+        },
+        {
+            question: "Do you collaborate with other professionals, like accountants or investigators?",
+            answer: <p>Yes, for complex cases that require multi-disciplinary expertise, we often collaborate with a trusted network of professionals, including chartered accountants, forensic experts, investigators, and technical specialists. This ensures that every aspect of your case is handled with the highest level of skill.</p>
+        },
     ];
 
     return (

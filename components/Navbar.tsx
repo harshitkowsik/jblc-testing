@@ -38,6 +38,7 @@ const Navbar: React.FC = () => {
                                 <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-xl z-20 py-1 transition-all duration-300">
                                     <Link to="/services" onClick={() => setServicesOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Practice Areas</Link>
                                     <Link to="/finance" onClick={() => setServicesOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Finance Assistance</Link>
+                                    <Link to="/compliances" onClick={() => setServicesOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Compliances</Link>
                                 </div>
                             )}
                         </div>

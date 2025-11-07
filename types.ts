@@ -8,3 +8,10 @@ export interface TeamMember {
     linkedinUrl: string;
     instagramUrl: string;
 }
+
+export interface CompliancePackage {
+    title: string;
+    icon: string;
+    description: string;
+    driveLink: string;
+}

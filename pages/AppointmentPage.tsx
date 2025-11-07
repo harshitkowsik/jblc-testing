@@ -20,12 +20,14 @@ interface AppointmentFormData {
     location: string;
     service: string;
     worker: string;
-    date: string;
-    time: string;
     email: string;
     name: string;
     phone: string;
     description: string;
+    date: string;
+    hour: string;
+    minute: string;
+    ampm: 'AM' | 'PM';
 }
 
 type FormErrors = Partial<Record<keyof AppointmentFormData, string>>;
@@ -36,17 +38,26 @@ const AppointmentPage: React.FC = () => {
         location: '',
         service: '',
         worker: '',
-        date: '',
-        time: '',
         email: '',
         name: '',
         phone: '',
         description: '',
+        date: '',
+        hour: '09',
+        minute: '00',
+        ampm: 'AM',
     };
 
     const [formData, setFormData] = useState<AppointmentFormData>(initialFormData);
     const [errors, setErrors] = useState<FormErrors>({});
     const [price, setPrice] = useState(0);
+    const [submissionStatus, setSubmissionStatus] = useState<{ submitted: boolean; message: string }>({ submitted: false, message: '' });
+
+    // --- Time selection state ---
+    const allHours = ['09', '10', '11', '12', '01', '02', '03', '04', '05'];
+    const allMinutes = ['00', '30'];
+    const [availableHours, setAvailableHours] = useState(allHours.slice(0, 3)); // Default to AM hours
+    const [availableMinutes, setAvailableMinutes] = useState(allMinutes);
 
     const services = [
         { name: 'Legal Notice', price: 10000 },
@@ -69,12 +80,39 @@ const AppointmentPage: React.FC = () => {
         setPrice(selectedService ? selectedService.price : 0);
     }, [formData.service]);
 
+    // --- Dynamic time validation logic ---
+    useEffect(() => {
+        let currentHours: string[] = [];
+        if (formData.ampm === 'AM') {
+            currentHours = ['09', '10', '11'];
+        } else { // PM
+            currentHours = ['12', '01', '02', '03', '04', '05'];
+        }
+        setAvailableHours(currentHours);
+
+        // If current hour is not valid for the new AM/PM selection, reset it
+        if (!currentHours.includes(formData.hour)) {
+            setFormData(prev => ({ ...prev, hour: currentHours[0] }));
+        }
+
+        // Handle the 6:00 PM edge case (last appointment at 5:30 PM)
+        if (formData.ampm === 'PM' && formData.hour === '06') {
+            setAvailableMinutes([]);
+            // If an invalid minute was selected, reset it
+            if (formData.minute !== '') {
+                setFormData(prev => ({ ...prev, minute: '' }));
+            }
+        } else {
+            setAvailableMinutes(allMinutes);
+        }
+
+    }, [formData.ampm]);
 
     const validate = (): FormErrors => {
         const newErrors: FormErrors = {};
 
         const requiredFields: (keyof AppointmentFormData)[] = [
-            'location', 'service', 'worker', 'date', 'time', 'email', 'name', 'phone'
+            'location', 'service', 'worker', 'date', 'hour', 'minute', 'ampm', 'email', 'name', 'phone'
         ];
 
         requiredFields.forEach(field => {
@@ -83,13 +121,10 @@ const AppointmentPage: React.FC = () => {
             }
         });
 
-        if (formData.time && parseInt(formData.time.split(':')[1], 10) % 30 !== 0) {
-            newErrors.time = 'Appointments can only be booked at 30-minute intervals (e.g., 09:00, 09:30).';
-        }
-
-        if (formData.date && formData.time) {
-            const selectedDateTime = new Date(`${formData.date}T${formData.time}`);
-            if (selectedDateTime < new Date()) {
+        if (formData.date) {
+            const selectedDate = new Date(formData.date.replace(/-/g, '\/')); // Use '/' to avoid timezone issues
+            const today = new Date();
+            if (isNaN(selectedDate.getTime()) || selectedDate < today) {
                 newErrors.date = 'Cannot book an appointment in the past.';
             }
         }
@@ -97,7 +132,7 @@ const AppointmentPage: React.FC = () => {
         if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Email is invalid.';
         }
-        
+
         if (formData.phone && (!/^\d{10}$/.test(formData.phone))) {
             newErrors.phone = 'Phone number must be 10 digits.';
         }
@@ -111,23 +146,46 @@ const AppointmentPage: React.FC = () => {
         setErrors({});
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setSubmissionStatus({ submitted: false, message: '' });
         const validationErrors = validate();
+
         if (Object.keys(validationErrors).length === 0) {
-            // No errors, submission is successful
-            alert('Appointment submitted successfully! We will contact you shortly.');
-            console.log(formData);
-            // Reset the form after a short delay
-            setTimeout(handleReset, 500);
+            const web3FormData = new FormData();
+
+            // Manually append form data to control the output
+            web3FormData.append("access_key", "e79d8866-b6df-490d-89f0-e1b9402c1d99");
+            web3FormData.append("subject", "JBLC India - New Appointment Booking");
+            web3FormData.append("name", formData.name);
+            web3FormData.append("email", formData.email);
+            web3FormData.append("phone", formData.phone);
+            web3FormData.append("location", formData.location);
+            web3FormData.append("service", formData.service);
+            web3FormData.append("advocate", formData.worker);
+            web3FormData.append("date", formData.date);
+            const timeString = `${formData.hour}:${formData.minute} ${formData.ampm}`;
+            web3FormData.append("time", timeString);
+            web3FormData.append("description", formData.description);
+            web3FormData.append("Total Price", `₹${price.toFixed(2)}`);
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: web3FormData,
+                mode: 'no-cors',
+            });
+
+            // Optimistically update UI
+            setSubmissionStatus({ submitted: true, message: "Appointment submitted successfully! We will contact you shortly." });
+            handleReset();
+
         } else {
-            // Errors found, scroll to the first invalid field
             const errorFields = Object.keys(validationErrors);
             if (errorFields.length > 0) {
                 const firstErrorField = errorFields[0];
                 const element = document.querySelector(`[name="${firstErrorField}"]`);
                 if (element) {
-                    element.scrollIntoView({ behavior: "smooth", block: "center" });
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
         }
@@ -136,7 +194,6 @@ const AppointmentPage: React.FC = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
-        // Optionally, clear the error for this field as the user types
         if (errors[name as keyof AppointmentFormData]) {
             setErrors(prev => ({ ...prev, [name]: undefined }));
         }
@@ -155,6 +212,8 @@ const AppointmentPage: React.FC = () => {
 
             <div className="container mx-auto px-4 py-20">
                 <form onSubmit={handleSubmit} className="max-w-5xl mx-auto bg-white p-10 rounded-lg shadow-2xl">
+                    <input type="hidden" name="access_key" value="e79d8866-b6df-490d-89f0-e1b9402c1d99" />
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
                         <div className="mb-8 md:mb-0">
                             <h2 className="text-3xl font-bold text-[#2e3e4d] mb-6">1. Appointment Details</h2>
@@ -188,15 +247,26 @@ const AppointmentPage: React.FC = () => {
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
-                                <div>
+                                <div className="col-span-2">
                                     <label htmlFor="date" className="block text-gray-700 font-semibold mb-2">Date *</label>
                                     <input type="date" id="date" name="date" value={formData.date} onChange={handleChange} className={`${commonInputClasses} ${errors.date ? errorClasses : ''} dark:[color-scheme:light]`} />
                                     {errors.date && <p className="text-red-600 text-sm mt-1">{errors.date}</p>}
                                 </div>
-                                <div>
-                                    <label htmlFor="time" className="block text-gray-700 font-semibold mb-2">Time *</label>
-                                    <input type="time" id="time" name="time" value={formData.time} onChange={handleChange} className={`${commonInputClasses} ${errors.time ? errorClasses : ''} dark:[color-scheme:light]`} min="09:00" max="18:00" step="1800" />
-                                    {errors.time && <p className="text-red-600 text-sm mt-1">{errors.time}</p>}
+                                <div className="col-span-2">
+                                    <label className="block text-gray-700 font-semibold mb-2">Preferred Time *</label>
+                                    <div className="flex items-center space-x-2">
+                                        <select name="hour" value={formData.hour} onChange={handleChange} required className={`${commonInputClasses} ${errors.hour ? errorClasses : ''}`} aria-label="Hour">
+                                            {availableHours.map(h => <option key={h} value={h}>{h}</option>)}
+                                        </select>
+                                        <select name="minute" value={formData.minute} onChange={handleChange} required className={`${commonInputClasses} ${errors.minute ? errorClasses : ''}`} aria-label="Minute">
+                                            {availableMinutes.map(m => <option key={m} value={m}>{m}</option>)}
+                                        </select>
+                                        <select name="ampm" value={formData.ampm} onChange={handleChange} required className={`${commonInputClasses} ${errors.ampm ? errorClasses : ''}`} aria-label="AM/PM">
+                                            <option value="AM">AM</option>
+                                            <option value="PM">PM</option>
+                                        </select>
+                                    </div>
+                                    {(errors.hour || errors.minute || errors.ampm) && <p className="text-red-600 text-sm mt-1">Time is required.</p>}
                                 </div>
                             </div>
                         </div>
@@ -231,7 +301,7 @@ const AppointmentPage: React.FC = () => {
                             <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Location:</span> <span>{formData.location || 'N/A'}</span></div>
                             <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Service:</span> <span>{formData.service || 'N/A'}</span></div>
                             <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Advocate:</span> <span>{formData.worker || 'N/A'}</span></div>
-                            <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Date & Time:</span> <span>{formData.date && formData.time ? new Date(`${formData.date}T${formData.time}`).toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' }) : 'N/A'}</span></div>
+                            <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Date & Time:</span> <span>{formData.date && formData.hour && formData.minute ? `${formData.date} at ${formData.hour}:${formData.minute} ${formData.ampm}` : 'N/A'}</span></div>
                             <div className="border-t my-3"></div>
                             <div className="flex justify-between items-center text-2xl font-bold"><span className="text-[#2e3e4d]">Total Price:</span> <span className="text-[#c5a47e]">₹{price.toFixed(2)}</span></div>
                         </div>
@@ -240,6 +310,9 @@ const AppointmentPage: React.FC = () => {
                     <div className="col-span-1 md:col-span-2 mt-10 flex flex-col space-y-4 md:flex-row md:justify-end md:space-y-0 md:space-x-4">
                         <button type="button" onClick={handleReset} className="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-md hover:bg-gray-300 transition-colors w-full md:w-auto">Cancel</button>
                         <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors w-full md:w-auto">Confirm Appointment</button>
+                    </div>
+                    <div className="text-right mt-4">
+                        {submissionStatus.submitted && <p className={submissionStatus.message.includes("successfully") ? "text-green-600" : "text-red-600"}>{submissionStatus.message}</p>}
                     </div>
                 </form>
             </div>
