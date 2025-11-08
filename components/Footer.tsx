@@ -6,35 +6,43 @@ const Footer: React.FC = () => {
     <footer className="bg-[#2e3e4d] text-gray-300 pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-8">
-          
+
           <div className="lg:col-span-1">
             <img src="jblc-logo.png" alt="JBLC INDIA Logo" className="h-16 w-auto mb-4 bg-white p-2 rounded-md" />
             <p className="text-sm text-gray-400 mb-4">
               An ISO 9001:2015 Certified, Top 10 Ranked Law Firm with over 15+ years of experience in delivering legal excellence.
             </p>
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="text-gray-400 hover:text-[#c5a47e] transition-colors"><i className="fab fa-facebook-f text-xl"></i></a>
-              <a href="#" className="text-gray-400 hover:text-[#c5a47e] transition-colors"><i className="fab fa-twitter text-xl"></i></a>
-              <a href="#" className="text-gray-400 hover:text-[#c5a47e] transition-colors"><i className="fab fa-linkedin-in text-xl"></i></a>
+              <a href="https://www.facebook.com/JBLCINDIA" className="text-gray-400 hover:text-[#c5a47e] transition-colors" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-facebook-f text-xl"></i>
+              </a>
+              <a href="https://x.com/jblcindia/" className="text-gray-400 hover:text-[#c5a47e] transition-colors" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-twitter text-xl"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/jblcindia/" className="text-gray-400 hover:text-[#c5a47e] transition-colors" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-linkedin-in text-xl"></i>
+              </a>
+              <a href="http://www.youtube.com/@JBLCIndia" className="text-gray-400 hover:text-[#c5a47e] transition-colors"><i className="fab fa-youtube text-xl"></i></a>
+              <a href="https://www.youtube.com/@kanoonimadad" className="text-gray-400 hover:text-[#c5a47e] transition-colors"><i className="fab fa-youtube text-xl"></i></a>
             </div>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold text-white tracking-wider mb-4 border-b-2 border-[#c5a47e] pb-2 inline-block">Our Offices</h3>
             <div className="space-y-4 text-sm">
-                <div>
-                    <strong className="text-[#c5a47e] block">Zonal Office (Delhi):</strong>
-                    <p>102, V85, 52A, First Floor, Vijay Block, Laxmi Nagar, Delhi</p>
-                    <p>Help Line: <a href="tel:+919483271000" className="hover:text-[#c5a47e]">+91 9483271000</a></p>
-                </div>
-                <div>
-                    <strong className="text-[#c5a47e] block">Regional Office (Lucknow):</strong>
-                    <p>511, 05th Floor, Skyline Plaza 1, Sushant Golf City Lucknow, UP</p>
-                    <p>Phone: <a href="tel:05222061000" className="hover:text-[#c5a47e]">0522 206 1000</a></p>
-                </div>
+              <div>
+                <strong className="text-[#c5a47e] block">Zonal Office (Delhi):</strong>
+                <p>102, V85, 52A, First Floor, Vijay Block, Laxmi Nagar, Delhi</p>
+                <p>Help Line: <a href="tel:+919483271000" className="hover:text-[#c5a47e]">+91 9483271000</a></p>
+              </div>
+              <div>
+                <strong className="text-[#c5a47e] block">Regional Office (Lucknow):</strong>
+                <p>511, 05th Floor, Skyline Plaza 1, Sushant Golf City Lucknow, UP</p>
+                <p>Phone: <a href="tel:05222061000" className="hover:text-[#c5a47e]">0522 206 1000</a></p>
+              </div>
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold text-white tracking-wider mb-4 border-b-2 border-[#c5a47e] pb-2 inline-block">Other Locations</h3>
             <ul className="space-y-2 text-sm">

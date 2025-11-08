@@ -26,6 +26,7 @@ const ContactPage: React.FC = () => {
 
         // Add subject to form data
         formData.append("subject", "JBLC India - Contact Response");
+        formData.append("from_name", "JBLC India Contact Form");
 
         try {
             const response = await fetch("https://api.web3forms.com/submit", {

@@ -24,14 +24,14 @@ const Navbar: React.FC = () => {
                     </div>
                     <div className="hidden lg:flex items-center space-x-4">
                         <NavLink to="/" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>Home</NavLink>
-                        
+
                         <NavLink to="/about" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>About Us</NavLink>
 
                         <NavLink to="/team" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>Our Team</NavLink>
                         <NavLink to="/career" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>Career</NavLink>
 
                         <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-                             <NavLink to="/services" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>
+                            <NavLink to="/services" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>
                                 Services <i className="fas fa-chevron-down ml-2 text-xs"></i>
                             </NavLink>
                             {servicesOpen && (
@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
 
                     <div className="lg:hidden flex items-center">
                         <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-[#c5a47e] focus:outline-none">
-                             <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+                            <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
                         </button>
                     </div>
                 </div>
@@ -61,10 +61,11 @@ const Navbar: React.FC = () => {
                     <NavLink to="/career" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Career</NavLink>
                     <NavLink to="/services" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Practice Areas</NavLink>
                     <NavLink to="/finance" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Finance Assistance</NavLink>
+                    <NavLink to="/compliances" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Compliances</NavLink>
                     <NavLink to="/contact" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Contact Us</NavLink>
-                     <Link to="/appointment" onClick={closeAllMenus} className="block bg-[#c5a47e] text-[#2e3e4d] text-center mt-2 px-5 py-3 rounded-md hover:bg-[#2e3e4d] hover:text-white transition-colors text-sm font-bold tracking-wider uppercase">
+                    <Link to="/appointment" onClick={closeAllMenus} className="block bg-[#c5a47e] text-[#2e3e4d] text-center mt-2 px-5 py-3 rounded-md hover:bg-[#2e3e4d] hover:text-white transition-colors text-sm font-bold tracking-wider uppercase">
                         Make an Appointment
-                     </Link>
+                    </Link>
                 </div>
             )}
         </nav>

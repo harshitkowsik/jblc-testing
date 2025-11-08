@@ -156,6 +156,7 @@ const AppointmentPage: React.FC = () => {
 
             // Manually append form data to control the output
             web3FormData.append("access_key", "e79d8866-b6df-490d-89f0-e1b9402c1d99");
+            web3FormData.append("from_name", "JBLC India Appointment Form");
             web3FormData.append("subject", "JBLC India - New Appointment Booking");
             web3FormData.append("name", formData.name);
             web3FormData.append("email", formData.email);

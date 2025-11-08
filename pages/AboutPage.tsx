@@ -171,7 +171,7 @@ const AboutPage: React.FC = () => {
                         </p>
                     </div>
                     <div>
-                        <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA4L2thdGV2NjQ0N19waG90b19vZl93b29kZW5fZ2F2ZWxfaW5fdGhlX2NvdXJ0X2dhdmVsX3BsYWNlX29uX3RoZV83MmVhZDZjNS1lNGIxLTRlZDctYWIzNC03NThiMDVmZmY3YjRfMS5qcGc.jpg" alt="Law Firm Interior" className="rounded-lg shadow-2xl"/>
+                        <img src="/office-image.png" alt="Law Firm Interior" className="rounded-lg shadow-2xl"/>
                     </div>
                 </section>
 
