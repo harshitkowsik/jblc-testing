@@ -20,6 +20,7 @@ import HrPolicyPage from './pages/HrPolicyPage';
 import JobApplicationPage from './pages/JobApplicationPage';
 import NewsletterPage from './pages/NewsletterPage';
 import CompliancesPage from './pages/CompliancesPage';
+import ComplianceRequestFormPage from './pages/ComplianceRequestFormPage';
 
 const App: React.FC = () => {
   return (
@@ -45,6 +46,7 @@ const App: React.FC = () => {
             <Route path="/apply" element={<JobApplicationPage />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
             <Route path="/compliances" element={<CompliancesPage />} />
+            <Route path="/compliances-request" element={<ComplianceRequestFormPage />} />
           </Routes>
         </main>
         <Footer />
