@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
             />
             <section
                 className="bg-cover bg-center min-h-[70vh] flex items-center justify-center text-white relative"
-                style={{ backgroundImage: "url('headerbg.png')" }}
+                style={{ backgroundImage: "url('headerbg.webp')" }}
             >
                 <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-60"></div>
                 <div className="text-center z-10 p-4">
@@ -126,7 +126,7 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="py-20 bg-cover bg-fixed relative" style={{ backgroundImage: "url('https://jblc.in/wp-content/themes/expert-lawyer/assets/images/headerbg.png')" }}>
+            <section className="py-20 bg-cover bg-fixed relative" style={{ backgroundImage: "url('https://jblc.in/wp-content/themes/expert-lawyer/assets/images/headerbg.webp')" }}>
                 <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-80"></div>
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">

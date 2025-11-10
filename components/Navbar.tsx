@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
                 <div className="flex justify-between items-center h-20">
                     <div className="flex-shrink-0">
                         <Link to="/" onClick={closeAllMenus}>
-                            <img src="jblc-logo.png" alt="JBLC INDIA Logo" className="h-14 w-auto rounded-lg" />
+                            <img src="jblc-logo.webp" alt="JBLC INDIA Logo" className="h-14 w-auto rounded-lg" />
                         </Link>
                     </div>
                     <div className="hidden lg:flex items-center space-x-4">

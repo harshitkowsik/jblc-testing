@@ -4,7 +4,7 @@ import SEO from '../components/SEO';
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
     <section 
         className="bg-cover bg-center h-60 flex items-center justify-center text-white relative" 
-        style={{ backgroundImage: "url('headerbg.png')" }}
+        style={{ backgroundImage: "url('headerbg.webp')" }}
     >
         <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-70"></div>
         <div className="text-center z-10 p-4">
@@ -171,7 +171,7 @@ const AboutPage: React.FC = () => {
                         </p>
                     </div>
                     <div>
-                        <img src="/office-image.png" alt="Law Firm Interior" className="rounded-lg shadow-2xl"/>
+                        <img src="/office-image.webp" alt="Law Firm Interior" className="rounded-lg shadow-2xl"/>
                     </div>
                 </section>
 
@@ -195,7 +195,7 @@ const AboutPage: React.FC = () => {
                     </div>
                     <div className="grid md:grid-cols-5 gap-8 items-center">
                         <div className="md:col-span-2">
-                             <img src="Adv-Ashutosh-Mishra.png" alt="Dr. Ashutosh Mishra" className="rounded-full shadow-lg mx-auto w-48 h-48 object-cover border-4 border-[#c5a47e]"/>
+                             <img src="Adv-Ashutosh-Mishra.webp" alt="Dr. Ashutosh Mishra" className="rounded-full shadow-lg mx-auto w-48 h-48 object-cover border-4 border-[#c5a47e]"/>
                         </div>
                         <div className="md:col-span-3">
                              <h3 className="text-2xl font-semibold text-[#2e3e4d] mb-2">Dr. Ashutosh Mishra, Managing Partner</h3>

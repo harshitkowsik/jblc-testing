@@ -33,7 +33,7 @@ const ComplianceCard = ({ icon, title, description, driveLink }: CompliancePacka
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
     <section
         className="bg-cover bg-center h-60 flex items-center justify-center text-white relative"
-        style={{ backgroundImage: "url('headerbg.png')" }}
+        style={{ backgroundImage: "url('headerbg.webp')" }}
     >
         <div className="absolute inset-0 bg-[#2e3e4d] bg-opacity-70"></div>
         <div className="text-center z-10 p-4">
