@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
-import { teamMembers } from '../data/teamData';
+import { Advocates } from '../data/formTeamData';
 
 
 const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) => (
@@ -73,10 +73,7 @@ const AppointmentPage: React.FC = () => {
         { name: 'Family Matter', price: 24999 },
     ];
 
-    //  const workers = teamMembers.map(member => member.name); // All team members
-    const workers = teamMembers
-        .filter(member => member.name.toLowerCase().includes('adv'))
-        .map(member => member.name);
+    const workers = Advocates.map(member => member.name); // All team members
 
     useEffect(() => {
         const selectedService = services.find(s => s.name === formData.service);

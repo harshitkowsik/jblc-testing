@@ -33,3 +33,11 @@ export interface CompliancePackageSummary {
     description: string;
     driveLink: string; 
 }
+
+export interface Advocate {
+  name: string;
+  reg_no: string;
+  email: string;
+  phone_no: string;
+  specialisation: string;
+}

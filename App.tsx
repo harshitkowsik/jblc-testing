@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import OurTeamPage from './pages/OurTeamPage';
+import OurCoreTeamPage from './pages/OurCoreTeamPage';
 import CareerPage from './pages/CareerPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
@@ -21,6 +21,7 @@ import JobApplicationPage from './pages/JobApplicationPage';
 import NewsletterPage from './pages/NewsletterPage';
 import CompliancesPage from './pages/CompliancesPage';
 import ComplianceRequestFormPage from './pages/ComplianceRequestFormPage';
+import OurAdvocateTeamPage from './pages/OurAdvocateTeamPage';
 
 const App: React.FC = () => {
   return (
@@ -33,7 +34,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/team" element={<OurTeamPage />} />
+            <Route path="/core-team" element={<OurCoreTeamPage />} />
             <Route path="/career" element={<CareerPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/services/:slug" element={<ServiceDetailPage />} />
@@ -47,6 +48,7 @@ const App: React.FC = () => {
             <Route path="/newsletter" element={<NewsletterPage />} />
             <Route path="/compliances" element={<CompliancesPage />} />
             <Route path="/compliances-request" element={<ComplianceRequestFormPage />} />
+            <Route path="/our-advocate-team" element={<OurAdvocateTeamPage />} />
           </Routes>
         </main>
         <Footer />

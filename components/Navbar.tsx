@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [servicesOpen, setServicesOpen] = useState(false);
+    const [teamOpen, setTeamOpen] = useState(false);
 
     const navLinkClasses = "text-white hover:text-[#c5a47e] transition-colors duration-300 font-medium px-3 py-2 uppercase tracking-wider text-sm relative underline-hover";
     const activeLinkClasses = "text-[#c5a47e]";
@@ -11,6 +12,7 @@ const Navbar: React.FC = () => {
     const closeAllMenus = () => {
         setIsOpen(false);
         setServicesOpen(false);
+        setTeamOpen(false);
     }
 
     return (
@@ -27,7 +29,17 @@ const Navbar: React.FC = () => {
 
                         <NavLink to="/about" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>About Us</NavLink>
 
-                        <NavLink to="/team" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>Our Team</NavLink>
+                        <div className="relative" onMouseEnter={() => setTeamOpen(true)} onMouseLeave={() => setTeamOpen(false)}>
+                            <NavLink to="/core-team" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>
+                                Our Team <i className="fas fa-chevron-down ml-2 text-xs"></i>
+                            </NavLink>
+                            {teamOpen && (
+                                <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-xl z-20 py-1 transition-all duration-300">
+                                    <Link to="/core-team" onClick={() => setTeamOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Core Team</Link>
+                                    <Link to="/our-advocate-team" onClick={() => setTeamOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Advocates Team</Link>
+                                </div>
+                            )}
+                        </div>
                         <NavLink to="/career" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>Career</NavLink>
 
                         <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
@@ -57,7 +69,8 @@ const Navbar: React.FC = () => {
                 <div className="lg:hidden px-4 pt-2 pb-4 space-y-2 bg-[#1a2530]">
                     <NavLink to="/" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Home</NavLink>
                     <NavLink to="/about" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>About Us</NavLink>
-                    <NavLink to="/team" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Our Team</NavLink>
+                    <NavLink to="/core-team" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Core Team</NavLink>
+                    <NavLink to="/our-advocate-team" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Advocates Team</NavLink>
                     <NavLink to="/career" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Career</NavLink>
                     <NavLink to="/services" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Practice Areas</NavLink>
                     <NavLink to="/finance" className={({ isActive }) => `block ${navLinkClasses} ${isActive ? activeLinkClasses : ''}`} onClick={closeAllMenus}>Finance Assistance</NavLink>
