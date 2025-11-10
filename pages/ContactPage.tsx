@@ -25,7 +25,7 @@ const ContactPage: React.FC = () => {
         const formData = new FormData(form);
 
         // Add subject to form data
-        formData.append("subject", "JBLC India - Contact Response");
+        formData.append("subject", "JBLC India - Contact");
         formData.append("from_name", "JBLC India Contact Form");
 
         try {
