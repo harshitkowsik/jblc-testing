@@ -1,11 +1,10 @@
 import React from 'react';
 import { CompliancePackageDetailed, CompliancePackageSummary } from '../types';
 
-// The detailed compliance data for the form
 export const detailedComplianceData: CompliancePackageDetailed[] = [
   {
     packageName: "Income Tax Package",
-    driveLink: "/pdfs/income-tax-package-overview.pdf", // Added driveLink for the package
+    driveLink: "https://drive.google.com/file/d/1Y82nrxDZi9A0IXU5uGE5WWpXv-SIACiE/view?usp=drive_link",
     sections: [
       {
         heading: "Salary Income",
@@ -165,7 +164,7 @@ export const detailedComplianceData: CompliancePackageDetailed[] = [
   },
   {
     packageName: "GST Package",
-    driveLink: "/pdfs/gst-package-overview.pdf", // Added driveLink for the package
+    driveLink: "https://drive.google.com/file/d/1RiOkfcFUTwaYBbZoS4ZXyj0iMQNbS4ut/view?usp=drive_link",
     sections: [
       {
         heading: "Composition Scheme - Yearly Package",
@@ -302,7 +301,7 @@ export const detailedComplianceData: CompliancePackageDetailed[] = [
   },
   {
     packageName: "Smart Package",
-    driveLink: "/pdfs/smart-package-overview.pdf", // Added driveLink for the package
+    driveLink: "https://drive.google.com/file/d/1OFsqR13tDcpz33zAudyiiq6YJaeZB0s6/view?usp=drive_link",
     sections: [
       {
         heading: "Proprietorship",
@@ -427,7 +426,7 @@ export const detailedComplianceData: CompliancePackageDetailed[] = [
   },
   {
     packageName: "Virtual CFO Package",
-    driveLink: "/pdfs/virtual-cfo-package-overview.pdf", // Added driveLink for the package
+    driveLink: "https://drive.google.com/file/d/1C05rR11qE6275bU-UtBvQ_rSd74sA7p2/view?usp=drive_link",
     sections: [
       {
         heading: "Proprietorship VIRTUAL CFO",
@@ -541,10 +540,9 @@ export const detailedComplianceData: CompliancePackageDetailed[] = [
   },
 ];
 
-// Summary data for the CompliancesPage cards, derived from detailedComplianceData
 export const compliancePackages: CompliancePackageSummary[] = detailedComplianceData.map(pkg => ({
-    icon: 'fas fa-file-invoice', // Generic icon
+    icon: 'fas fa-file-invoice',
     title: pkg.packageName,
-    description: `Explore our comprehensive ${pkg.packageName} services tailored for your business compliance needs.`, // Generic description
-    driveLink: pkg.driveLink || '#', // Use the package's driveLink, or '#' if not provided
+    description: `Explore our comprehensive ${pkg.packageName} services tailored for your business compliance needs.`,
+    driveLink: pkg.driveLink || '#',
 }));

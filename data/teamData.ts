@@ -31,4 +31,14 @@ export const teamMembers: TeamMember[] = [
         linkedinUrl: "https://linkedin.com/",
         instagramUrl: "https://instagram.com/"
     },
+    {
+    name: "CA Anoop Kumar Mishra",
+    image: "CA-Anoop-Kumar-Mishra.jpg",
+    designation: "Senior Partner – Finance Strategy & Corporate Structuring",
+    bio: "A Chartered Accountant with over 20 years of experience, CA Anoop Kumar Mishra is a leader in finance strategy, corporate structuring, and business growth at JBLC INDIA.",
+    facebookUrl: "",
+    twitterUrl: "",
+    linkedinUrl: "",
+    instagramUrl: ""
+}
 ];
