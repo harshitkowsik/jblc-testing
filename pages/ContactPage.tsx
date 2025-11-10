@@ -59,7 +59,7 @@ const ContactPage: React.FC = () => {
                     <div className="md:col-span-3 bg-white p-8 rounded-lg shadow-xl">
                         <h2 className="text-3xl font-bold text-[#2e3e4d] mb-6">Get In Touch</h2>
                         <form onSubmit={handleSubmit}>
-                            <input type="hidden" name="access_key" value="e79d8866-b6df-490d-89f0-e1b9402c1d99" />
+                            <input type="hidden" name="access_key" value="6642f5ed-13ba-4264-b2cb-4f3ef6438fc3" />
                             <input type="hidden" name="redirect" value="https://web3forms.com/success" />
                             <div className="mb-5">
                                 <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name *</label>
