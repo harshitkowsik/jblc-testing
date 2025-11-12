@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile Side Menu */}
-            <div className={`fixed top-0 left-0 h-full w-70 bg-[#2e3e4d] transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:hidden z-50`}>
+            <div className={`fixed top-0 left-0 h-full w-64 bg-[#2e3e4d] transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out lg:hidden z-50`}>
                 <div className="flex justify-between items-center h-20 px-4 border-b border-gray-700">
                     <Link to="/" onClick={closeAllMenus}>
                         <img src="jblc-logo.webp" alt="JBLC INDIA Logo" className="h-14 w-auto rounded-lg" />
