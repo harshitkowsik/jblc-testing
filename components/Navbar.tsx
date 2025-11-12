@@ -27,12 +27,12 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="bg-[#2e3e4d] sticky top-0 z-50 h-16">
+        <nav className="bg-[#2e3e4d] sticky top-0 z-50 h-20">
             <div className="container mx-auto px-4">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-20">
                     <div className="flex-shrink-0">
                         <Link to="/" onClick={closeAllMenus}>
-                            <img src="jblc-logo.webp" alt="JBLC INDIA Logo" className="h-12 w-auto rounded-lg" />
+                            <img src="jblc-logo.webp" alt="JBLC INDIA Logo" className="h-14 w-auto rounded-lg" />
                         </Link>
                     </div>
                     {/* Desktop Navigation */}

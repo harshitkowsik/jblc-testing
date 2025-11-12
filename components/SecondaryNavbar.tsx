@@ -11,8 +11,8 @@ const SecondaryNavbar: React.FC = () => {
 
     // This navbar is designed to be visible only on large screens (lg)
     return (
-        <nav className="bg-white shadow-md sticky top-16 z-40 hidden lg:block"> {/* Positioned sticky right below the main Navbar (h-24) */}
-            <div className="container mx-auto px-4 h-16 flex items-center justify-center space-x-6"> 
+        <nav className="bg-white shadow-md sticky top-20 z-40 hidden lg:block">
+            <div className="container mx-auto px-4 h-14 flex items-center justify-center space-x-6"> 
                 {modernServices.map(mainService => (
                     <div 
                         key={mainService.slug} 
