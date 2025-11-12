@@ -185,6 +185,7 @@ const GetQuoteFormPage: React.FC = () => {
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
+    const [submissionStatus, setSubmissionStatus] = useState<{ success: boolean | null, message: string }>({ success: null, message: '' });
     const commonInputClasses = "w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c5a47e] transition-shadow";
     const errorClasses = "border-red-500 focus:ring-red-500";
 
@@ -287,36 +288,56 @@ const GetQuoteFormPage: React.FC = () => {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setSubmissionStatus({ success: null, message: '' });
+
         if (validate()) {
-            console.log('Get Quote Request Submitted:', formData);
-            alert('Your quote request has been submitted successfully! We will contact you shortly.');
-            setFormData({ // Reset form
-                name: '',
-                email: '',
-                phone: '',
-                mainServiceTitle: formData.mainServiceTitle, // Keep pre-filled services
-                subServiceTitle: formData.subServiceTitle,
-                extraMessage: '',
-            });
-            setErrors({});
-            // Reset dynamic fields
-            const mainServiceKey = formData.mainServiceTitle;
-            if (conditionalInputsConfig[mainServiceKey]) {
-                conditionalInputsConfig[mainServiceKey].forEach(inputConfig => {
-                    if (inputConfig.type === 'checkbox') {
-                        setFormData(prev => ({ ...prev, [inputConfig.name]: [] }));
-                    } else if (inputConfig.type === 'radio') {
-                         setFormData(prev => ({ ...prev, [inputConfig.name]: undefined })); // Clear radio selection
-                    } else {
-                        setFormData(prev => ({ ...prev, [inputConfig.name]: '' }));
-                    }
+            const web3FormData = new FormData(e.currentTarget);
+            web3FormData.append("subject", `JBLC India - Quote Request for ${formData.mainServiceTitle}`);
+            web3FormData.append("from_name", "JBLC India Quote Form");
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: web3FormData,
                 });
+                const result = await response.json();
+
+                if (result.success) {
+                    setSubmissionStatus({ success: true, message: "Thank you for your request. We will contact you shortly." });
+                    const preservedData = {
+                        mainServiceTitle: formData.mainServiceTitle,
+                        subServiceTitle: formData.subServiceTitle,
+                    };
+                    // Reset form
+                    setFormData({ name: '', email: '', phone: '', extraMessage: '', ...preservedData });
+                    setErrors({});
+                    // Reset dynamic fields
+                    const mainServiceKey = formData.mainServiceTitle;
+                    if (conditionalInputsConfig[mainServiceKey]) {
+                        conditionalInputsConfig[mainServiceKey].forEach(inputConfig => {
+                            setFormData(prev => ({ ...prev, [inputConfig.name]: inputConfig.type === 'checkbox' ? [] : '' }));
+                        });
+                    }
+                } else {
+                    setSubmissionStatus({ success: false, message: "Something went wrong. Please try again." });
+                }
+            } catch (error) {
+                setSubmissionStatus({ success: false, message: "Something went wrong. Please try again." });
             }
 
         } else {
-            alert('Please correct the errors in the form.');
+            setSubmissionStatus({ success: false, message: 'Please correct the errors in the form.' });
+            // Scroll to the first error
+            const errorFields = Object.keys(errors);
+            if (errorFields.length > 0) {
+                const firstErrorField = errorFields[0];
+                const element = document.querySelector(`[name="${firstErrorField}"]`);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
         }
     };
 
@@ -479,7 +500,8 @@ const GetQuoteFormPage: React.FC = () => {
 
             <div className="container mx-auto px-4 py-20">
                 <form onSubmit={handleSubmit} className="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-2xl space-y-6">
-                    <h2 className="text-3xl font-bold text-[#2e3e4d] mb-6 text-center">Get a Personalized Quote</h2>
+                     <input type="hidden" name="access_key" value="0ffe4441-a576-411f-be97-0559b93e0932" />
+                    <input type="hidden" name="redirect" value="https://web3forms.com/success" /><h2 className="text-3xl font-bold text-[#2e3e4d] mb-6 text-center">Get a Personalized Quote</h2>
                     <div className="w-24 h-1 bg-[#c5a47e] mx-auto mb-8"></div>
 
                     {/* Personal Information */}
@@ -583,6 +605,11 @@ const GetQuoteFormPage: React.FC = () => {
                         <button type="submit" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">
                             Submit Request
                         </button>
+                        {submissionStatus.message && (
+                            <p className={`mt-4 text-sm ${submissionStatus.success ? 'text-green-600' : 'text-red-600'}`}>
+                                {submissionStatus.message}
+                            </p>
+                        )}
                     </div>
                 </form>
             </div>
