@@ -80,10 +80,10 @@ const HomePage: React.FC = () => {
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">Legacy of Trust, Future of Justice</h1>
                     <p className="text-lg md:text-xl mt-4 max-w-3xl mx-auto drop-shadow-md">An ISO 9001:2015 Certified, Top 10 Ranked Law Firm with over 15+ years of experience in M&A and Corporate Law.</p>
                     <div className="mt-8 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-center items-center">
-                        <Link to="/about" className="bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg">
+                        <Link to="/about" className="flex align-center bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg h-14">
                             Discover More
                         </Link>
-                        <Link to="/contact" className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-[#2e3e4d] transition-colors text-lg">
+                        <Link to="/contact" className="flex align-center bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-[#2e3e4d] transition-colors text-lg h-14">
                             Contact Us
                         </Link>
                     </div>
