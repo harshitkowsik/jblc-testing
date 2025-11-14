@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import { services as coreServices } from '../data/serviceData';
 import { financeServices as allFinanceServices } from '../data/financeServiceData';
 import { teamMembers } from '../data/teamData.ts';
+import { modernServices } from '../data/modernServicesData.ts';
 
 
 const ServiceCard = ({ icon, title, description, link }: { icon: string; title: string; description: string; link: string; }) => (
@@ -15,6 +16,15 @@ const ServiceCard = ({ icon, title, description, link }: { icon: string; title: 
         <p className="text-gray-600 mb-4 flex-grow text-sm">{description}</p>
         <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-auto">Learn More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
     </div>
+);
+
+const ModernServiceCard = ({ icon, title, link }: { icon: string; title: string; link: string; }) => (
+    <Link to={link} className="block bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center group">
+        <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gray-100 group-hover:bg-[#c5a47e] text-[#2e3e4d] group-hover:text-white text-3xl mb-4 mx-auto transition-colors duration-300">
+            <i className={icon}></i>
+        </div>
+        <h3 className="text-lg font-bold text-[#2e3e4d]">{title}</h3>
+    </Link>
 );
 
 const FinanceCard = ({ title, link }: { title: string; link: string; }) => (
@@ -70,10 +80,10 @@ const HomePage: React.FC = () => {
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">Legacy of Trust, Future of Justice</h1>
                     <p className="text-lg md:text-xl mt-4 max-w-3xl mx-auto drop-shadow-md">An ISO 9001:2015 Certified, Top 10 Ranked Law Firm with over 15+ years of experience in M&A and Corporate Law.</p>
                     <div className="mt-8 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 justify-center items-center">
-                        <Link to="/about" className="bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg">
+                        <Link to="/about" className="flex align-center bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg h-14">
                             Discover More
                         </Link>
-                        <Link to="/contact" className="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-[#2e3e4d] transition-colors text-lg">
+                        <Link to="/contact" className="flex align-center bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-md hover:bg-white hover:text-[#2e3e4d] transition-colors text-lg h-14">
                             Contact Us
                         </Link>
                     </div>
@@ -88,6 +98,25 @@ const HomePage: React.FC = () => {
                         <p className="text-gray-600 leading-relaxed text-lg">
                             JBLC INDIA is a premier ISO 9001:2015 Certified law firm, ranked among the Top 10 in India. With over 15 years of dedicated experience, we specialize in delivering high-quality, timely, and customized legal solutions across various domains. Our team of highly skilled professionals is committed to maintaining the utmost confidentiality and dedication to achieve the best possible outcomes for our clients.
                         </p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section className="py-20">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-[#2e3e4d]">Our Services</h2>
+                        <p className="text-gray-600 mt-2">Digital, streamlined, and expert-driven legal services for today's world.</p>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                        {modernServices.map((service, index) => (
+                            <ModernServiceCard 
+                                key={index} 
+                                icon={service.features[0]?.icon || 'fas fa-concierge-bell'} 
+                                title={service.title} 
+                                link={`/services/${service.slug}`} />
+                        ))}
                     </div>
                 </div>
             </section>

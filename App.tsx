@@ -19,9 +19,11 @@ import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
 import HrPolicyPage from './pages/HrPolicyPage';
 import JobApplicationPage from './pages/JobApplicationPage';
 import NewsletterPage from './pages/NewsletterPage';
-import CompliancesPage from './pages/CompliancesPage';
-import ComplianceRequestFormPage from './pages/ComplianceRequestFormPage';
 import OurAdvocateTeamPage from './pages/OurAdvocateTeamPage';
+import SecondaryNavbar from './components/SecondaryNavbar'; 
+import SubServiceListPage from './pages/SubServiceListPage.tsx'; // New page
+import ModernServiceDetailPage from './pages/ModernServiceDetailPage.tsx'; // New page
+import GetQuoteFormPage from './pages/GetQuoteFormPage.tsx';
 
 const App: React.FC = () => {
   return (
@@ -30,6 +32,7 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen">
         <Header />
         <Navbar />
+         <SecondaryNavbar />
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -37,6 +40,8 @@ const App: React.FC = () => {
             <Route path="/core-team" element={<OurCoreTeamPage />} />
             <Route path="/career" element={<CareerPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:mainHeadingSlug" element={<SubServiceListPage />} /> 
+            <Route path="/get-quote" element={<GetQuoteFormPage />} />
             <Route path="/services/:slug" element={<ServiceDetailPage />} />
             <Route path="/finance" element={<FinanceAssistancePage />} />
             <Route path="/finance/:slug" element={<FinanceDetailPage />} />
@@ -45,9 +50,8 @@ const App: React.FC = () => {
             <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
             <Route path="/hr-policy" element={<HrPolicyPage />} />
             <Route path="/apply" element={<JobApplicationPage />} />
+            <Route path="/services/:mainHeadingSlug/:subHeadingSlug" element={<ModernServiceDetailPage />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
-            <Route path="/compliances" element={<CompliancesPage />} />
-            <Route path="/compliances-request" element={<ComplianceRequestFormPage />} />
             <Route path="/our-advocate-team" element={<OurAdvocateTeamPage />} />
           </Routes>
         </main>
