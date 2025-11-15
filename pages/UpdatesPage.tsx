@@ -52,7 +52,7 @@ const UpdatesPage: React.FC = () => {
                 <section className="mt-5 bg-gray-50 p-4 rounded-lg shadow-xl text-center">
                    
                     
-                    <div className="w-full h-[2900px] rounded-md overflow-hidden md:h-[700px]">
+                    <div className="w-full h-[2800px] rounded-md overflow-hidden md:h-[700px]">
                         <iframe 
                             src="https://widget.taggbox.com/307892?website=1" 
                             style={{ width: '100%', height: '100%', border: 'none', overflow: 'auto' }}
