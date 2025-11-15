@@ -52,6 +52,7 @@ const AppointmentPage: React.FC = () => {
     const [errors, setErrors] = useState<FormErrors>({});
     const [price, setPrice] = useState(0);
     const [submissionStatus, setSubmissionStatus] = useState<{ submitted: boolean; message: string }>({ submitted: false, message: '' });
+    const [filteredAdvocates, setFilteredAdvocates] = useState<{ name: string; specialisation: string; }[]>([]);
 
     // --- Time selection state ---
     const allHours = ['09', '10', '11', '12', '01', '02', '03', '04', '05'];
@@ -73,12 +74,29 @@ const AppointmentPage: React.FC = () => {
         { name: 'Family Matter', price: 24999 },
     ];
 
-    const workers = Advocates.map(member => ({ name: member.name, specialisation: member.specialisation })); // All team members with specialisation
-
     useEffect(() => {
         const selectedService = services.find(s => s.name === formData.service);
         setPrice(selectedService ? selectedService.price : 0);
     }, [formData.service]);
+
+    // Filter advocates based on selected location
+    // Filter advocates based on selected location (case-insensitive)
+    useEffect(() => {
+        if (formData.location) {
+            const selectedLocationLower = formData.location.toLowerCase();
+            const availableAdvocates = Advocates
+                .filter(advocate => advocate.location && advocate.location.toLowerCase().includes(selectedLocationLower))
+                .map(member => ({ name: member.name, specialisation: member.specialisation }));
+
+            setFilteredAdvocates(availableAdvocates);
+
+            // Reset advocate if the currently selected one is not available in the new location
+            if (!availableAdvocates.some(adv => adv.name === formData.worker)) {
+                setFormData(prev => ({ ...prev, worker: '' }));
+            }
+        }
+    }, [formData.location]);
+
 
     // --- Dynamic time validation logic ---
     useEffect(() => {
@@ -225,8 +243,15 @@ const AppointmentPage: React.FC = () => {
                                 <label htmlFor="location" className="block text-gray-700 font-semibold mb-2">Location *</label>
                                 <select id="location" name="location" value={formData.location} onChange={handleChange} className={`${commonInputClasses} ${errors.location ? errorClasses : ''}`}>
                                     <option value="">Select Location</option>
-                                    <option value="Zonal Office">Zonal Office (Delhi)</option>
-                                    <option value="Regional Office">Regional Office (Lucknow)</option>
+                                    <option value="Ahmedabad">Ahmedabad</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Prayagraj">Prayagraj</option>
+                                    <option value="Lucknow">Lucknow</option>
+                                    <option value="Jaipur">Jaipur</option>
+                                    <option value="Bangalore">Bangalore</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Chandigarh">Chandigarh</option>
                                 </select>
                                 {errors.location && <p className="text-red-600 text-sm mt-1">{errors.location}</p>}
                             </div>
@@ -242,9 +267,12 @@ const AppointmentPage: React.FC = () => {
 
                             <div className="mb-5">
                                 <label htmlFor="worker" className="block text-gray-700 font-semibold mb-2">Advocate *</label>
-                                <select id="worker" name="worker" value={formData.worker} onChange={handleChange} className={`${commonInputClasses} ${errors.worker ? errorClasses : ''}`}>
-                                    <option value="">Select Advocate</option>
-                                    {workers.map(w => <option key={w.name} value={w.name}>{`${w.name} (${w.specialisation})`}</option>)}
+                                <select id="worker" name="worker" value={formData.worker} onChange={handleChange} className={`${commonInputClasses} ${errors.worker ? errorClasses : ''}`} disabled={!formData.location}>
+                                    <option value="">{formData.location ? 'Select Advocate' : 'Please select a location first'}</option>
+                                    {filteredAdvocates.length > 0 ?
+                                        filteredAdvocates.map(w => <option key={w.name} value={w.name}>{`${w.name} (${w.specialisation})`}</option>) :
+                                        (formData.location && <option value="" disabled>No advocates available for this location</option>)
+                                    }
                                 </select>
                                 {errors.worker && <p className="text-red-600 text-sm mt-1">{errors.worker}</p>}
                             </div>

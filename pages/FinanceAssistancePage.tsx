@@ -19,7 +19,7 @@ const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) =>
 const FinanceCard = ({ title, link }: { title: string; link: string; }) => (
     <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center flex flex-col justify-between">
         <h3 className="text-2xl font-bold mb-4 text-[#2e3e4d]">{title}</h3>
-        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-4">Read More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
+        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-4">Know More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
     </div>
 );
 

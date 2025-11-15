@@ -24,7 +24,7 @@ const ServiceCard = ({ icon, title, description, link }: { icon: string; title: 
         </div>
         <h3 className="text-2xl font-bold mb-3 text-[#2e3e4d]">{title}</h3>
         <p className="text-gray-600 mb-5 flex-grow text-sm">{description}</p>
-        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-auto">Learn More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
+        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-auto">Know More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
     </div>
 );
 
@@ -46,7 +46,7 @@ const ServicesPage: React.FC = () => {
                     <p className="text-gray-600 text-lg">We provide a wide array of legal services, ensuring expert counsel and representation across numerous fields of law.</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {coreServices.map(service => <ServiceCard key={service.title} {...service} link={`/services/${service.slug}`} />)}
+                    {coreServices.map(service => <ServiceCard key={service.title} {...service} link={`/service/${service.slug}`} />)}
                 </div>
             </div>
         </div>

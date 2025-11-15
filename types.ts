@@ -10,7 +10,6 @@ export interface TeamMember {
 }
 
 
-// New types for detailed compliance data structure
 export interface ComplianceCardItem {
   subHeading: string;
   price: string;
@@ -40,24 +39,24 @@ export interface Advocate {
   email: string;
   phone_no: string;
   specialisation: string;
+  location: string;
 }
 
-// New types for the modern services structure
 export interface ModernServiceFeature {
-    icon: string; // Font Awesome icon class
+    icon: string; 
     text: string;
 }
 
 export interface ModernServiceSubHeading {
-    slug: string; // Used for URL, e.g., "proprietorship"
-    title: string; // Displayed title, e.g., "Proprietorship"
-    description: string; // What user should know before quote
-    requiredDocuments: string[]; // List of documents
+    slug: string; 
+    title: string; 
+    description: string; 
+    requiredDocuments: string[]; 
 }
 
 export interface ModernServiceMainHeading {
-    slug: string; // Used for URL, e.g., "startup"
-    title: string; // Displayed title, e.g., "Startup"
-    features: ModernServiceFeature[]; // Features for the main heading
+    slug: string; 
+    title: string; 
+    features: ModernServiceFeature[]; 
     subHeadings: ModernServiceSubHeading[];
 }

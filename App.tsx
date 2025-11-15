@@ -1,6 +1,5 @@
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-// FIX: Corrected import paths to be relative.
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -41,10 +40,11 @@ const App: React.FC = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/core-team" element={<OurCoreTeamPage />} />
             <Route path="/career" element={<CareerPage />} />
-            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:mainHeadingSlug/:subHeadingSlug" element={<ModernServiceDetailPage />} />
             <Route path="/services/:mainHeadingSlug" element={<SubServiceListPage />} /> 
+            <Route path="/service/:slug" element={<ServiceDetailPage />} />
+            <Route path="/service" element={<ServicesPage />} />
             <Route path="/get-quote" element={<GetQuoteFormPage />} />
-            <Route path="/services/:slug" element={<ServiceDetailPage />} />
             <Route path="/finance" element={<FinanceAssistancePage />} />
             <Route path="/finance/:slug" element={<FinanceDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
@@ -52,7 +52,6 @@ const App: React.FC = () => {
             <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
             <Route path="/hr-policy" element={<HrPolicyPage />} />
             <Route path="/apply" element={<JobApplicationPage />} />
-            <Route path="/services/:mainHeadingSlug/:subHeadingSlug" element={<ModernServiceDetailPage />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
             <Route path="/our-advocate-team" element={<OurAdvocateTeamPage />} />
               <Route path="/empanelment" element={<EmpanelmentPage />} />

@@ -21,7 +21,7 @@ const ServiceDetailPage: React.FC = () => {
     const service = services.find(s => s.slug === slug);
 
     if (!service) {
-        return <Navigate to="/services" />;
+        return <Navigate to="/service" />;
     }
 
     return (
@@ -30,7 +30,7 @@ const ServiceDetailPage: React.FC = () => {
               title={`${service.title} Legal Services | JBLC INDIA`}
               description={`${service.description} Contact JBLC INDIA for expert legal counsel and representation in ${service.title} matters.`}
               keywords={`JBLC INDIA, ${service.title}, legal services, law firm, Indian law`}
-              canonicalPath={`/services/${service.slug}`}
+              canonicalPath={`/service/${service.slug}`}
             />
             <PageHeader title={service.title} subtitle="Detailed Legal Services Information" />
             <div className="container mx-auto px-4 py-20">
@@ -38,7 +38,7 @@ const ServiceDetailPage: React.FC = () => {
                     <div className="mb-6 text-sm text-gray-500">
                         <Link to="/" className="hover:text-blue-600">JBLC INDIA</Link>
                         <span className="mx-2">&gt;</span>
-                        <Link to="/services" className="hover:text-blue-600">Practice Areas</Link>
+                        <Link to="/service" className="hover:text-blue-600">Practice Areas</Link>
                         <span className="mx-2">&gt;</span>
                         <span className="text-gray-800">{service.title}</span>
                     </div>

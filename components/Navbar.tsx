@@ -67,12 +67,12 @@ const Navbar: React.FC = () => {
                         </div>
 
                         <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-                            <NavLink to="/services" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>
+                            <NavLink to="/service" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>
                                 Services <i className="fas fa-chevron-down ml-2 text-xs"></i>
                             </NavLink>
                             {servicesOpen && (
                                 <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-xl z-20 py-1 transition-all duration-300">
-                                    <Link to="/services" onClick={() => setServicesOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Practice Areas</Link>
+                                    <Link to="/service" onClick={() => setServicesOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Practice Areas</Link>
                                     <Link to="/finance" onClick={() => setServicesOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Finance Assistance</Link>
                                 </div>
                             )}
@@ -144,7 +144,7 @@ const Navbar: React.FC = () => {
                     <NavLink to="/career" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Career</NavLink>
                     <NavLink to="/empanelment" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Get Empanelled</NavLink>
                     {/* Services dropdown - kept for existing services, though services are above */}
-                    <NavLink to="/services" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Practice Areas</NavLink>
+                    <NavLink to="/service" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Practice Areas</NavLink>
                     <NavLink to="/finance" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Finance Assistance</NavLink>
                     <NavLink to="/contact" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Contact Us</NavLink>
                     

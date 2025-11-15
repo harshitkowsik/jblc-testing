@@ -22,6 +22,9 @@ const Footer: React.FC = () => {
               <a href="https://www.linkedin.com/company/jblcindia/" className="text-gray-400 hover:text-[#c5a47e] transition-colors" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin-in text-xl"></i>
               </a>
+              <a href="https://www.instagram.com/jblc.india/" className="text-gray-400 hover:text-[#c5a47e] transition-colors" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-instagram text-xl"></i>
+              </a>
               <a href="http://www.youtube.com/@JBLCIndia" className="text-gray-400 hover:text-[#c5a47e] transition-colors"><i className="fab fa-youtube text-xl"></i></a>
               <a href="https://www.youtube.com/@kanoonimadad" className="text-gray-400 hover:text-[#c5a47e] transition-colors"><i className="fab fa-youtube text-xl"></i></a>
             </div>

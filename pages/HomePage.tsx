@@ -14,7 +14,7 @@ const ServiceCard = ({ icon, title, description, link }: { icon: string; title: 
         </div>
         <h3 className="text-xl font-bold mb-3 text-[#2e3e4d]">{title}</h3>
         <p className="text-gray-600 mb-4 flex-grow text-sm">{description}</p>
-        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-auto">Learn More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
+        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-auto">Know More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
     </div>
 );
 
@@ -30,7 +30,7 @@ const ModernServiceCard = ({ icon, title, link }: { icon: string; title: string;
 const FinanceCard = ({ title, link }: { title: string; link: string; }) => (
     <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 text-center flex flex-col justify-center items-center h-full">
         <h3 className="text-xl font-bold mb-4 text-[#2e3e4d]">{title}</h3>
-        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-auto">Read More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
+        <Link to={link} className="font-semibold text-blue-600 hover:text-blue-800 mt-auto">Know More <i className="fas fa-arrow-right ml-1 text-xs"></i></Link>
     </div>
 );
 
@@ -178,7 +178,7 @@ const HomePage: React.FC = () => {
                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Meet Our Expert Team</h2>
                         <p className="text-gray-600 mt-2">Dedicated professionals committed to your success.</p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         {teamMembers.map((member, index) => (
                             <TeamMemberCard key={index} {...member} />
                         ))}

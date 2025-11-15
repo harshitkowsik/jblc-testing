@@ -6,21 +6,24 @@ export const Advocates: Advocate[] = [
         reg_no: "",
         email: "",
         phone_no: "",
-        specialisation: "Administrative Law, Constitutional Law"
+        specialisation: "Administrative Law, Constitutional Law",
+        location: "Lucknow, Delhi",
     },
     {
         name: "Adv Manish Sharma",
         reg_no: "",
         email: "",
         phone_no: "",
-        specialisation: "Labor and Employment Law"
+        specialisation: "Labor and Employment Law",
+        location: "Lucknow, Delhi",
     },
     {
         name: "Adv Ravindra Rai",
         reg_no: "",
         email: "",
         phone_no: "",
-        specialisation: "Civil and Criminal Litigation"
+        specialisation: "Civil and Criminal Litigation",
+        location: "Lucknow, Delhi",
     },
     // {
     //     name: "Garima Yadav",
