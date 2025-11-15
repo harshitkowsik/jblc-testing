@@ -45,7 +45,6 @@ const UpdatesPage: React.FC = () => {
                             <i className="fab fa-instagram text-2xl"></i>
                         </a>
                         <a href="http://www.youtube.com/@JBLCIndia" className="text-[#2e3e4d] hover:text-[#c5a47e] transition-colors" aria-label="JBLC India YouTube"><i className="fab fa-youtube text-2xl"></i></a>
-                        <a href="https://www.youtube.com/@kanoonimadad" className="text-[#2e3e4d] hover:text-[#c5a47e] transition-colors" aria-label="Kanooni Madad YouTube"><i className="fab fa-youtube text-2xl"></i></a>
                     </div>
                 </section>
 
