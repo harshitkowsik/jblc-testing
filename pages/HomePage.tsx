@@ -143,7 +143,7 @@ const HomePage: React.FC = () => {
                         <p className="text-gray-600 mt-2">Comprehensive legal services tailored to your needs.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {servicesPreview.map((service, index) => <ServiceCard key={index} {...service} link={`/services/${service.slug}`} />)}
+                        {servicesPreview.map((service, index) => <ServiceCard key={index} {...service} link={`/service/${service.slug}`} />)}
                     </div>
                     <div className="text-center mt-12">
                         <Link to="/services" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors">
