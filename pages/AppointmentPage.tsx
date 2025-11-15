@@ -175,7 +175,6 @@ const AppointmentPage: React.FC = () => {
             web3FormData.append("from_name", "JBLC India Appointment Form");
             web3FormData.append("subject", "JBLC India - New Appointment Booking");
             web3FormData.append("name", formData.name);
-            web3FormData.append("email", formData.email);
             web3FormData.append("phone", formData.phone);
             web3FormData.append("location", formData.location);
             web3FormData.append("service", formData.service);
@@ -184,19 +183,16 @@ const AppointmentPage: React.FC = () => {
             const timeString = `${formData.hour}:${formData.minute} ${formData.ampm}`;
             web3FormData.append("time", timeString);
             web3FormData.append("description", formData.description);
+            web3FormData.append("user_email", formData.email); // Send user's email with a specific key
 
-            // --- LOGIC TO ADD ADVOCATE EMAIL TO CC (COMMENTED OUT) ---
-            //
-            // // 1. Find the selected advocate from the Advocates data
-            // const selectedAdvocate = Advocates.find(adv => adv.name === formData.worker);
-            //
-            // // 2. Get the advocate's email if they exist
-            // const advocateEmail = selectedAdvocate ? selectedAdvocate.email : '';
-            //
-            // // 3. If an email is found, append it to the form data as 'ccemail'
-            // if (advocateEmail) {
-            //     web3FormData.append("ccemail", advocateEmail);
-            // }
+            // Find the selected advocate's email to add as CC
+            const selectedAdvocate = Advocates.find(adv => adv.name === formData.worker);
+            const advocateEmail = selectedAdvocate ? selectedAdvocate.email : '';
+            
+            // Add advocate's email to the 'ccemail' field for Web3Forms
+            if (advocateEmail) {
+                web3FormData.append("email", advocateEmail);
+            }
 
             fetch("https://api.web3forms.com/submit", {
                 method: "POST",

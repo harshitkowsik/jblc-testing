@@ -20,12 +20,12 @@ const DetailCard = ({ icon, title, value, link }: { icon: string, title: string,
     <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#c5a47e]">
         <div className="flex items-center">
             <i className={`${icon} text-2xl text-[#2e3e4d] mr-4`}></i>
-            <div>
+            <div className="min-w-0 flex-1">
                 <h4 className="font-semibold text-gray-500">{title}</h4>
                 {link ? (
-                    <a href={link} className="text-lg text-gray-800 hover:text-[#c5a47e] transition-colors">{value}</a>
+                    <a href={link} className="text-lg text-gray-800 hover:text-[#c5a47e] transition-colors truncate block" title={value}>{value}</a>
                 ) : (
-                    <p className="text-lg text-gray-800">{value}</p>
+                    <p className="text-lg text-gray-800 truncate" title={value}>{value}</p>
                 )}
             </div>
         </div>
