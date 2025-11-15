@@ -188,6 +188,19 @@ const AppointmentPage: React.FC = () => {
             web3FormData.append("description", formData.description);
             web3FormData.append("Total Price", `₹${price.toFixed(2)}`);
 
+            // --- LOGIC TO ADD ADVOCATE EMAIL TO CC (COMMENTED OUT) ---
+            //
+            // // 1. Find the selected advocate from the Advocates data
+            // const selectedAdvocate = Advocates.find(adv => adv.name === formData.worker);
+            //
+            // // 2. Get the advocate's email if they exist
+            // const advocateEmail = selectedAdvocate ? selectedAdvocate.email : '';
+            //
+            // // 3. If an email is found, append it to the form data as 'ccemail'
+            // if (advocateEmail) {
+            //     web3FormData.append("ccemail", advocateEmail);
+            // }
+
             fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 body: web3FormData,

@@ -126,6 +126,19 @@ const HomePage: React.FC = () => {
             <section className="py-20 bg-gray-50">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-[#2e3e4d]">Latest Updates</h2>
+                        <p className="text-gray-600 mt-2">Follow our journey and stay connected with our latest activities.</p>
+                    </div>
+                    <div className="w-full max-w-5xl mx-auto h-[400px] rounded-lg overflow-hidden">
+                        <iframe src="https://widget.taggbox.com/307893?website=1" style={{ width: '100%', height: '100%', border: 'none', overflow: 'auto' }}
+                        title="JBLC India Instagram Feed"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Our Core Practice Areas</h2>
                         <p className="text-gray-600 mt-2">Comprehensive legal services tailored to your needs.</p>
                     </div>
@@ -186,18 +199,6 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="pt-0 pb-5 bg-gray-50">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-4xl font-bold text-[#2e3e4d]">Latest Updates</h2>
-                        <p className="text-gray-600 mt-2">Follow our journey and stay connected with our latest activities.</p>
-                    </div>
-                    <div className="w-full max-w-5xl mx-auto h-[400px] rounded-lg overflow-hidden">
-                        <iframe src="https://widget.taggbox.com/307893?website=1" style={{ width: '100%', height: '100%', border: 'none', overflow: 'auto' }}
-                        title="JBLC India Instagram Feed"></iframe>
-                    </div>
-                </div>
-            </section>
 
 
             <section className="pb-20 pt-20 bg-white">
