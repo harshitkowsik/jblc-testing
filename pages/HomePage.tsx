@@ -113,10 +113,10 @@ const HomePage: React.FC = () => {
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                         {modernServices.map((service, index) => (
-                            <ModernServiceCard 
-                                key={index} 
-                                icon={service.features[0]?.icon || 'fas fa-concierge-bell'} 
-                                title={service.title} 
+                            <ModernServiceCard
+                                key={index}
+                                icon={service.features[0]?.icon || 'fas fa-concierge-bell'}
+                                title={service.title}
                                 link={`/services/${service.slug}`} />
                         ))}
                     </div>
@@ -186,7 +186,21 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="pb-20 bg-gray-50">
+            <section className="pt-20 pb-5 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-[#2e3e4d]">Latest Updates</h2>
+                        <p className="text-gray-600 mt-2">Follow our journey and stay connected with our latest activities.</p>
+                    </div>
+                    <div className="w-full max-w-5xl mx-auto h-[400px] rounded-lg overflow-hidden">
+                        <iframe src="https://widget.taggbox.com/307893?website=1" style={{ width: '100%', height: '100%', border: 'none', overflow: 'auto' }}
+                        title="JBLC India Instagram Feed"></iframe>
+                    </div>
+                </div>
+            </section>
+
+
+            <section className="pb-20 bg-white">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-4xl font-bold text-[#2e3e4d]">Stay Updated</h2>
                     <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Subscribe to our newsletter to get the latest legal insights, news, and updates directly to your inbox.</p><br></br>
