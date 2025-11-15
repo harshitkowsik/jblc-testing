@@ -30,6 +30,8 @@ const TermsAndConditionsPage: React.FC = () => {
             <SEO
                 title="Terms & Conditions | JBLC INDIA"
                 description="Read the official terms and conditions for using the JBLC INDIA website and its services."
+                keywords="JBLC INDIA, terms and conditions, legal policy, privacy policy, HR policy, website terms"
+                canonicalPath="/terms-and-conditions"
             />
             <PageHeader title="Terms & Conditions" subtitle="Please read our terms carefully" />
             <div className="container mx-auto px-4 py-20">

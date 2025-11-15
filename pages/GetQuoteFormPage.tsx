@@ -494,6 +494,7 @@ const GetQuoteFormPage: React.FC = () => {
             <SEO
                 title={`Get a Quote for ${formData.subServiceTitle || 'Service'} | JBLC INDIA`}
                 description={`Request a personalized quote for ${formData.subServiceTitle || 'our services'} from JBLC INDIA.`}
+                keywords={`JBLC INDIA, get a quote, ${formData.mainServiceTitle}, ${formData.subServiceTitle}, legal quote, finance quote`}
                 canonicalPath="/get-quote"
             />
             <PageHeader title="Request a Quote" subtitle="Personalized Solutions for Your Needs" />

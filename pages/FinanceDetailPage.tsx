@@ -29,6 +29,8 @@ const FinanceDetailPage: React.FC = () => {
             <SEO 
               title={`${service.title} Assistance | JBLC INDIA`}
               description={`Learn more about our ${service.title} services. JBLC INDIA provides expert legal and financial guidance for your needs.`}
+              keywords={`JBLC INDIA, finance, ${service.title}, financial services, legal services, financial guidance`}
+              canonicalPath={`/finance/${slug}`}
             />
             <PageHeader title={service.title} subtitle="Detailed Financial Services Information" />
             <div className="container mx-auto px-4 py-20">

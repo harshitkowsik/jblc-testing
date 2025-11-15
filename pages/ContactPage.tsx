@@ -51,6 +51,8 @@ const ContactPage: React.FC = () => {
             <SEO
                 title="Contact a Top Law Firm in India | JBLC INDIA"
                 description="Get in touch with JBLC INDIA. Find our office locations in Delhi, Lucknow, and across India, or use our contact form to reach our legal experts."
+                keywords="JBLC INDIA, contact us, law firm India, legal experts, Delhi law firm, Lucknow law firm"
+                canonicalPath="/contact"
             />
             <PageHeader title="Contact Us" subtitle="We're Here to Help" />
 

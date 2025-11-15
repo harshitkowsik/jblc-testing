@@ -42,6 +42,8 @@ const OurTeamPage: React.FC = () => {
             <SEO 
               title="Our Expert Legal Team | Supreme Court Advocates | JBLC INDIA"
               description="Meet the esteemed legal team at JBLC INDIA. Our experienced advocates and partners are dedicated to providing expert counsel and achieving success for our clients."
+              keywords="JBLC INDIA, legal team, Supreme Court advocates, expert lawyers, our team, Indian law firm"
+              canonicalPath="/team/core"
             />
             <PageHeader title="Our Esteemed Team" subtitle="The Minds Behind Our Success" />
             

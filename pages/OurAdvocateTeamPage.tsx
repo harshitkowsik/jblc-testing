@@ -46,6 +46,8 @@ const OurAdvocateTeamPage: React.FC = () => {
             <SEO 
               title="Our Advocate Team | JBLC INDIA"
               description="Meet the dedicated advocates at JBLC INDIA. Find details about their specialisations, registration, and contact information."
+              keywords="JBLC INDIA, advocate team, lawyers, legal experts, meet the team, Indian advocates"
+              canonicalPath="/team/advocates"
             />
             <PageHeader title="Our Advocate Team" subtitle="Dedicated Experts in Their Fields" />
             

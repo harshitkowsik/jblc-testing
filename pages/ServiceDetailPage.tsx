@@ -29,6 +29,8 @@ const ServiceDetailPage: React.FC = () => {
             <SEO 
               title={`${service.title} Legal Services | JBLC INDIA`}
               description={`${service.description} Contact JBLC INDIA for expert legal counsel and representation in ${service.title} matters.`}
+              keywords={`JBLC INDIA, ${service.title}, legal services, law firm, Indian law`}
+              canonicalPath={`/services/${service.slug}`}
             />
             <PageHeader title={service.title} subtitle="Detailed Legal Services Information" />
             <div className="container mx-auto px-4 py-20">

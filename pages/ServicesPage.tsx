@@ -35,6 +35,8 @@ const ServicesPage: React.FC = () => {
             <SEO 
               title="Our Practice Areas | Comprehensive Legal Services | JBLC INDIA"
               description="Discover the comprehensive legal services offered by JBLC INDIA. Our expertise spans Tax, IPR, Property, Cyber Crime, Family Law, and more."
+              keywords="JBLC INDIA, legal services, practice areas, tax law, IPR, property law, cyber crime, family law"
+              canonicalPath="/services"
             />
             <PageHeader title="Practice Areas" subtitle="Comprehensive Legal Solutions" />
             <div className="container mx-auto px-4 py-20">

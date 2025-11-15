@@ -29,6 +29,8 @@ const FinanceAssistancePage: React.FC = () => {
             <SEO 
               title="Finance Assistance & Legal Services | JBLC INDIA"
               description="Explore our finance assistance services, including personal, business, and home loans. Get expert legal and financial guidance from JBLC INDIA."
+              keywords="JBLC INDIA, finance assistance, legal services, personal loans, business loans, home loans, financial guidance"
+                canonicalPath="/finance"
             />
             <PageHeader title="Finance Assistance" subtitle="Guidance Through Financial Complexities" />
 

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
 
@@ -14,19 +15,21 @@ const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) =>
     </section>
 );
 
-interface NewsletterFormData {
+interface EmpanelmentFormData {
     name: string;
     email: string;
-    consent: boolean;
+    phone: string;
+    message: string;
 }
 
-type FormErrors = Partial<Record<keyof NewsletterFormData, string>>;
+type FormErrors = Partial<Record<keyof EmpanelmentFormData, string>>;
 
-const NewsletterPage: React.FC = () => {
-    const [formData, setFormData] = useState<NewsletterFormData>({
+const EmpanelmentFormPage: React.FC = () => {
+    const [formData, setFormData] = useState<EmpanelmentFormData>({
         name: '',
         email: '',
-        consent: false,
+        phone: '',
+        message: '',
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
@@ -46,29 +49,31 @@ const NewsletterPage: React.FC = () => {
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Invalid email address.';
         }
-        if (!formData.consent) {
-            newErrors.consent = 'You must agree to receive emails.';
+        if (!formData.phone.trim()) {
+            newErrors.phone = 'Phone number is required.';
+        } else if (!/^\d{10}$/.test(formData.phone)) { // Assuming 10-digit Indian mobile
+            newErrors.phone = 'Phone number must be 10 digits.';
         }
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, type, checked } = e.target;
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: type === 'checkbox' ? checked : value
+            [name]: value
         }));
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validate()) {
-            console.log('Newsletter Subscription Data:', formData);
+            console.log('Empanelment Application Submitted:', formData);
             // In a real application, you would send this to a backend API
             setIsSubmitted(true);
-            setFormData({ name: '', email: '', consent: false }); // Reset form
+            setFormData({ name: '', email: '', phone: '', message: '' }); // Reset form
             setErrors({}); // Clear errors
         } else {
             // Optional: alert('Please correct the errors in the form.');
@@ -78,28 +83,25 @@ const NewsletterPage: React.FC = () => {
     return (
         <div>
             <SEO
-                title="Subscribe to Our Newsletter | JBLC INDIA"
-                description="Stay updated with the latest legal insights, news, and events from JBLC INDIA. Subscribe to our newsletter today!"
-                keywords="JBLC INDIA, newsletter, legal updates, legal news, subscribe, law firm newsletter"
-                canonicalPath="/newsletter"
+                title="Empanelment Application | Join JBLC INDIA"
+                description="Apply to become an empanelled lawyer with JBLC INDIA. Submit your contact details to begin your journey."
+                canonicalPath="/empanelment-form"
             />
-            <PageHeader title="Subscribe to Our Newsletter" subtitle="Stay Updated with JBLC INDIA" />
-
+            <PageHeader title="Empanelment Application" subtitle="Start Your Journey with JBLC INDIA" />
 
             <div className="container mx-auto px-4 py-20">
                 <div className="max-w-3xl mx-auto bg-white p-10 rounded-lg shadow-2xl text-center">
-                    <h2 className="text-4xl font-bold text-[#2e3e4d] mb-6">Join Our Mailing List</h2>
+                    <h2 className="text-4xl font-bold text-[#2e3e4d] mb-6">Apply for Empanelment</h2>
                     <div className="w-24 h-1 bg-[#c5a47e] mx-auto mb-6"></div>
                     <p className="text-gray-700 leading-relaxed mb-8">
-                        Get the latest legal news, expert insights, and firm updates delivered straight to your inbox.
-                        Don't miss out on important developments in the legal world.
+                        Fill out the form below and our team will get in touch with you to discuss the empanelment process.
                     </p><div className="mb-8 flex justify-center">
-                    <iframe 
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSdN_XSOdNbKTU3ZI8jcA-OFcSHbP9HUaE-_pyXBvPu9ewvxwQ/viewform?embedded=true"
-                        className="w-full h-[800px] md:w-[700px] md:h-[650px]" 
-                        frameBorder="0" marginHeight={0} marginWidth={0}>
+                        <iframe
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSeHJaPAJQt4eZ7IcOWg8gCsZcNguxkxE-p8QLvyb4JlyoZ5PQ/viewform?embedded=true"
+                            className="w-full h-[2400px] md:w-[700px] md:h-[1900px]"
+                            frameBorder="0" marginHeight={0} marginWidth={0}>
                             Loading…
-                    </iframe>
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -107,4 +109,4 @@ const NewsletterPage: React.FC = () => {
     );
 };
 
-export default NewsletterPage;
+export default EmpanelmentFormPage;

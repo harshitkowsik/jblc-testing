@@ -252,6 +252,7 @@ const JobApplicationPage: React.FC = () => {
             <SEO
                 title="Job Application Form | JBLC INDIA"
                 description="Apply for career opportunities at JBLC INDIA. Fill out our job application form for various legal positions."
+                keywords="JBLC INDIA, job application, careers, legal jobs, law firm jobs, apply for job"
                 canonicalPath="/apply"
             />
             <PageHeader title="Application Form" subtitle="JBLC INDIA  >  Job Application Form" />

@@ -23,14 +23,16 @@ const Section = ({ title, children }: { title: string, children: React.ReactNode
     </div>
 );
 
-const PrivacyPolicyPage: React.FC = () => {
+const HrPolicyPage: React.FC = () => {
     return (
         <div>
             <SEO 
-              title="Privacy Policy | JBLC INDIA"
-              description="Learn how JBLC INDIA collects, uses, and protects your personal information. Read our complete privacy policy."
+              title="HR Policy | JBLC INDIA"
+              description="Read the HR Policy of JBLC INDIA. Learn about our policies regarding new openings, career opportunities, and employment."
+              keywords="JBLC INDIA, HR policy, careers, job openings, employment policy, legal careers"
+              canonicalPath="/hr-policy"
             />
-            <PageHeader title="Privacy Policy" subtitle="Your privacy is important to us" />
+            <PageHeader title="HR Policy" subtitle="Our Human Resources Policies" />
             <div className="container mx-auto px-4 py-20">
                 <div className="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-2xl">
 
@@ -87,4 +89,4 @@ const PrivacyPolicyPage: React.FC = () => {
     );
 };
 
-export default PrivacyPolicyPage;
+export default HrPolicyPage;

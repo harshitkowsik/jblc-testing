@@ -21,9 +21,11 @@ import JobApplicationPage from './pages/JobApplicationPage';
 import NewsletterPage from './pages/NewsletterPage';
 import OurAdvocateTeamPage from './pages/OurAdvocateTeamPage';
 import SecondaryNavbar from './components/SecondaryNavbar'; 
-import SubServiceListPage from './pages/SubServiceListPage.tsx'; // New page
-import ModernServiceDetailPage from './pages/ModernServiceDetailPage.tsx'; // New page
+import SubServiceListPage from './pages/SubServiceListPage.tsx';
+import ModernServiceDetailPage from './pages/ModernServiceDetailPage.tsx'; 
 import GetQuoteFormPage from './pages/GetQuoteFormPage.tsx';
+import EmpanelmentPage from './pages/EmpanelmentPage.tsx';
+import EmpanelmentFormPage from './pages/EmpanelmentFormPage.tsx';
 
 const App: React.FC = () => {
   return (
@@ -53,6 +55,8 @@ const App: React.FC = () => {
             <Route path="/services/:mainHeadingSlug/:subHeadingSlug" element={<ModernServiceDetailPage />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
             <Route path="/our-advocate-team" element={<OurAdvocateTeamPage />} />
+              <Route path="/empanelment" element={<EmpanelmentPage />} />
+            <Route path="/empanelment-form" element={<EmpanelmentFormPage />} />
           </Routes>
         </main>
         <Footer />

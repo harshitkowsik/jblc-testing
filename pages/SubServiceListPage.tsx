@@ -52,6 +52,7 @@ const SubServiceListPage: React.FC = () => {
             <SEO
                 title={`${mainService.title} Services | JBLC INDIA`}
                 description={`Explore ${mainService.title} services offered by JBLC INDIA, including ${mainService.subHeadings.map(s => s.title).join(', ')}.`}
+                keywords={`JBLC INDIA, ${mainService.title}, legal services, ${mainService.subHeadings.map(s => s.title).join(', ')}`}
                 canonicalPath={`/services/${mainService.slug}`}
             />
             <PageHeader title={mainService.title} subtitle={`Specialized Legal Solutions for ${mainService.title}`} />

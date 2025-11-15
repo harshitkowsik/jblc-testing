@@ -122,6 +122,8 @@ const CareerPage: React.FC = () => {
             <SEO 
               title="Legal Careers & Job Openings | Join JBLC INDIA"
               description="Explore career opportunities at a top-10 ranked law firm in India. JBLC INDIA offers a dynamic environment for legal interns, associates, and experienced lawyers."
+              keywords="JBLC INDIA, legal careers, law jobs, job openings, legal interns, legal associates, lawyer jobs India"
+              canonicalPath="/career"
             />
             <PageHeader title="Career With JBLC INDIA" subtitle="Building the Future of Law, Leadership & Justice" />
 

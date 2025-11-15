@@ -155,6 +155,8 @@ const AboutPage: React.FC = () => {
             <SEO 
               title="About JBLC INDIA | Our Legacy, Mission & Vision"
               description="Learn about JBLC INDIA, a leading law firm in India. Discover our history, our mission to deliver justice with precision, and the leadership of Dr. Ashutosh Mishra."
+              keywords="JBLC INDIA, about us, law firm India, Dr. Ashutosh Mishra, legal services, corporate law, civil litigation, criminal litigation"
+                canonicalPath="/about"
             />
             <PageHeader title="About JBLC INDIA" subtitle="Your Trusted Legal Companion Since 2010" />
 

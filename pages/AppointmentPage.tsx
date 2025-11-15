@@ -208,6 +208,8 @@ const AppointmentPage: React.FC = () => {
             <SEO
                 title="Book a Legal Consultation Online | JBLC INDIA"
                 description="Schedule a confidential legal consultation with our expert advocates. Use our secure online form to book your appointment with JBLC INDIA today."
+                keywords="JBLC INDIA, book appointment, legal consultation, schedule advocate, online legal advice, law firm appointment"
+                canonicalPath="/appointment"
             />
             <PageHeader title="Book an Appointment" subtitle="Secure Your Legal Consultation Today" />
 

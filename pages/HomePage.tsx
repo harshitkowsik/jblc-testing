@@ -70,6 +70,8 @@ const HomePage: React.FC = () => {
             <SEO
                 title="JBLC INDIA | Top ISO Certified Law Firm in India"
                 description="JBLC INDIA is a top-ranked, ISO certified law firm with 15+ years of experience in M&A, corporate, and civil law. Contact our Supreme Court experts today."
+                keywords="JBLC INDIA, Top Law Firm India, ISO Certified Law Firm, Corporate Law Experts, M&A Legal Services, Supreme Court Lawyers India"
+                canonicalPath="/"
             />
             <section
                 className="bg-cover bg-center min-h-[70vh] flex items-center justify-center text-white relative"

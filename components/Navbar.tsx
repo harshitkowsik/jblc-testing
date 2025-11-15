@@ -7,6 +7,7 @@ const Navbar: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [teamOpen, setTeamOpen] = useState(false);
     const [servicesOpen, setServicesOpen] = useState(false);
+    const [careerOpen, setCareerOpen] = useState(false);
     // Changed to string | null for accordion behavior, tracking only the currently open main service slug
     const [openMobileServiceSlug, setOpenMobileServiceSlug] = useState<string | null>(null); 
 
@@ -19,6 +20,7 @@ const Navbar: React.FC = () => {
         setIsMobileMenuOpen(false);
         setTeamOpen(false);
         setServicesOpen(false);
+        setCareerOpen(false);
         setOpenMobileServiceSlug(null); // Close all mobile service dropdowns
     }
 
@@ -52,7 +54,17 @@ const Navbar: React.FC = () => {
                                 </div>
                             )}
                         </div>
-                        <NavLink to="/career" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>Career</NavLink>
+                        <div className="relative" onMouseEnter={() => setCareerOpen(true)} onMouseLeave={() => setCareerOpen(false)}>
+                            <NavLink to="/career" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>
+                                Career <i className="fas fa-chevron-down ml-2 text-xs"></i>
+                            </NavLink>
+                            {careerOpen && (
+                                <div className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-xl z-20 py-1 transition-all duration-300">
+                                    <Link to="/career" onClick={() => setCareerOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Open Roles</Link>
+                                    <Link to="/empanelment" onClick={() => setCareerOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2e3e4d]">Get Empanelled</Link>
+                                </div>
+                            )}
+                        </div>
 
                         <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
                             <NavLink to="/services" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>

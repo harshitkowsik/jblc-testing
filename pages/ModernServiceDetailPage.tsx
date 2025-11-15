@@ -45,7 +45,8 @@ const ModernServiceDetailPage: React.FC = () => {
             <SEO
                 title={`${subService.title} | ${mainService.title} Services | JBLC INDIA`}
                 description={subService.description}
-                canonicalPath={`/new-services/${mainService.slug}/${subService.slug}`} // Updated canonical path
+                keywords={`JBLC INDIA, ${mainService.title}, ${subService.title}, legal services, modern services`}
+                canonicalPath={`/services/${mainService.slug}/${subService.slug}`}
             />
             <PageHeader title={subService.title} subtitle={`${mainService.title} Services`} />
 
