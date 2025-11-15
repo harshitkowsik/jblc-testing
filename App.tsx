@@ -25,6 +25,7 @@ import ModernServiceDetailPage from './pages/ModernServiceDetailPage.tsx';
 import GetQuoteFormPage from './pages/GetQuoteFormPage.tsx';
 import EmpanelmentPage from './pages/EmpanelmentPage.tsx';
 import EmpanelmentFormPage from './pages/EmpanelmentFormPage.tsx';
+import UpdatesPage from './pages/UpdatesPage.tsx';
 
 const App: React.FC = () => {
   return (
@@ -56,6 +57,7 @@ const App: React.FC = () => {
             <Route path="/our-advocate-team" element={<OurAdvocateTeamPage />} />
               <Route path="/empanelment" element={<EmpanelmentPage />} />
             <Route path="/empanelment-form" element={<EmpanelmentFormPage />} />
+            <Route path="/updates" element={<UpdatesPage />} />
           </Routes>
         </main>
         <Footer />
