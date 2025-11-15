@@ -65,11 +65,6 @@ const AdvocateDetailPage: React.FC = () => {
                         <DetailCard icon="fas fa-envelope" title="Email Address" value={advocate.email} link={`mailto:${advocate.email}`} />
                         <DetailCard icon="fas fa-phone" title="Phone Number" value={advocate.phone_no} link={`tel:${advocate.phone_no}`} />
                     </div>
-                     <div className="mt-12 text-center">
-                        <Link to="/appointment" className="bg-[#2e3e4d] text-white font-bold py-3 px-8 rounded-md hover:bg-[#1a2530] transition-colors text-lg">
-                            Book a Consultation
-                        </Link>
-                    </div>
                 </div>
             </div>
         </div>

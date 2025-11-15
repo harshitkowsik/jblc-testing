@@ -92,7 +92,7 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="py-20">
+            <section className="py-10">
                 <div className="container mx-auto px-4">
                     <div className="text-center max-w-3xl mx-auto">
                         <h2 className="text-4xl font-bold text-[#2e3e4d] mb-4">Welcome to JBLC INDIA</h2>
@@ -105,7 +105,7 @@ const HomePage: React.FC = () => {
             </section>
 
 
-            <section className="py-20">
+            <section className="py-10">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Our Services</h2>
@@ -123,7 +123,7 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="py-20 bg-gray-50">
+            <section className="py-10 bg-gray-50">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Latest Updates</h2>
@@ -136,7 +136,7 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="py-20 bg-gray-50">
+            <section className="pb-10 pt-0 bg-gray-50">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Our Core Practice Areas</h2>
@@ -153,7 +153,7 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="py-20">
+            <section className="pt-10 pb-20">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Finance Assistance</h2>
@@ -185,7 +185,7 @@ const HomePage: React.FC = () => {
                 </div>
             </section>
 
-            <section className="py-20">
+            <section className="pt-20 pb-10">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-[#2e3e4d]">Meet Our Expert Team</h2>
@@ -201,7 +201,7 @@ const HomePage: React.FC = () => {
 
 
 
-            <section className="pb-20 pt-20 bg-white">
+            <section className="pt-10 pb-20 bg-white">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="text-4xl font-bold text-[#2e3e4d]">Stay Updated</h2>
                     <p className="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Subscribe to our newsletter to get the latest legal insights, news, and updates directly to your inbox.</p><br></br>
