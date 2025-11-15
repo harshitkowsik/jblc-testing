@@ -39,7 +39,7 @@ export interface Advocate {
   email: string;
   phone_no: string;
   specialisation: string;
-  location: string;
+  location: string[];
 }
 
 export interface ModernServiceFeature {

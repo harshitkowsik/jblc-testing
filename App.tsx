@@ -24,6 +24,7 @@ import SubServiceListPage from './pages/SubServiceListPage.tsx';
 import ModernServiceDetailPage from './pages/ModernServiceDetailPage.tsx'; 
 import GetQuoteFormPage from './pages/GetQuoteFormPage.tsx';
 import EmpanelmentPage from './pages/EmpanelmentPage.tsx';
+import AdvocateDetailPage from './pages/AdvocateDetailPage.tsx';
 import EmpanelmentFormPage from './pages/EmpanelmentFormPage.tsx';
 import UpdatesPage from './pages/UpdatesPage.tsx';
 
@@ -55,6 +56,7 @@ const App: React.FC = () => {
             <Route path="/apply" element={<JobApplicationPage />} />
             <Route path="/newsletter" element={<NewsletterPage />} />
             <Route path="/our-advocate-team" element={<OurAdvocateTeamPage />} />
+            <Route path="/advocate-details/*" element={<AdvocateDetailPage />} />
               <Route path="/empanelment" element={<EmpanelmentPage />} />
             <Route path="/empanelment-form" element={<EmpanelmentFormPage />} />
             <Route path="/updates" element={<UpdatesPage />} />

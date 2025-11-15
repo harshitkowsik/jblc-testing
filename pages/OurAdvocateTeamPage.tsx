@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import { Link } from 'react-router-dom';
 import { Advocates } from '../data/formTeamData';
 import { Advocate } from '../types';
 
@@ -18,29 +19,46 @@ const PageHeader = ({ title, subtitle }: { title: string, subtitle: string }) =>
 );
 
 // Card component for displaying advocate details
-const AdvocateCard = ({ name, reg_no, email, phone_no, specialisation }: Advocate) => (
+const AdvocateCard = ({ name, reg_no, specialisation }: Advocate) => (
     <div className="bg-white rounded-lg shadow-2xl p-8 flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
         <h3 className="text-2xl font-bold text-[#2e3e4d] mb-2">{name}</h3>
         <p className="text-[#c5a47e] font-semibold mb-4">{specialisation}</p>
-        
-        {/* <div className="text-gray-600 space-y-3 mt-auto border-t pt-4">
-            <div className="flex items-center">
-                <i className="fas fa-id-card-alt w-6 text-gray-500 mr-2"></i>
-                <span><strong>Reg. No:</strong> {reg_no}</span>
-            </div>
-            <div className="flex items-center">
-                <i className="fas fa-envelope w-6 text-gray-500 mr-2"></i>
-                <a href={`mailto:${email}`} className="hover:text-[#c5a47e] transition-colors">{email}</a>
-            </div>
-            <div className="flex items-center">
-                <i className="fas fa-phone w-6 text-gray-500 mr-2"></i>
-                <a href={`tel:${phone_no}`} className="hover:text-[#c5a47e] transition-colors">{phone_no}</a>
-            </div>
-        </div> */}
+        <div className="flex-grow"></div>
+        <Link to={`/advocate-details/${reg_no}`} className="mt-6 bg-[#2e3e4d] text-white text-center font-bold py-2 px-4 rounded-md hover:bg-[#1a2530] transition-colors">
+            View Details
+        </Link>
     </div>
 );
 
 const OurAdvocateTeamPage: React.FC = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchType, setSearchType] = useState<'name' | 'phone_no'>('name');
+    const [searchResults, setSearchResults] = useState<Advocate[]>([]);
+    const [hasSearched, setHasSearched] = useState(false);
+
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+        setHasSearched(true);
+
+        if (!searchQuery.trim()) {
+            setSearchResults([]);
+            return;
+        }
+
+        const query = searchQuery.toLowerCase().trim();
+        const filtered = Advocates.filter(advocate => {
+            if (searchType === 'name') {
+                return advocate.name.toLowerCase().includes(query);
+            }
+            if (searchType === 'phone_no') {
+                return advocate.phone_no.toLowerCase().includes(query);
+            }
+            return false;
+        });
+
+        setSearchResults(filtered);
+    };
+
     return (
         <div>
             <SEO 
@@ -57,8 +75,36 @@ const OurAdvocateTeamPage: React.FC = () => {
                     <div className="w-24 h-1 bg-[#c5a47e] mx-auto my-4"></div>
                     <p className="text-gray-600 text-lg">Our advocates are seasoned professionals, each with a deep specialisation and a commitment to delivering justice and expert counsel.</p>
                 </div>
+
+                <div className="max-w-2xl mx-auto mb-16 bg-white p-6 rounded-lg shadow-lg">
+                    <form onSubmit={handleSearch}>
+                        <div className="flex flex-col gap-3">
+                            <select 
+                                value={searchType} 
+                                onChange={(e) => setSearchType(e.target.value as 'name' | 'phone_no')}
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c5a47e] focus:border-[#c5a47e]"
+                            >
+                                <option value="name">By Name</option>
+                                <option value="phone_no">By Phone No.</option>
+                            </select>
+                            <input 
+                                type="text" 
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder={`Enter advocate's ${searchType === 'name' ? 'name' : 'phone number'}`}
+                                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#c5a47e] focus:border-[#c5a47e]"
+                            />
+                            <button type="submit" className="w-full inline-flex justify-center items-center px-6 py-3 bg-[#2e3e4d] text-white font-bold rounded-md hover:bg-[#1a2530] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2e3e4d]">
+                                <i className="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                    {Advocates.map((advocate, index) => <AdvocateCard key={index} {...advocate} />)}
+                    {hasSearched && searchResults.length === 0 && (
+                        <p className="col-span-full text-center text-gray-500 text-lg">No advocates found matching your search criteria.</p>
+                    )}
+                    {searchResults.map((advocate, index) => <AdvocateCard key={index} {...advocate} />)}
                 </div>
             </div>
         </div>

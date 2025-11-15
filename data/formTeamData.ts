@@ -1,169 +1,183 @@
 import { Advocate } from '../types.ts';
 
+
+
+
 export const Advocates: Advocate[] = [
     {
-        name: "Adv Check",
-        reg_no: "",
-        email: "artistscamofficial@gmail.com",
-        phone_no: "",
-        specialisation: "Administrative Law, Constitutional Law",
-        location: "Lucknow, Delhi",
-    },
-    {
         name: "Adv Ashutosh Mishra",
-        reg_no: "",
-        email: "",
-        phone_no: "",
-        specialisation: "Administrative Law, Constitutional Law",
-        location: "Lucknow, Delhi",
+        reg_no: "UP/0001/2024",
+        email: "ashutosh.mishra.adv@example.com",
+        phone_no: "9876543210",
+        specialisation: "Constitutional Writ Practice",
+        location: ["Lucknow", "Delhi NCR"],
     },
     {
         name: "Adv Manish Sharma",
-        reg_no: "",
-        email: "",
-        phone_no: "",
-        specialisation: "Labor and Employment Law",
-        location: "Lucknow, Delhi",
+        reg_no: "DL/0002/2024",
+        email: "manish.sharma.adv@example.com",
+        phone_no: "9876543211",
+        specialisation: "Labour & Employment Law",
+        location: ["Delhi NCR", "Chandigarh"],
     },
     {
         name: "Adv Ravindra Rai",
-        reg_no: "",
-        email: "",
-        phone_no: "",
-        specialisation: "Civil and Criminal Litigation",
-        location: "Lucknow, Delhi",
+        reg_no: "MH/0003/2024",
+        email: "ravindra.rai.adv@example.com",
+        phone_no: "9876543212",
+        specialisation: "Criminal Litigation",
+        location: ["Mumbai", "Pune"],
     },
-    // {
-    //     name: "Garima Yadav",
-    //     reg_no: "",
-    //     email: "yadavgarima@gmail.com",
-    //     phone_no: "9455276122",
-    //     specialisation: "Labour / Employment"
-    // },
-    // {
-    //     name: "Kirti Mishra",
-    //     reg_no: "",
-    //     email: "mishra.kirti.655@gmail.com",
-    //     phone_no: "6306337655",
-    //     specialisation: "Labour / Employment"
-    // },
-    // {
-    //     name: "Saumya Pandey",
-    //     reg_no: "",
-    //     email: "saumyamahi220@gmail.com",
-    //     phone_no: "8176927526",
-    //     specialisation: "Corporate Law"
-    // },
-    // {
-    //     name: "Shakshi verma",
-    //     reg_no: "",
-    //     email: "vermashakshi96@gmail.com",
-    //     phone_no: "7651840891",
-    //     specialisation: "Intellectual Property (IP)"
-    // },
-    // {
-    //     name: "Priya Singh",
-    //     reg_no: "",
-    //     email: "priyasingh181092@gmail.com",
-    //     phone_no: "6386605302",
-    //     specialisation: "Legal Operations - Other"
-    // },
-    // {
-    //     name: "Namrata Mishra",
-    //     reg_no: "",
-    //     email: "cena11nm@gmail.com",
-    //     phone_no: "7004707556",
-    //     specialisation: "Family Law"
-    // },
-    // {
-    //     name: "Shrishti Gupta",
-    //     reg_no: "",
-    //     email: "shrishtigupta144@gmail.com",
-    //     phone_no: "8896905124",
-    //     specialisation: "Legal & Regulatory - Other"
-    // },
-    // {
-    //     name: "Kriti Varshney",
-    //     reg_no: "",
-    //     email: "kriti.lmp@gmail.com",
-    //     phone_no: "6394628242",
-    //     specialisation: "Legal Officer"
-    // },
-    // {
-    //     name: "Smriti Srivastava",
-    //     reg_no: "",
-    //     email: "srivastava.smriti32@gmail.com",
-    //     phone_no: "9453336578",
-    //     specialisation: "Legal & Regulatory - Other"
-    // },
-    // {
-    //     name: "Shraddha Srivastava",
-    //     reg_no: "",
-    //     email: "adv.shraddhaa@gmail.com",
-    //     phone_no: "7016802441",
-    //     specialisation: "Legal & Regulatory - Other"
-    // },
-    // {
-    //     name: "Kishan Srivastava",
-    //     reg_no: "",
-    //     email: "kishankumar7496@gmail.com",
-    //     phone_no: "7985353031",
-    //     specialisation: "Legal Documentation / Research"
-    // },
-    // {
-    //     name: "Shivangi",
-    //     reg_no: "",
-    //     email: "shivangikhare111@gmail.com",
-    //     phone_no: "8707641423",
-    //     specialisation: "Legal & Regulatory - Other"
-    // },
-    // {
-    //     name: "Roshin Iqbal",
-    //     reg_no: "",
-    //     email: "iqbalroshin01@gmail.com",
-    //     phone_no: "918595420937",
-    //     specialisation: "Crime / Arbitration - Other"
-    // },
-    // {
-    //     name: "Shivani Tiwari",
-    //     reg_no: "",
-    //     email: "shivanitiwari0202@gmail.com",
-    //     phone_no: "8208438471",
-    //     specialisation: "Legal Operations - Other"
-    // },
-    // {
-    //     name: "Aradhana Bakshi",
-    //     reg_no: "",
-    //     email: "aradhanabakshi04@gmail.com",
-    //     phone_no: "8795230705",
-    //     specialisation: "Legal Officer"
-    // },
-    // {
-    //     name: "Advocate Prashant Singh",
-    //     reg_no: "",
-    //     email: "singhadvocateprashant@gmail.com",
-    //     phone_no: "9305769878",
-    //     specialisation: "Legal Officer"
-    // },
-    // {
-    //     name: "Satyendra Kumar",
-    //     reg_no: "",
-    //     email: "rishusad991@gmail.com",
-    //     phone_no: "9555199725",
-    //     specialisation: "Legal Officer"
-    // },
-    // {
-    //     name: "Jyoti",
-    //     reg_no: "",
-    //     email: "anitadreams11@gmail.com",
-    //     phone_no: "8957767699",
-    //     specialisation: "Legal Officer"
-    // },
-    // {
-    //     name: "Harshitaa",
-    //     reg_no: "",
-    //     email: "harshitaa.54321@gmail.com",
-    //     phone_no: "918429383838",
-    //     specialisation: "Legal Officer"
-    // },
+    {
+        name: "Garima Yadav",
+        reg_no: "UP/0004/2024",
+        email: "yadavgarima@gmail.com",
+        phone_no: "9455276122",
+        specialisation: "Labour & Employment Law",
+        location: ["Lucknow", "Prayagraj"],
+    },
+    {
+        name: "Kirti Mishra",
+        reg_no: "UP/0005/2024",
+        email: "mishra.kirti.655@gmail.com",
+        phone_no: "6306337655",
+        specialisation: "Labour & Employment Law",
+        location: ["Lucknow"],
+    },
+    {
+        name: "Saumya Pandey",
+        reg_no: "UP/0006/2024",
+        email: "saumyamahi220@gmail.com",
+        phone_no: "8176927526",
+        specialisation: "Corporate & Commercial Law",
+        location: ["Bangalore", "Mumbai"],
+    },
+    {
+        name: "Shakshi verma",
+        reg_no: "DL/0007/2024",
+        email: "vermashakshi96@gmail.com",
+        phone_no: "7651840891",
+        specialisation: "IPR & Cyber Law",
+        location: ["Delhi NCR"],
+    },
+    {
+        name: "Priya Singh",
+        reg_no: "RJ/0008/2024",
+        email: "priyasingh181092@gmail.com",
+        phone_no: "6386605302",
+        specialisation: "Consumer & RERA Matters",
+        location: ["Jaipur"],
+    },
+    {
+        name: "Namrata Mishra",
+        reg_no: "MH/0009/2024",
+        email: "cena11nm@gmail.com",
+        phone_no: "7004707556",
+        specialisation: "Civil Litigation",
+        location: ["Pune", "Mumbai"],
+    },
+    {
+        name: "Shrishti Gupta",
+        reg_no: "GJ/0010/2024",
+        email: "shrishtigupta144@gmail.com",
+        phone_no: "8896905124",
+        specialisation: "Taxation (GST, Income Tax)",
+        location: ["Ahmedabad"],
+    },
+    {
+        name: "Kriti Varshney",
+        reg_no: "UP/0011/2024",
+        email: "kriti.lmp@gmail.com",
+        phone_no: "6394628242",
+        specialisation: "Arbitration & Mediation",
+        location: ["Lucknow", "Prayagraj"],
+    },
+    {
+        name: "Smriti Srivastava",
+        reg_no: "KA/0012/2024",
+        email: "srivastava.smriti32@gmail.com",
+        phone_no: "9453336578",
+        specialisation: "Real Estate & Property Law",
+        location: ["Bangalore"],
+    },
+    {
+        name: "Shraddha Srivastava",
+        reg_no: "DL/0013/2024",
+        email: "adv.shraddhaa@gmail.com",
+        phone_no: "7016802441",
+        specialisation: "Corporate & Commercial Law",
+        location: ["Delhi NCR"],
+    },
+    {
+        name: "Kishan Srivastava",
+        reg_no: "UP/0014/2024",
+        email: "kishankumar7496@gmail.com",
+        phone_no: "7985353031",
+        specialisation: "Civil Litigation",
+        location: ["Lucknow"],
+    },
+    {
+        name: "Shivangi",
+        reg_no: "CH/0015/2024",
+        email: "shivangikhare111@gmail.com",
+        phone_no: "8707641423",
+        specialisation: "Criminal Litigation",
+        location: ["Chandigarh"],
+    },
+    {
+        name: "Roshin Iqbal",
+        reg_no: "DL/0016/2024",
+        email: "iqbalroshin01@gmail.com",
+        phone_no: "918595420937",
+        specialisation: "Arbitration & Mediation",
+        location: ["Delhi NCR"],
+    },
+    {
+        name: "Shivani Tiwari",
+        reg_no: "MH/0017/2024",
+        email: "shivanitiwari0202@gmail.com",
+        phone_no: "8208438471",
+        specialisation: "Consumer & RERA Matters",
+        location: ["Pune"],
+    },
+    {
+        name: "Aradhana Bakshi",
+        reg_no: "UP/0018/2024",
+        email: "aradhanabakshi04@gmail.com",
+        phone_no: "8795230705",
+        specialisation: "Labour & Employment Law",
+        location: ["Lucknow"],
+    },
+    {
+        name: "Advocate Prashant Singh",
+        reg_no: "UP/0019/2024",
+        email: "singhadvocateprashant@gmail.com",
+        phone_no: "9305769878",
+        specialisation: "Real Estate & Property Law",
+        location: ["Prayagraj"],
+    },
+    {
+        name: "Satyendra Kumar",
+        reg_no: "RJ/0020/2024",
+        email: "rishusad991@gmail.com",
+        phone_no: "9555199725",
+        specialisation: "Taxation (GST, Income Tax)",
+        location: ["Jaipur"],
+    },
+    {
+        name: "Jyoti",
+        reg_no: "UP/0021/2024",
+        email: "anitadreams11@gmail.com",
+        phone_no: "8957767699",
+        specialisation: "IPR & Cyber Law",
+        location: ["Lucknow"],
+    },
+    {
+        name: "Harshitaa",
+        reg_no: "DL/0022/2024",
+        email: "harshitaa.54321@gmail.com",
+        phone_no: "918429383838",
+        specialisation: "Constitutional Writ Practice",
+        location: ["Delhi NCR"],
+    },
 ];  

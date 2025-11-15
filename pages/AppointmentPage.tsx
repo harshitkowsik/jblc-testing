@@ -50,7 +50,6 @@ const AppointmentPage: React.FC = () => {
 
     const [formData, setFormData] = useState<AppointmentFormData>(initialFormData);
     const [errors, setErrors] = useState<FormErrors>({});
-    const [price, setPrice] = useState(0);
     const [submissionStatus, setSubmissionStatus] = useState<{ submitted: boolean; message: string }>({ submitted: false, message: '' });
     const [filteredAdvocates, setFilteredAdvocates] = useState<{ name: string; specialisation: string; }[]>([]);
 
@@ -61,41 +60,40 @@ const AppointmentPage: React.FC = () => {
     const [availableMinutes, setAvailableMinutes] = useState(allMinutes);
 
     const services = [
-        { name: 'Legal Notice', price: 10000 },
-        { name: 'Civil Case Filing', price: 25000 },
-        { name: 'Anticipatory Bail', price: 50000 },
-        { name: 'Criminal Matter Bail Cases', price: 100000 },
-        { name: 'Workplace Harresment', price: 29999 },
-        { name: 'Domestic Violence', price: 24999 },
-        { name: 'NI Act Case', price: 24999 },
-        { name: 'Criminal Matter Consultation', price: 75000 },
-        { name: 'Civil Matter Consultation', price: 24999 },
-        { name: 'Property Cases', price: 25000 },
-        { name: 'Family Matter', price: 24999 },
+        'Civil Litigation',
+        'Criminal Litigation',
+        'Corporate & Commercial Law',
+        'Arbitration & Mediation',
+        'Consumer & RERA Matters',
+        'Real Estate & Property Law',
+        'Labour & Employment Law',
+        'IPR & Cyber Law',
+        'Taxation (GST, Income Tax)',
+        'Constitutional Writ Practice',
     ];
 
+    // Filter advocates based on selected location AND service
     useEffect(() => {
-        const selectedService = services.find(s => s.name === formData.service);
-        setPrice(selectedService ? selectedService.price : 0);
-    }, [formData.service]);
-
-    // Filter advocates based on selected location
-    // Filter advocates based on selected location (case-insensitive)
-    useEffect(() => {
-        if (formData.location) {
+        if (formData.location && formData.service) {
             const selectedLocationLower = formData.location.toLowerCase();
-            const availableAdvocates = Advocates
-                .filter(advocate => advocate.location && advocate.location.toLowerCase().includes(selectedLocationLower))
-                .map(member => ({ name: member.name, specialisation: member.specialisation }));
+            const selectedService = formData.service;
+
+            const availableAdvocates = Advocates.filter(advocate => {
+                const locationMatch = advocate.location.some(loc => loc.toLowerCase() === selectedLocationLower);
+                const serviceMatch = advocate.specialisation === selectedService;
+                return locationMatch && serviceMatch;
+            }).map(member => ({ name: member.name, specialisation: member.specialisation }));
 
             setFilteredAdvocates(availableAdvocates);
 
-            // Reset advocate if the currently selected one is not available in the new location
+            // Reset advocate if the currently selected one is not available in the new filtered list
             if (!availableAdvocates.some(adv => adv.name === formData.worker)) {
                 setFormData(prev => ({ ...prev, worker: '' }));
             }
+        } else {
+            setFilteredAdvocates([]); // Clear advocates if either location or service is not selected
         }
-    }, [formData.location]);
+    }, [formData.location, formData.service]);
 
 
     // --- Dynamic time validation logic ---
@@ -186,7 +184,6 @@ const AppointmentPage: React.FC = () => {
             const timeString = `${formData.hour}:${formData.minute} ${formData.ampm}`;
             web3FormData.append("time", timeString);
             web3FormData.append("description", formData.description);
-            web3FormData.append("Total Price", `₹${price.toFixed(2)}`);
 
             // --- LOGIC TO ADD ADVOCATE EMAIL TO CC (COMMENTED OUT) ---
             //
@@ -273,18 +270,18 @@ const AppointmentPage: React.FC = () => {
                                 <label htmlFor="service" className="block text-gray-700 font-semibold mb-2">Service *</label>
                                 <select id="service" name="service" value={formData.service} onChange={handleChange} className={`${commonInputClasses} ${errors.service ? errorClasses : ''}`}>
                                     <option value="">Select Service</option>
-                                    {services.map(s => <option key={s.name} value={s.name}>{`${s.name} - ₹${s.price.toFixed(2)}`}</option>)}
+                                    {services.map(s => <option key={s} value={s}>{s}</option>)}
                                 </select>
                                 {errors.service && <p className="text-red-600 text-sm mt-1">{errors.service}</p>}
                             </div>
 
                             <div className="mb-5">
                                 <label htmlFor="worker" className="block text-gray-700 font-semibold mb-2">Advocate *</label>
-                                <select id="worker" name="worker" value={formData.worker} onChange={handleChange} className={`${commonInputClasses} ${errors.worker ? errorClasses : ''}`} disabled={!formData.location}>
-                                    <option value="">{formData.location ? 'Select Advocate' : 'Please select a location first'}</option>
+                                <select id="worker" name="worker" value={formData.worker} onChange={handleChange} className={`${commonInputClasses} ${errors.worker ? errorClasses : ''}`} disabled={!formData.location || !formData.service}>
+                                    <option value="">{(!formData.location || !formData.service) ? 'Select location & service first' : 'Select Advocate'}</option>
                                     {filteredAdvocates.length > 0 ?
                                         filteredAdvocates.map(w => <option key={w.name} value={w.name}>{`${w.name} (${w.specialisation})`}</option>) :
-                                        (formData.location && <option value="" disabled>No advocates available for this location</option>)
+                                        (formData.location && formData.service && <option value="" disabled>No advocates available for this selection</option>)
                                     }
                                 </select>
                                 {errors.worker && <p className="text-red-600 text-sm mt-1">{errors.worker}</p>}
@@ -346,8 +343,6 @@ const AppointmentPage: React.FC = () => {
                             <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Service:</span> <span>{formData.service || 'N/A'}</span></div>
                             <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Advocate:</span> <span>{formData.worker || 'N/A'}</span></div>
                             <div className="flex justify-between items-center"><span className="font-semibold text-gray-600">Date & Time:</span> <span>{formData.date && formData.hour && formData.minute ? `${formData.date} at ${formData.hour}:${formData.minute} ${formData.ampm}` : 'N/A'}</span></div>
-                            <div className="border-t my-3"></div>
-                            <div className="flex justify-between items-center text-2xl font-bold"><span className="text-[#2e3e4d]">Total Price:</span> <span className="text-[#c5a47e]">₹{price.toFixed(2)}</span></div>
                         </div>
                     </div>
 
