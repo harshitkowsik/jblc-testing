@@ -211,8 +211,8 @@ const EmpanelmentPage: React.FC = () => {
                         clarity, mentorship, insurance coverage, and a professional identity that genuinely
                         upgrades your career. This is one step that can shape your entire professional future.
                     </p>
-                    <Link to="/empanelment-form" className="bg-[#c5a47e] text-white font-bold py-3 px-8 rounded-md hover:bg-opacity-90 transition-colors text-lg">
-                        Apply for Empanelment Today
+                    <Link to="/empanelment-form" className="bg-[#c5a47e] text-white font-bold py-3 px-4 rounded-md hover:bg-opacity-90 transition-colors text-lg">
+                        Apply for Empanelment
                     </Link>
                 </section>
             </div>
