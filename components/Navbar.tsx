@@ -142,6 +142,7 @@ const Navbar: React.FC = () => {
                     <NavLink to="/core-team" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Core Team</NavLink>
                     <NavLink to="/our-advocate-team" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Advocates Team</NavLink>
                     <NavLink to="/career" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Career</NavLink>
+                    <NavLink to="/empanelment" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Get Empanelled</NavLink>
                     {/* Services dropdown - kept for existing services, though services are above */}
                     <NavLink to="/services" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Practice Areas</NavLink>
                     <NavLink to="/finance" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Finance Assistance</NavLink>
