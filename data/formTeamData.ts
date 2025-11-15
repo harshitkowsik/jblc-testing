@@ -2,6 +2,14 @@ import { Advocate } from '../types.ts';
 
 export const Advocates: Advocate[] = [
     {
+        name: "Adv Check",
+        reg_no: "",
+        email: "artistscamofficial@gmail.com",
+        phone_no: "",
+        specialisation: "Administrative Law, Constitutional Law",
+        location: "Lucknow, Delhi",
+    },
+    {
         name: "Adv Ashutosh Mishra",
         reg_no: "",
         email: "",
