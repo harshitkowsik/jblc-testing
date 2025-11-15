@@ -43,6 +43,8 @@ const Navbar: React.FC = () => {
 
                         <NavLink to="/about" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>About Us</NavLink>
 
+                        <NavLink to="/updates" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''}`}>Updates</NavLink>
+
                         <div className="relative" onMouseEnter={() => setTeamOpen(true)} onMouseLeave={() => setTeamOpen(false)}>
                             <NavLink to="/core-team" className={({ isActive }) => `${navLinkClasses} ${isActive ? activeLinkClasses : ''} flex items-center`}>
                                 Our Team <i className="fas fa-chevron-down ml-2 text-xs"></i>
@@ -138,7 +140,7 @@ const Navbar: React.FC = () => {
                     <h3 className="px-4 py-2 text-gray-400 text-xs uppercase tracking-wider mt-4">General Navigation</h3>
                     <NavLink to="/" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Home</NavLink>
                     <NavLink to="/about" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>About Us</NavLink>
-                    {/* Team dropdown - simplified for mobile side menu, can be expanded if needed */}
+                    <NavLink to="/updates" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Updates</NavLink>
                     <NavLink to="/core-team" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Core Team</NavLink>
                     <NavLink to="/our-advocate-team" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Advocates Team</NavLink>
                     <NavLink to="/career" className={({ isActive }) => `${mobileLinkClasses} ${isActive ? mobileActiveLinkClasses : ''}`} onClick={closeAllMenus}>Career</NavLink>
