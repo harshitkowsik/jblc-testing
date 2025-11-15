@@ -23,7 +23,7 @@ const AdvocateCard = ({ name, reg_no, email, phone_no, specialisation }: Advocat
         <h3 className="text-2xl font-bold text-[#2e3e4d] mb-2">{name}</h3>
         <p className="text-[#c5a47e] font-semibold mb-4">{specialisation}</p>
         
-        <div className="text-gray-600 space-y-3 mt-auto border-t pt-4">
+        {/* <div className="text-gray-600 space-y-3 mt-auto border-t pt-4">
             <div className="flex items-center">
                 <i className="fas fa-id-card-alt w-6 text-gray-500 mr-2"></i>
                 <span><strong>Reg. No:</strong> {reg_no}</span>
@@ -36,7 +36,7 @@ const AdvocateCard = ({ name, reg_no, email, phone_no, specialisation }: Advocat
                 <i className="fas fa-phone w-6 text-gray-500 mr-2"></i>
                 <a href={`tel:${phone_no}`} className="hover:text-[#c5a47e] transition-colors">{phone_no}</a>
             </div>
-        </div>
+        </div> */}
     </div>
 );
 
